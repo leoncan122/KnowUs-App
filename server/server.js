@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.status(200).send("welcome to Knowus project application");
 });
 
-const PORT = process.env.PORT;
+const { PORT } = process.env;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
