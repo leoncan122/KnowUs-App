@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SingUp from "./pages/SingUp";
+import Login from "./pages/Login";
 
 function App() {
     return (
@@ -14,6 +15,10 @@ function App() {
 
                     <Route path="/register">
                         <SingUp />
+                    </Route>
+
+                    <Route path="/login">
+                        <Login />
                     </Route>
                 </Switch>
             </Router>

@@ -1,25 +1,21 @@
 import React, { useState } from "react";
 import InputEmail from "../components/authentication/InputEmail";
-import InputUsername from "../components/authentication/InputUsername";
 import InputPassword from "../components/authentication/InputPassword";
 import SubmitBtn from "../components/buttons/SubmitBtn";
 
-export default function SingUp() {
+export default function Login() {
     // email functionality
     const [email, setEmail] = useState("");
-
-    // name functionality
-    const [username, setUsername] = useState("");
 
     // password functionality
     const [password, setPassword] = useState("");
 
-    // Sing Up submit
+    // Login submit
     /* const handleSubmit = async (e) => {
         e.preventDefault();
-        const signUpData = { email, username, password };
+        const loginData = { email, password };
         const url = "http://localhost:4000"; // BackEnd needed ************************
-        fetchData(signUpData, url); // BackEnd needed **************************
+        fetchData(loginData, url); // BackEnd needed **************************
     };
  */
     return (
@@ -29,10 +25,10 @@ export default function SingUp() {
             // onSubmit={handleSubmit}
             >
                 <InputEmail email={email} onChange={setEmail} />
-                <InputUsername Username={username} onChange={setUsername} />
                 <InputPassword password={password} onChange={setPassword} />
-                <SubmitBtn btnName="Sign Up" />
+                <SubmitBtn btnName="Login" />
             </form>
         </div>
     );
 }
+// Eslintrc elimina las llaves de los props ver linea **** 29 *****
