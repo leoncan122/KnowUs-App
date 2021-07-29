@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputEmail from "../components/authentication/InputEmail";
 import InputUsername from "../components/authentication/InputUsername";
 import InputPassword from "../components/authentication/InputPassword";
-import SubmitBtn from "../components/buttons/SubmitBtn";
+import GeneralBtn from "../components/buttons/GeneralBtn";
 
 export default function SingUp() {
     // email functionality
@@ -17,7 +17,7 @@ export default function SingUp() {
     // Sing Up submit
     /* const handleSubmit = async (e) => {
         e.preventDefault();
-        const signUpData = { email, username, password };
+        const signUpData = { email, password, username };
         const url = "http://localhost:4000"; // BackEnd needed ************************
         fetchData(signUpData, url); // BackEnd needed **************************
     };
@@ -31,7 +31,7 @@ export default function SingUp() {
                 <InputEmail email={email} onChange={setEmail} />
                 <InputUsername Username={username} onChange={setUsername} />
                 <InputPassword password={password} onChange={setPassword} />
-                <SubmitBtn btnName="Sign Up" />
+                <GeneralBtn btnName="Sign Up" btnType="submit" />
             </form>
         </div>
     );

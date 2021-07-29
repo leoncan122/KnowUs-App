@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputEmail from "../components/authentication/InputEmail";
 import InputPassword from "../components/authentication/InputPassword";
-import SubmitBtn from "../components/buttons/SubmitBtn";
+import GeneralBtn from "../components/buttons/GeneralBtn";
 
 export default function Login() {
     // email functionality
@@ -26,9 +26,8 @@ export default function Login() {
             >
                 <InputEmail email={email} onChange={setEmail} />
                 <InputPassword password={password} onChange={setPassword} />
-                <SubmitBtn btnName="Login" />
+                <GeneralBtn btnName="Login" btnType="submit" />
             </form>
         </div>
     );
 }
-// Eslintrc elimina las llaves de los props ver linea **** 29 *****
