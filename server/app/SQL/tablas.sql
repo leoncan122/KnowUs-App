@@ -2,7 +2,7 @@ create table users(
  id 		serial primary key,
  user_name 	varchar(30) not null,
  user_mail 	varchar(30) not null,
- user_pass 	Varchar(30) not null,
+ user_pass 	varchar(100) not null,
  country 	varchar(30),
  city		varchar(30),
  profession varchar(30),
