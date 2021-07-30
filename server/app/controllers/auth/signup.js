@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { Pool } = require("pg");
 
-require("dotenv").config({ path: "../../../.env" });
+require("dotenv").config({ path: "../../../../.env" });
 
 const signup = async (req, res) => {
     const { email, password, username } = req.body;

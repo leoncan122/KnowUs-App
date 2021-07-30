@@ -1,17 +1,19 @@
 const express = require("express");
+const app = express();
 const cors = require("cors");
 const helmet = require("helmet");
-const { verify } = require("jsonwebtoken");
+
 require("dotenv").config({ path: "../.env" });
 
 //controllers
-const { signup } = require("./app/controllers/signup");
+const { signup } = require("./app/controllers/auth/signup");
+const { getRandomRequests } = require("./app/controllers/user/home");
 
 //middlewares
 const {
     verifyUsernameExists,
 } = require("./app/middlewares/verifyUsernameExists");
-const app = express();
+const { verifyToken } = require("./app/middlewares/verifyToken");
 
 //cors
 const corsConfig = {
@@ -28,6 +30,9 @@ app.get("/", (req, res) => {
 
 //Authorization endpoints
 app.post("/signup", verifyUsernameExists, signup);
+
+//User endpoints
+app.get("/home", verifyToken, getRandomRequests);
 
 const { PORT } = process.env;
 app.listen(PORT, () => {
