@@ -11,11 +11,11 @@ module.exports = {
     },
     settings: {
         "import/resolver": {
-            node: {
-                extensions: [".js", ".jsx"],
-            },
+        "node": {
+        "extensions": [
+        ".js",
+        ".jsx",
+        ".json"
+        ]
         },
-        "import/no-unresolved": [2, { commonjs: true }],
-    },
-    rules: {},
 };

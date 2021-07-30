@@ -1,41 +1,34 @@
-create table users(
- id 		serial primary key,
- user_name 	varchar(30) not null,
- user_mail 	varchar(30) not null,
- user_pass 	varchar(100) not null,
- country 	varchar(30),
- city		varchar(30),
- profession varchar(30),
+CREATE TABLE users(
+ id             serial primary key,
+ user_name      VARCHAR(30) UNIQUE not null,
+ user_mail      VARCHAR(30) not null,
+ user_pass      VARCHAR(100) not null,
+ country        VARCHAR(30),
+ city           VARCHAR(30),
+ profession VARCHAR(30),
  is_profesional boolean
  );
- CREATE TABLE DM_sent (
-  id       		SERIAL PRIMARY KEY,
-  message 		varchar (480),
-  Date			DATE,
-  from_userid  	INT REFERENCES users(id),
-  to_userid    	INT REFERENCES users(id)
-  );
-create table questions(
-  id       		SERIAL PRIMARY KEY,
-  message 		varchar (480),
-  Date			DATE,
-  from_userid  	INT REFERENCES users(id),
+CREATE TABLE public_questions(
+  id                    SERIAL PRIMARY KEY,
+  text               VARCHAR (480),
+  Date                  DATE,
+  from_userid   INT REFERENCES users(id),
   to_userid     INT REFERENCES users(id),
-  category		varchar(30),
-  is_answered 		boolean,
-  draft			boolean
+  category              VARCHAR(30),
+  is_answered           boolean,
+  draft                 boolean
   );
-create table answer(
-  id       		SERIAL PRIMARY KEY,
-  question_id 	INT REFERENCES questions(id),
-  date			DATE,
-  message 		varchar (480),
-  draft			boolean
+CREATE TABLE answers(
+  id                    SERIAL PRIMARY KEY,
+  question_id   INT REFERENCES questions(id),
+  date                  DATE,
+  text               VARCHAR (480),
+  is_draft                 boolean
   );
- CREATE TABLE DM_received (
-  id       SERIAL PRIMARY KEY,
-  id_dmsent 	 	INT REFERENCES dm_sent(id),
-  date				DATE,
-  message 			varchar (480),
-  is_read			boolean
+CREATE TABLE direct_messages (
+  id                    SERIAL PRIMARY KEY,
+  text               VARCHAR (480),
+  date                  DATE,
+  from_userid   INT REFERENCES users(id),
+  to_userid     INT REFERENCES users(id)
   );

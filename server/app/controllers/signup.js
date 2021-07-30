@@ -17,7 +17,7 @@ const signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const values = [username.toLowerCase(), email, hashedPassword];
+    const values = [username, email, hashedPassword];
 
     const pool = new Pool({
         user: "postgres",
@@ -42,20 +42,21 @@ const signup = async (req, res) => {
                 }
                 if (result.rowCount === 1) {
                     const user = result.rows[0];
+
                     const token = jwt.sign(
                         { user: user.id },
                         process.env.SECRET,
                         {
-                            expiresIn: 28800,
+                            expiresIn: 28800, //8 hours
                         }
                     );
-
                     res.cookie("token", token, { httpOnly: true });
 
                     res.status(201).json({
-                        token,
+                        username: user.user_name,
+                        accessToken: token,
                         isAuthenticated: true,
-                        message: "User was registered with success",
+                        message: `User ${user.user_name} was registered with success`,
                     });
                 }
             });
@@ -65,4 +66,4 @@ const signup = async (req, res) => {
     });
 };
 
-exports.module = signup;
+module.exports = { signup };
