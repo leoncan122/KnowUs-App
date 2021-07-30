@@ -4,21 +4,14 @@ const { Pool } = require("pg");
 
 require("dotenv").config({ path: "../../../../.env" });
 
-const getRandomRequests = (req, res) => {
-    const userId = req.id;
-
-    if (!userId) {
-        return res
-            .status(500)
-            .send({ message: "Invalid credential", isAuthorized: false });
-    }
+const getLastPublications = (req, res) => {
     try {
         const pool = new Pool({
-            user: "postgres",
-            host: "localhost",
-            database: "knowus",
-            password: "newPassword",
-            port: 5432,
+            user: process.env.PG_USER,
+            host: process.env.PG_HOST,
+            database: process.env.PG_DATABASE,
+            password: process.env.PG_PASS,
+            port: process.env.PG_PORT,
         });
 
         const query =
@@ -28,7 +21,7 @@ const getRandomRequests = (req, res) => {
             if (error) {
                 return res.status(404).send({ message: error.message });
             }
-            client.query(query, [userId], (err, result) => {
+            client.query(query, (err, result) => {
                 release();
                 if (err) {
                     return res.status(404).send({ message: err.message });
@@ -38,4 +31,4 @@ const getRandomRequests = (req, res) => {
         });
     } catch {}
 };
-module.exports = { getRandomRequests };
+module.exports = { getLastPublications };

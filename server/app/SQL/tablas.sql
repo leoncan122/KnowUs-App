@@ -20,7 +20,7 @@ CREATE TABLE public_questions(
   );
 CREATE TABLE answers(
   id            SERIAL PRIMARY KEY,
-  question_id   INT REFERENCES questions(id),
+  question_id   INT REFERENCES public_questions(id),
   date          DATE NOT NULL DEFAULT NOW(),
   hour          TIME DEFAULT NOW(),
   text          VARCHAR (480),

@@ -20,11 +20,11 @@ const signup = async (req, res) => {
     const values = [username, email, hashedPassword];
 
     const pool = new Pool({
-        user: "postgres",
-        host: "localhost",
-        database: "knowus",
-        password: "newPassword",
-        port: 5432,
+        user: process.env.PG_USER,
+        host: process.env.PG_HOST,
+        database: process.env.PG_DATABASE,
+        password: process.env.PG_PASS,
+        port: process.env.PG_PORT,
     });
 
     const query =

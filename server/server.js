@@ -1,38 +1,29 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const helmet = require("helmet");
-
 require("dotenv").config({ path: "../.env" });
 
-//controllers
-const { signup } = require("./app/controllers/auth/signup");
-const { getRandomRequests } = require("./app/controllers/user/home");
+const app = express();
+app.use(express.json());
+app.use(helmet());
 
-//middlewares
-const {
-    verifyUsernameExists,
-} = require("./app/middlewares/verifyUsernameExists");
-const { verifyToken } = require("./app/middlewares/verifyToken");
+//routes
+const auth = require("./app/routes/auth");
+const home = require("./app/routes/home");
 
 //cors
 const corsConfig = {
     origin: "http://localhost:3000",
 };
-
 app.use(cors(corsConfig));
-app.use(helmet());
-app.use(express.json());
 
 app.get("/", (req, res) => {
     res.status(200).send("welcome to Knowus project application");
 });
 
-//Authorization endpoints
-app.post("/signup", verifyUsernameExists, signup);
-
 //User endpoints
-app.get("/home", verifyToken, getRandomRequests);
+app.use("/home", home);
+app.use("/", auth);
 
 const { PORT } = process.env;
 app.listen(PORT, () => {
