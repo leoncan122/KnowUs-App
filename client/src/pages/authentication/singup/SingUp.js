@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import InputEmail from "../../components/authentication/InputEmail";
-import InputUsername from "../../components/authentication/InputUsername";
-import InputPassword from "../../components/authentication/InputPassword";
-import GeneralBtn from "../../components/buttons/GeneralBtn";
-import "./SingupAndLogin.css";
+import InputEmail from "../../../components/authentication/InputEmail";
+import InputUsername from "../../../components/authentication/InputUsername";
+import InputPassword from "../../../components/authentication/InputPassword";
+import GeneralBtn from "../../../components/buttons/GeneralBtn";
+import "../SingupAndLogin.css";
 
 export default function SingUp() {
     // email functionality

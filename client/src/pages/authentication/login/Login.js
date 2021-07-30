@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import InputEmail from "../../components/authentication/InputEmail";
-import InputPassword from "../../components/authentication/InputPassword";
-import GeneralBtn from "../../components/buttons/GeneralBtn";
+import InputEmail from "../../../components/authentication/InputEmail";
+import InputPassword from "../../../components/authentication/InputPassword";
+import GeneralBtn from "../../../components/buttons/GeneralBtn";
 
 export default function Login() {
     // email functionality
