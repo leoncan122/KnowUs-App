@@ -1,8 +1,8 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SingUp from "./pages/SingUp";
-import Login from "./pages/Login";
+import SingUp from "./pages/singup/SingUp";
+import Login from "./pages/login/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
 
 function App() {

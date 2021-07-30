@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import InputEmail from "../components/authentication/InputEmail";
-import InputUsername from "../components/authentication/InputUsername";
-import InputPassword from "../components/authentication/InputPassword";
-import GeneralBtn from "../components/buttons/GeneralBtn";
+import { Link } from "react-router-dom";
+import InputEmail from "../../components/authentication/InputEmail";
+import InputUsername from "../../components/authentication/InputUsername";
+import InputPassword from "../../components/authentication/InputPassword";
+import GeneralBtn from "../../components/buttons/GeneralBtn";
+import "./SingupAndLogin.css";
 
 export default function SingUp() {
     // email functionality
@@ -23,16 +25,19 @@ export default function SingUp() {
     };
  */
     return (
-        <div>
+        <div className="singup">
             <h1>Welcome!</h1>
             <form
-            // onSubmit={handleSubmit}
+                className="singup-form"
+                // onSubmit={handleSubmit}
             >
                 <InputEmail email={email} onChange={setEmail} />
                 <InputUsername Username={username} onChange={setUsername} />
                 <InputPassword password={password} onChange={setPassword} />
-                <GeneralBtn btnName="Sign Up" btnType="submit" />
+                <GeneralBtn btnName="SignUp" btnType="submit" />
             </form>
+            <h3>Already registered?</h3>
+            <Link to="/login">Login</Link>
         </div>
     );
 }

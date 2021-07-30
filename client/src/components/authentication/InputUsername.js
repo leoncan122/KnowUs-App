@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import GeneralInput from "../units/GeneralInput";
+import GeneralInput from "../units/generalInput/GeneralInput";
 
 export default function InputUsername({ username, onChange }) {
     const inputId = "inputUsername";
@@ -8,7 +8,7 @@ export default function InputUsername({ username, onChange }) {
     const inputType = "text";
 
     return (
-        <div>
+        <div className="authentication">
             <GeneralInput
                 inputValue={username}
                 inputId={inputId}

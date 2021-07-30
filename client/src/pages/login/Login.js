@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import InputEmail from "../components/authentication/InputEmail";
-import InputPassword from "../components/authentication/InputPassword";
-import GeneralBtn from "../components/buttons/GeneralBtn";
+import { Link } from "react-router-dom";
+import InputEmail from "../../components/authentication/InputEmail";
+import InputPassword from "../../components/authentication/InputPassword";
+import GeneralBtn from "../../components/buttons/GeneralBtn";
 
 export default function Login() {
     // email functionality
@@ -19,15 +20,18 @@ export default function Login() {
     };
  */
     return (
-        <div>
+        <div className="login">
             <h1>Welcome!</h1>
             <form
-            // onSubmit={handleSubmit}
+                className="login-form"
+                // onSubmit={handleSubmit}
             >
                 <InputEmail email={email} onChange={setEmail} />
                 <InputPassword password={password} onChange={setPassword} />
                 <GeneralBtn btnName="Login" btnType="submit" />
             </form>
+            <h3>Already registered?</h3>
+            <Link to="/register">SingUp</Link>
         </div>
     );
 }
