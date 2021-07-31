@@ -1,21 +1,13 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { Pool } = require("pg");
+const { pool } = require("../../../services/poolService");
 
 require("dotenv").config({ path: "../../../../.env" });
 
 const getLastPublications = (req, res) => {
     try {
-        const pool = new Pool({
-            user: process.env.PG_USER,
-            host: process.env.PG_HOST,
-            database: process.env.PG_DATABASE,
-            password: process.env.PG_PASS,
-            port: process.env.PG_PORT,
-        });
-
         const query =
-            "SELECT * FROM public_questions pq JOIN answers a ON pq.id = a.question_id WHERE is_answered = true ORDER by DATE DESC";
+            "SELECT * FROM public_questions pq JOIN answers a ON pq.id = a.question_id WHERE is_answered = true ORDER by a.date DESC LIMIT 15";
 
         pool.connect((error, client, release) => {
             if (error) {
@@ -24,11 +16,17 @@ const getLastPublications = (req, res) => {
             client.query(query, (err, result) => {
                 release();
                 if (err) {
-                    return res.status(404).send({ message: err.message });
+                    return res
+                        .status(404)
+                        .send({ isSuccesful: false, message: err.message });
                 }
-                return res.status(200).send({ publications: result.rows });
+                return res
+                    .status(200)
+                    .send({ isSuccesful: true, publications: result.rows });
             });
         });
-    } catch {}
+    } catch (error) {
+        return res.status(500).send({ message: error.message });
+    }
 };
 module.exports = { getLastPublications };

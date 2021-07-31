@@ -11,7 +11,7 @@ CREATE TABLE users(
 CREATE TABLE public_questions(
   id            SERIAL PRIMARY KEY,
   text          VARCHAR (480),
-  Date          DATE NOT NULL DEFAULT NOW(),
+  date          TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   from_userid   INT REFERENCES users(id),
   to_userid     INT REFERENCES users(id),
   category      VARCHAR(30),
@@ -21,15 +21,14 @@ CREATE TABLE public_questions(
 CREATE TABLE answers(
   id            SERIAL PRIMARY KEY,
   question_id   INT REFERENCES public_questions(id),
-  date          DATE NOT NULL DEFAULT NOW(),
-  hour          TIME DEFAULT NOW(),
+  date          TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   text          VARCHAR (480),
   is_draft      BOOLEAN
   );
 CREATE TABLE direct_messages (
   id            SERIAL PRIMARY KEY,
   text          VARCHAR (480),
-  date          DATE NOT NULL DEFAULT NOW(),
+  date          TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   from_userid   INT REFERENCES users(id),
   to_userid     INT REFERENCES users(id)
   );
