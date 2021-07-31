@@ -10,6 +10,7 @@ app.use(helmet());
 //routes
 const auth = require("./app/routes/auth");
 const home = require("./app/routes/home");
+const questions = require("./app/routes/publicQuestions");
 
 //cors
 const corsConfig = {
@@ -22,8 +23,9 @@ app.get("/", (req, res) => {
 });
 
 //User endpoints
+app.use("/auth", auth);
 app.use("/home", home);
-app.use("/", auth);
+app.use("/user", questions);
 
 const { PORT } = process.env;
 app.listen(PORT, () => {
