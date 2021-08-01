@@ -12,5 +12,7 @@ module.exports = {
         ecmaVersion: 12,
         sourceType: "module",
     },
-    rules: { "react/jsx-filename-extension": [0] },
+    rules: {
+        "react/jsx-filename-extension": [0],
+    },
 };
