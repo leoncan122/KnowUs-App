@@ -29,10 +29,12 @@ const login = (req, res) => {
             if (!user) {
                 return res.status(400).send({ message: "User not found." });
             }
-            const passIsValid = bcrypt.compare(
+            const passIsValid = bcrypt.compareSync(
                 req.body.password,
                 user.user_pass
             );
+           
+
             if (!passIsValid) {
                 return res.status(401).send({
                     accessToken: null,
@@ -48,7 +50,7 @@ const login = (req, res) => {
                 username: user.user_name,
                 accessToken: token,
                 isAuthenticated: true,
-                message: `Welcome back ${user.user_name} `,
+                message: `Welcome back ${user.user_name}`,
             });
         });
     });
