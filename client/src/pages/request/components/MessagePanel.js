@@ -13,7 +13,7 @@ function MessagePanel({ fn }) {
     return (
         <div className="panel">
             {posts.map((post) => (
-                <button type="button" onClick={() => fn(post)}>
+                <button key={post.id} type="button" onClick={() => fn(post)}>
                     {post.text}
                 </button>
             ))}
