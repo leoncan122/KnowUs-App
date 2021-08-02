@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import InputEmail from "../../../components/authentication/InputEmail";
 import InputUsername from "../../../components/authentication/InputUsername";
 import InputPassword from "../../../components/authentication/InputPassword";
-import "../SingupAndLogin.css";
 import fetchData from "../../../utils/fetchData";
+
+import "../SingupAndLogin.css";
 
 export default function SingUp() {
     // email functionality
@@ -18,7 +19,6 @@ export default function SingUp() {
 
     // Sing Up submit
     const handleSubmit = async (e) => {
-        console.log("intohandle");
         e.preventDefault();
         const signUpData = { email, password, username };
         const url = "http://localhost:4000/auth/signup";

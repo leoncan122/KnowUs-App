@@ -1,6 +1,6 @@
 import "./MessagePanel.css";
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 function MessagePanel({ fn }) {
     const [posts, setPosts] = useState([]);
@@ -20,7 +20,5 @@ function MessagePanel({ fn }) {
         </div>
     );
 }
-MessagePanel.propTypes = {
-    fn: PropTypes.string.isRequired,
-};
+
 export default MessagePanel;
