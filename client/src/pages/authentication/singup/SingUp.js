@@ -5,6 +5,7 @@ import InputUsername from "../../../components/authentication/InputUsername";
 import InputPassword from "../../../components/authentication/InputPassword";
 import GeneralBtn from "../../../components/buttons/GeneralBtn";
 import "../SingupAndLogin.css";
+import fetchData from "../../../utils/fetchData";
 
 export default function SingUp() {
     // email functionality
@@ -17,20 +18,17 @@ export default function SingUp() {
     const [password, setPassword] = useState("");
 
     // Sing Up submit
-    /* const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const signUpData = { email, password, username };
-        const url = "http://localhost:4000"; // BackEnd needed ************************
-        fetchData(signUpData, url); // BackEnd needed **************************
+        const url = "http://localhost:4000/auth/singup";
+        fetchData(signUpData, url);
     };
- */
+
     return (
         <div className="singup">
             <h1>Welcome!</h1>
-            <form
-                className="singup-form"
-                // onSubmit={handleSubmit}
-            >
+            <form className="singup-form" onSubmit={handleSubmit}>
                 <InputEmail email={email} onChange={setEmail} />
                 <InputUsername Username={username} onChange={setUsername} />
                 <InputPassword password={password} onChange={setPassword} />
