@@ -5,11 +5,12 @@ const { pool } = require("../../../services/poolService");
 require("dotenv").config({ path: "../../../../.env" });
 
 const getLastPublications = (req, res) => {
-    const query = `SELECT u.id, u.user_name, pq.text, pq.category, pq.is_answered, p.id, p.user_name, a.text, a.hour
-                    FROM public_questions pq JOIN answers a ON pq.id = a.question_id
-                    JOIN users u ON pq.from_userid = u.id
-                    JOIN users p ON pq.to_userid = p.id
-                    WHERE is_answered = true ORDER by a.hour DESC LIMIT 15 `;
+    const query = `SELECT u.id sender_id, u.user_name sender_username, pq.text question_text ,pq.category,pq.is_answered,
+    p.id prof_id, p.user_name prof_username, a.text answer_text, a.hour
+    FROM public_questions pq JOIN answers a ON pq.id = a.question_id
+    JOIN users u ON pq.from_userid = u.id
+    JOIN users p ON pq.to_userid = p.id
+    WHERE is_answered = true ORDER by a.hour DESC LIMIT 15;`;
     try {
         pool.connect((error, client, release) => {
             if (error) {

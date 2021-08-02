@@ -9,3 +9,5 @@ exports.httpGetAsync = (url, callback) => {
     xmlHttp.open("GET", url, true); // true for asynchronous
     xmlHttp.send(null);
 };
+
+// que diablos es esto?????

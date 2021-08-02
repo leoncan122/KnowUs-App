@@ -1,0 +1,29 @@
+.singup,
+.login {
+    display: grid;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 4%;
+    margin: 3.5rem;
+    margin-top: 4.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.singup-form,
+.login-form {
+    display: grid;
+    gap: 2rem;
+    border: 1px solid;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.singup-form > a,
+.singup > h1,
+.singup > a,
+.login-form > a,
+.login > h1,
+.login > a {
+    margin: auto;
+}
