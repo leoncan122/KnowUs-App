@@ -32,7 +32,7 @@ const signup = async (req, res) => {
             client.query(query, values, (err, result) => {
                 release();
                 if (err) {
-                    return res.status(404).send({ message: err.message });
+                    return res.status(404).send({ error: err.message });
                 }
                 if (result.rowCount === 1) {
                     const user = result.rows[0];
@@ -54,7 +54,7 @@ const signup = async (req, res) => {
                     });
                 }
             });
-        } catch {
+        } catch (error) {
             throw error;
         }
     });

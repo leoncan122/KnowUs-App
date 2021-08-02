@@ -1,22 +1,33 @@
 .singup,
 .login {
+    height: 80%;
+    background-color: rgb(153, 103, 255);
     display: grid;
     justify-content: center;
+    align-self: start;
     border: 1px solid;
-    border-radius: 4%;
-    margin: 3.5rem;
-    margin-top: 4.5rem;
+    border-radius: 1%;
+    margin: 2.3rem;
+    margin-top: 1.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
 .singup-form,
 .login-form {
+    background-color: rgba(184, 233, 255, 0.5);
+    -webkit-box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.91);
+    box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.91);
     display: grid;
     gap: 2rem;
     border: 1px solid;
+    border-radius: 3%;
     margin-top: 2rem;
     padding: 1rem;
+}
+.singup-form:hover,
+.login-form:hover {
+    border: solid 1px rgb(83, 234, 240);
 }
 
 .singup-form > a,
