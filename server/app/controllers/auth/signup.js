@@ -5,7 +5,9 @@ const { pool } = require("../../services/poolService");
 require("dotenv").config({ path: "../../../../.env" });
 
 const signup = async (req, res) => {
+    console.log("test***");
     const { email, password, username } = req.body;
+    console.log("test***", req.body);
 
     if (!email || !password || !username) {
         return res

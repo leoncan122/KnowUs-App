@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import InputEmail from "../../../components/authentication/InputEmail";
 import InputUsername from "../../../components/authentication/InputUsername";
 import InputPassword from "../../../components/authentication/InputPassword";
-import GeneralBtn from "../../../components/buttons/GeneralBtn";
 import "../SingupAndLogin.css";
 import fetchData from "../../../utils/fetchData";
 
@@ -19,9 +18,10 @@ export default function SingUp() {
 
     // Sing Up submit
     const handleSubmit = async (e) => {
+        console.log("intohandle");
         e.preventDefault();
         const signUpData = { email, password, username };
-        const url = "http://localhost:4000/auth/singup";
+        const url = "http://localhost:4000/auth/signup";
         fetchData(signUpData, url);
     };
 
@@ -32,7 +32,9 @@ export default function SingUp() {
                 <InputEmail email={email} onChange={setEmail} />
                 <InputUsername Username={username} onChange={setUsername} />
                 <InputPassword password={password} onChange={setPassword} />
-                <GeneralBtn btnName="SignUp" btnType="submit" />
+                <button type="submit" className="btn">
+                    Signup
+                </button>
             </form>
             <h3>Already registered?</h3>
             <Link to="/login">Login</Link>
