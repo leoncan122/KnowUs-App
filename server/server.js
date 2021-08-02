@@ -19,7 +19,9 @@ const corsConfig = {
 app.use(cors(corsConfig));
 
 app.get("/", (req, res) => {
-    res.status(200).send("welcome to Knowus project application");
+    res.status(200).send(
+        "welcome to Knowus project application, you can use /auth, /home or /user"
+    );
 });
 
 //User endpoints

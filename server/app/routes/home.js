@@ -9,7 +9,7 @@ const {
 
 const router = express.Router();
 
-router.get("/", getLastPublications);
+router.get("/lastones", getLastPublications);
 router.get("/search", searchPublications);
 
 module.exports = router;
