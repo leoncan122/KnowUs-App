@@ -16,7 +16,7 @@ function App() {
                 <Switch>
                     {userLoged && (
                         <Route exact path="/home">
-                            <h1>Home </h1>
+                            <h1>Home {userLoged.username}</h1>
                         </Route>
                     )}
 

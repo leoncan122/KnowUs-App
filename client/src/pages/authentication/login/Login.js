@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import InputEmail from "../../../components/authentication/InputEmail";
 import InputPassword from "../../../components/authentication/InputPassword";
 import { userContext } from "../../../context/userContext";
-// import fetchData from "../../../utils/fetchData";
+import fetchData from "../../../utils/fetchData";
 
 export default function Login(props) {
     const { setUserLoged } = useContext(userContext);
+    const [error, setError] = useState("");
 
     // email functionality
     const [email, setEmail] = useState("");
@@ -19,21 +20,15 @@ export default function Login(props) {
         e.preventDefault();
         const loginData = { email, password };
         const url = "http://localhost:4000/auth/login";
-        try {
-            const res = await fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                credentials: "include",
-                body: JSON.stringify(loginData),
-            });
-            if (res.ok) {
-                const data = await res.json();
-                setUserLoged(data.isAuthenticated);
-                props.history.push("/home");
-            }
-        } catch (error) {
-            console.log(error);
+        const data = await fetchData(loginData, url);
+
+        if (data.error) {
+            setError(data.error);
         }
+        setUserLoged(data);
+        setInterval(() => {
+            props.history.push("/home");
+        }, 2000);
     };
 
     return (
@@ -45,6 +40,7 @@ export default function Login(props) {
                 <button type="submit" className="btn">
                     Login
                 </button>
+                {error && <p>{error}</p>}
             </form>
             <h3>Already registered?</h3>
             <Link to="/register">SingUp</Link>

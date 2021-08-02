@@ -1,28 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import InputEmail from "../../../components/authentication/InputEmail";
 import InputUsername from "../../../components/authentication/InputUsername";
 import InputPassword from "../../../components/authentication/InputPassword";
 import fetchData from "../../../utils/fetchData";
+import { userContext } from "../../../context/userContext";
 
 import "../SingupAndLogin.css";
 
-export default function SingUp() {
+export default function SingUp(props) {
+    const { setUserLoged } = useContext(userContext);
+
     // email functionality
     const [email, setEmail] = useState("");
-
     // name functionality
     const [username, setUsername] = useState("");
-
     // password functionality
     const [password, setPassword] = useState("");
+
+    const [error, setError] = useState("");
 
     // Sing Up submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const signUpData = { email, password, username };
+        const signupData = { email, username, password };
         const url = "http://localhost:4000/auth/signup";
-        fetchData(signUpData, url);
+        const data = await fetchData(signupData, url);
+
+        if (data.error) {
+            setError(data.error);
+        }
+        setUserLoged(data);
+        setInterval(() => {
+            props.history.push("/home");
+        }, 2000);
     };
 
     return (
@@ -35,6 +46,7 @@ export default function SingUp() {
                 <button type="submit" className="btn">
                     Signup
                 </button>
+                {error && <p>{error}</p>}
             </form>
             <h3>Already registered?</h3>
             <Link to="/login">Login</Link>

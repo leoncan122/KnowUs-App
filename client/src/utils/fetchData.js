@@ -1,17 +1,18 @@
-import { useContext } from "react";
-import { userContext } from "../context/userContext";
+// import { useContext } from "react";
+// import { userContext } from "../context/userContext";
 
 const fetchData = async (handleData, url) => {
-    const { setUserLoged } = useContext(userContext);
-
     const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify(handleData),
     });
+    if (!res.ok) {
+        return res.error;
+    }
     const data = await res.json();
-    setUserLoged(data.isAuthenticated);
+    return data;
 };
 
 export default fetchData;
