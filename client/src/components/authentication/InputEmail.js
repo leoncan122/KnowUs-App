@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import GeneralInput from "../units/GeneralInput";
+import GeneralInput from "../units/generalInput/GeneralInput";
 
 export default function InputEmail({ email, onChange }) {
     const inputId = "inputEmail";
@@ -8,7 +8,7 @@ export default function InputEmail({ email, onChange }) {
     const inputType = "email";
 
     return (
-        <div>
+        <div className="authentication">
             <GeneralInput
                 inputValue={email}
                 inputId={inputId}
