@@ -1,4 +1,5 @@
 const { Pool } = require("pg");
+const { pool } = require("../services/poolService");
 
 const verifyUsernameExists = async (req, res, next) => {
     const { username } = req.body;
@@ -7,13 +8,13 @@ const verifyUsernameExists = async (req, res, next) => {
         return res.status(400).send({ message: "You must insert a username" });
     }
 
-    const pool = new Pool({
-        user: "postgres",
-        host: "localhost",
-        database: "knowus",
-        password: "newPassword",
-        port: 5432,
-    });
+    // const pool = new Pool({
+    //     user: "postgres",
+    //     host: "localhost",
+    //     database: "knowus",
+    //     password: "newPassword",
+    //     port: 5432,
+    // });
 
     const query = "SELECT * FROM users WHERE user_name = $1";
 
