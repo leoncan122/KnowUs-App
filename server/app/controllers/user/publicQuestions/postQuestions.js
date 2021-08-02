@@ -23,10 +23,10 @@ const postQuestions = (req, res) => {
             if (values[4] === "true") {
                 return res
                     .status(200)
-                    .send({ message: "mensaje guardado como borrador" });
+                    .send({ message: "Mesage saved as draft" });
             } else
                 res.status(200).send({
-                    message: "mensaje enviado correctamente",
+                    message: "message sent correctly",
                 });
         });
     });
