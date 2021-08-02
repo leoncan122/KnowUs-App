@@ -1,11 +1,37 @@
 import React from "react";
-import GeneralBtn from "../../buttons/GeneralBtn";
+import "./TopNavbar.css";
+import { Link } from "react-router-dom";
 
 export default function TopNavbar() {
     return (
-        <div>
-            <GeneralBtn btnName="Login" btnType="button" path="/login" />
-            <GeneralBtn btnName="Sign Up" btnType="button" path="/register" />
-        </div>
+        <nav className="main-nav">
+            <div className="logo">
+                <h2>
+                    <span>K</span>now<span>U</span>s
+                </h2>
+            </div>
+
+            <div className="search-box">
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Search something"
+                        name="s"
+                    />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <div className="menu-link">
+                <ul>
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link to="/signup">Sign Up</Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     );
 }
