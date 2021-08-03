@@ -5,6 +5,7 @@ import SingUp from "./pages/SingUp";
 import Login from "./pages/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
 import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
+import Home from "./components/home/Home";
 
 function App() {
     return (
@@ -13,9 +14,7 @@ function App() {
                 <TopNavbar />
                 <BottomNavbar />
                 <Switch>
-                    <Route exact path="/home">
-                        <h1>Home</h1>
-                    </Route>
+                    <Route exact path="/home" component={Home} />
                     <Route path="/register" component={SingUp} />
                     <Route path="/login" component={Login} />
                 </Switch>
