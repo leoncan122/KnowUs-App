@@ -4,18 +4,29 @@ const helmet = require("helmet");
 require("dotenv").config({ path: "../.env" });
 
 const app = express();
+app.use(express.json());
+app.use(helmet());
 
+//routes
+const auth = require("./app/routes/auth");
+const home = require("./app/routes/home");
+const questions = require("./app/routes/publicQuestions");
+
+//cors
 const corsConfig = {
     origin: "http://localhost:3000",
+    credentials: true,
 };
-
 app.use(cors(corsConfig));
-app.use(helmet());
-app.use(express.json());
 
 app.get("/", (req, res) => {
     res.status(200).send("welcome to Knowus project application");
 });
+
+//User endpoints
+app.use("/auth", auth);
+app.use("/home", home);
+app.use("/user", questions);
 
 const { PORT } = process.env;
 app.listen(PORT, () => {

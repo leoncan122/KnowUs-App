@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import "./GeneralInput.css";
 
 export default function GeneralInput({
     inputValue,
