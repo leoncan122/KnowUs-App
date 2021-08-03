@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { pool } = require("../../../services/poolService");
 
-require("dotenv").config({ path: "../../../../.env" });
+require("dotenv").config({ path: "../../../../.env.development.heroku" });
 
 const getLastPublications = (req, res) => {
     const query = `SELECT u.id sender_id, u.user_name sender_username, pq.text question_text ,pq.category,pq.is_answered,

@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Logout.css";
+import { userContext } from "../../context/userContext";
 
-const Logout = () => <h2>Logout Component</h2>;
+const Logout = () => {
+    const { setUserLoged } = useContext(userContext);
+    return (
+        <button type="button" onClick={setUserLoged(null)}>
+            Logout
+        </button>
+    );
+};
 
 export default Logout;

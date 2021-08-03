@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
 import Search from "../../search/Search";
+import { userContext } from "../../../context/userContext";
+import Logout from "../../logout/Logout";
 
 export default function TopNavbar() {
+    const { userLoged } = useContext(userContext);
     return (
         <nav className="main-nav">
             <div className="logo">
@@ -21,12 +24,16 @@ export default function TopNavbar() {
 
             <div className="menu-link">
                 <ul>
-                    <li>
-                        <Link to="/login">Login</Link>
-                    </li>
-                    <li>
-                        <Link to="/register">Sign Up</Link>
-                    </li>
+                    {userLoged ? (
+                        <li>
+                            <Logout />
+                        </li>
+                    ) : (
+                        <li>
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Sign Up</Link>
+                        </li>
+                    )}
                 </ul>
             </div>
         </nav>
