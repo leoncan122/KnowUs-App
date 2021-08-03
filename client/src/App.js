@@ -14,7 +14,6 @@ function App() {
         <div className="App">
             <Router>
                 <TopNavbar />
-                <BottomNavbar />
                 <Switch>
                     {userLoged && (
                         <Route exact path="/home">
@@ -26,6 +25,7 @@ function App() {
 
                     <Route path="/register" component={SingUp} />
                 </Switch>
+                <BottomNavbar />
             </Router>
         </div>
     );
