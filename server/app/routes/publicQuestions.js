@@ -12,6 +12,6 @@ const router = express.Router();
 
 router.post("/questions", verifyToken, postQuestions);
 router.get("/questions", verifyToken, getQuestions);
-router.get("/answer", verifyToken, answer);
+router.post("/answer", verifyToken, answer);
 
 module.exports = router;

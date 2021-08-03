@@ -1,8 +1,6 @@
-
 const { pool } = require("../services/poolService");
 
 const verifyUserOrMailExists = async (req, res, next) => {
-
     const findUser = {
         username: req.body.username.toLowerCase(),
         email: req.body.email.toLowerCase(),
