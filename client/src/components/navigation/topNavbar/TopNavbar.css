@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap");
-
 /* Basic Configuration */
 
 * {
@@ -54,6 +53,7 @@ form {
     border: none;
     outline: unset;
     height: 40px;
+
     /* padding-left: 10px; */
     border-radius: 0;
     /* width: calc(100% - 10px); */
@@ -74,10 +74,10 @@ form {
 /* Extra Styling*/
 
 .logo h2 {
-    font-size: 2.5rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 900;
     text-transform: uppercase;
-    background: -webkit-linear-gradient(#eee, rgb(201, 200, 216));
+    background: -webkit-linear-gradient(rgb(247, 244, 244), rgb(249, 248, 251));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -87,18 +87,15 @@ form {
     gap: 5px;
 }
 .logo h2 span {
-    font-size: 3.5rem;
-}
-
-.menu-link ul li {
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 /*  NavBar buttons */
 .menu-link ul li a {
     text-transform: capitalize;
-    color: rgb(98, 255, 234);
     transition: 0.5s ease;
+    font-size: 2rem;
+    padding-left: 2em;
 }
 
 .menu-link ul li > a:hover,
@@ -112,7 +109,7 @@ form {
     background-color: #7c80f0;
     border-style: none;
     text-transform: capitalize;
-    color: rgb(98, 255, 234);
+    color: rgba(255, 254, 254, 0.8);
     transition: 0.5s ease;
 }
 
@@ -124,7 +121,7 @@ form {
 
     .logo h2 {
         font-size: 2.5rem;
-        font-weight: 400;
+        font-weight: 900;
     }
 
     .main-nav {
@@ -141,6 +138,13 @@ form {
     .menu-link ul li {
         font-size: 2rem;
         margin: 5px 5px;
+    }
+
+    .menu-link ul li a {
+        text-transform: capitalize;
+        color: rgba(255, 254, 254, 0.8);
+        transition: 0.5s;
+        font-size: 2rem;
     }
 }
 

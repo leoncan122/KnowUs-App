@@ -1,0 +1,10 @@
+.search-bar {
+    width: 20em;
+    border-radius: 0.5%;
+    text-align: center;
+}
+
+.search-btn {
+    width: 5em;
+    border-radius: 0.5%;
+}

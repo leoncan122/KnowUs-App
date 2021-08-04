@@ -1,11 +1,16 @@
 import React from "react";
-
-
+import "./Search.css";
 
 const Search = () => (
     <form>
-        <input type="text" placeholder="Search something" name="s" />
-        <button type="submit">Search</button>
+        <input
+            type="text"
+            placeholder="Search something"
+            className="search-bar"
+        />
+        <button type="submit" className="search-btn">
+            Search
+        </button>
     </form>
 );
 

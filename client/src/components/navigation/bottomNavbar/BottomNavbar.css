@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     display: grid;
-    grid-template-columns: 2rem 2fr 2rem;
+    grid-template-columns: 1rem 2fr 1rem;
     height: 5rem;
 }
 
@@ -16,6 +16,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.input-field {
+    width: 16em;
+    border-radius: 0.5%;
+    text-align: center;
+}
+
+.submit-btn {
+    width: 5em;
+    border-radius: 0.5%;
 }
 
 /* Media Queries */
