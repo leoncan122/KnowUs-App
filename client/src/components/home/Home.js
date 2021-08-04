@@ -32,11 +32,11 @@ function Home() {
 
             {lastPosts
                 ? lastPosts.map((post) => (
-                      <div className="first-post" key={post.answer_id}>
+                      <div className="post" key={post.answer_id}>
                           <div className="sender-info">
                               <h4>{post.sender_username}</h4>
-                              <p>#{post.category}</p>
                               <p>Ask: {post.question_text}</p>
+                              <p>#{post.category}</p>
                           </div>
                           <div className="receiver-info">
                               <h4>{post.prof_username}</h4>

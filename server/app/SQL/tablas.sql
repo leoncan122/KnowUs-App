@@ -33,6 +33,14 @@ CREATE TABLE direct_messages (
   from_userid   INT REFERENCES users(id),
   to_userid     INT REFERENCES users(id)
   );
+
+
+
+
+
+
+
+
   SELECT * FROM users;
   INSERT INTO public_questions (text,from_userid,to_userid,category,is_answered)
   VALUES('Desde cuando eres periodista?',1,2,'periodismo',true);
