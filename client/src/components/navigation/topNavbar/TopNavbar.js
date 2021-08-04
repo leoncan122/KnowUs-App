@@ -31,7 +31,7 @@ export default function TopNavbar() {
                     ) : (
                         <li>
                             <Link to="/login">Login</Link>
-                            <Link to="/register">Sign Up</Link>
+                            <Link to="/register">Signup</Link>
                         </li>
                     )}
                 </ul>
