@@ -6,17 +6,13 @@
 }
 
 .main-heading {
-    margin-top: 5em;
     background-color: #ffcd55;
     text-align: center;
     width: 90%;
+    margin-top: 1%;
     margin-left: 5%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
+    display: grid;
+    place-items: center;
 }
 
 .posts-heading {
@@ -25,8 +21,9 @@
 }
 
 .first-post {
+    color: white;
     margin-top: 2em;
-    background-color: #8b57fa;
+    background-color: #6f31f6;
     text-align: center;
     width: 80%;
     height: 10em;
@@ -39,35 +36,23 @@
     align-content: stretch;
     border-radius: 25px;
 }
-
-.second-post {
-    margin-top: 5em;
-    background-color: #8b57fa;
-    text-align: center;
-    width: 80%;
-    height: 10em;
-    margin-left: 10%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
-    border-radius: 25px;
+.sender-info {
+    height: 50%;
+    background-color: rgba(151, 218, 245, 0.411);
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-content: start;
+    margin-left: 3%;
 }
-
-.third-post {
-    margin-top: 5em;
-    background-color: #8b57fa;
-    text-align: center;
-    width: 80%;
-    height: 10em;
-    margin-left: 10%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
-    border-radius: 25px;
+.receiver-info {
+    height: 50%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    justify-content: start;
+    margin-left: 3%;
+}
+.receiver-info > p,
+.receiver-info > h4 {
+    place-self: center;
+    justify-self: left;
 }

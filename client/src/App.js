@@ -9,14 +9,14 @@ import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
 import Home from "./components/home/Home";
 
 function App() {
-    //    const { userLoged } = useContext(userContext);
+    // const { userLoged } = useContext(userContext);
 
     return (
         <div className="App">
             <Router>
                 <TopNavbar />
                 <Switch>
-                    <Route exact path="/home" component={Home} />
+                    <Route exact path="/" component={Home} />
 
                     <Route path="/login" component={Login} />
 

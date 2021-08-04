@@ -7,6 +7,7 @@ import Logout from "../../logout/Logout";
 
 export default function TopNavbar() {
     const { userLoged } = useContext(userContext);
+
     return (
         <nav className="main-nav">
             <div className="logo">
@@ -29,7 +30,7 @@ export default function TopNavbar() {
                             <Logout />
                         </li>
                     ) : (
-                        <li>
+                        <li className="log-register-btn">
                             <Link to="/login">Login</Link>
                             <Link to="/register">Signup</Link>
                         </li>

@@ -9,9 +9,10 @@ const fetchData = async (handleData, url) => {
         body: JSON.stringify(handleData),
     });
     if (!res.ok) {
-        return res.error;
+        return res.ok;
     }
     const data = await res.json();
+
     return data;
 };
 

@@ -81,22 +81,46 @@ form {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+.log-register-btn {
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    gap: 5px;
+}
 .logo h2 span {
     font-size: 2rem;
 }
 
+/*  NavBar buttons */
 .menu-link ul li a {
     text-transform: capitalize;
+<<<<<<< HEAD
     color: rgba(255, 254, 254, 0.8);
     transition: 0.5s;
     font-size: 2rem;
     padding-left: 2em;
+=======
+    color: rgb(98, 255, 234);
+    transition: 0.5s ease;
+>>>>>>> dev-leon
 }
-.menu-link ul li:hover > a {
+
+.menu-link ul li > a:hover,
+.logout-btn:hover {
     transform-origin: left;
     color: rgba(0, 0, 3, 1);
+<<<<<<< HEAD
     transition: 0.5s;
+=======
+    transition: 0.5s ease;
+}
+.logout-btn {
+    font-size: 2rem;
+    background-color: #7c80f0;
+    border-style: none;
+    text-transform: capitalize;
+    color: rgb(98, 255, 234);
+    transition: 0.5s ease;
+>>>>>>> dev-leon
 }
 
 /* Media Queries */

@@ -2,12 +2,19 @@
 .login {
     height: 75vh;
     /* background-color: rgb(15, 224, 161); */
-    background: linear-gradient(
+    /* background: linear-gradient(
         312deg,
         rgba(4, 2, 54, 1) 7%,
         rgba(74, 25, 116, 1) 40%,
         rgba(15, 224, 164, 1) 84%
+    ); */
+    background: linear-gradient(
+        312deg,
+        rgba(22, 21, 42, 1) 44%,
+        rgba(8, 57, 37, 1) 77%,
+        rgba(47, 117, 97, 1) 100%
     );
+    color: rgba(15, 224, 164, 1);
     display: grid;
     grid-template-rows: 15% 60% 10% 1%;
     place-items: center;
@@ -43,7 +50,7 @@
 }
 
 a {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: rgba(15, 224, 164, 1);
 }
 .btn {
