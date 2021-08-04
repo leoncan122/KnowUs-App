@@ -1,33 +1,52 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 
-const Home = () => (
-    <div>
-        <div className="main-heading">
-            <h2>
-                Bienvenido a la plataforma dondé podras interactuar con
-                Trabajadores, emprendedores y profesionales de todo el mundo a
-                través de preguntas publicas y mensajes.
-            </h2>
-        </div>
+function Home() {
+    const [contentData, setContentData] = useState(null);
+    const [error, setError] = useState("");
 
-        <div className="posts-heading">
-            <h1>Ultimos Posts / Resultados de busquedas</h1>
-        </div>
+    useEffect(() => {
+        const url = "http://localhost:4000/home";
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                setContentData(data);
+            })
+            .catch((err) => setError(err));
+    }, [error]);
 
-        <div className="first-post">
-            <h2>Primer Post</h2>
-        </div>
+    const lastPosts = contentData?.publications;
 
-        <div className="second-post">
-            <h2>Segon Post</h2>
-        </div>
+    return (
+        <div>
+            <div className="main-heading">
+                <h2>
+                    Bienvenido a la plataforma dondé podras interactuar con
+                    Trabajadores, emprendedores y profesionales de todo el mundo
+                    a través de preguntas publicas y mensajes.
+                </h2>
+            </div>
+            <div className="posts-heading">
+                <h1>Last Answers / Result of search</h1>
+            </div>
 
-        <div className="third-post">
-            <h2>Terce Post</h2>
+            {lastPosts
+                ? lastPosts.map((post) => (
+                      <div className="first-post" key={post.answer_id}>
+                          <div className="sender-info">
+                              <h4>{post.sender_username}</h4>
+                              <p>#{post.category}</p>
+                              <p>Ask: {post.question_text}</p>
+                          </div>
+                          <div className="receiver-info">
+                              <h4>{post.prof_username}</h4>
+                              <p>Answers: {post.answer_text}</p>
+                          </div>
+                      </div>
+                  ))
+                : error && <p>{error}</p>}
         </div>
-    </div>
-);
+    );
+}
 
 export default Home;

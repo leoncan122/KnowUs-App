@@ -18,8 +18,6 @@ export default function SingUp(props) {
     // password functionality
     const [password, setPassword] = useState("");
 
-    const [error, setError] = useState("");
-
     // Sing Up submit
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,13 +25,12 @@ export default function SingUp(props) {
         const url = "http://localhost:4000/auth/signup";
         const data = await fetchData(signupData, url);
 
-        if (data.error) {
-            setError(data.error);
-        }
         setUserLoged(data);
-        setInterval(() => {
-            props.history.push("/home");
-        }, 2000);
+        if (data) {
+            setInterval(() => {
+                props.history.push("/");
+            }, 2000);
+        }
     };
 
     return (
@@ -46,7 +43,6 @@ export default function SingUp(props) {
                 <button type="submit" className="btn">
                     Signup
                 </button>
-                {error && <p>{error}</p>}
             </form>
             <h3>Already registered?</h3>
             <Link to="/login">Login</Link>
