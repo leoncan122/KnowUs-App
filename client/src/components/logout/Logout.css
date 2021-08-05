@@ -1,0 +1,13 @@
+.logout-btn {
+    font-size: 2rem;
+    background-color: #7c80f0;
+    border-style: none;
+    text-transform: capitalize;
+    color: rgba(255, 254, 254, 1);
+    transition: 0.5s ease;
+}
+.logout-btn:hover {
+    transform-origin: left;
+    color: rgba(0, 0, 3, 1);
+    transition: 0.5s ease;
+}

@@ -18,27 +18,26 @@ const login = (req, res) => {
 
     pool.connect((error, client, release) => {
         if (error) {
-            return res.status(404).send({ message: error.message });
+            return res.status(404).send({ error: error.message });
         }
         client.query(query, [values[0]], (err, result) => {
             release();
             if (err) {
-                return res.status(404).send({ message: err.message });
+                return res.status(404).send({ error: err.message });
             }
             const user = result.rows[0];
             if (!user) {
-                return res.status(400).send({ message: "User not found." });
+                return res.status(400).send({ error: "User not found." });
             }
             const passIsValid = bcrypt.compareSync(
                 req.body.password,
                 user.user_pass
             );
-           
 
             if (!passIsValid) {
                 return res.status(401).send({
                     accessToken: null,
-                    message: "Invalid Password!",
+                    error: "Invalid Password!",
                 });
             }
             const token = jwt.sign({ user: user.id }, process.env.SECRET, {
