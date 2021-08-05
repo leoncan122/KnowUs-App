@@ -5,6 +5,7 @@ import { userContext } from "../../context/userContext";
 
 const Logout = () => {
     const { setUserLoged } = useContext(userContext);
+
     return (
         <button
             type="button"
