@@ -7,6 +7,7 @@ function Home() {
 
     useEffect(() => {
         const url = "http://localhost:4000/home";
+
         fetch(url)
             .then((res) => res.json())
             .then((data) => {

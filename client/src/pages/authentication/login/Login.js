@@ -19,9 +19,10 @@ export default function Login(props) {
         e.preventDefault();
         const loginData = { email, password };
         const url = "http://localhost:4000/auth/login";
-        const data = await fetchData(loginData, url);
+        const data = await fetchData(loginData, url, "POST");
 
         setUserLoged(data);
+
         if (data) {
             setInterval(() => {
                 props.history.push("/");
