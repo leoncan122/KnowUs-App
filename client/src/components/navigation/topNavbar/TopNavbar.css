@@ -93,15 +93,8 @@ form {
 /*  NavBar buttons */
 .menu-link ul li a {
     text-transform: capitalize;
-
     color: rgba(255, 254, 254, 0.8);
-    transition: 0.5s;
-    font-size: 2rem;
     padding-left: 2em;
-
-    color: rgb(98, 255, 234);
-    transition: 0.5s ease;
-
     transition: 0.5s ease;
     font-size: 2rem;
     padding-left: 2em;
@@ -111,9 +104,6 @@ form {
 .logout-btn:hover {
     transform-origin: left;
     color: rgba(0, 0, 3, 1);
-
-    transition: 0.5s;
-
     transition: 0.5s ease;
 }
 .logout-btn {

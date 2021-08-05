@@ -5,20 +5,20 @@ function Home() {
     const [contentData, setContentData] = useState(null);
     const [error, setError] = useState("");
 
+    const url = "http://localhost:4000/home";
     useEffect(() => {
-        const url = "http://localhost:4000/home";
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 setContentData(data);
             })
-            .catch((err) => setError(err));
-    }, [error]);
+            .catch((err) => setError(err), [error]);
+    });
 
     const lastPosts = contentData?.publications;
 
     return (
-        <div>
+        <div className="latest-posts">
             <div className="main-heading">
                 <h2>
                     Bienvenido a la plataforma dondé podras interactuar con
@@ -29,7 +29,6 @@ function Home() {
             <div className="posts-heading">
                 <h1>Last Answers / Result of search</h1>
             </div>
-
             {lastPosts
                 ? lastPosts.map((post) => (
                       <div className="first-post" key={post.answer_id}>

@@ -5,14 +5,19 @@
     font-family: "Jost", sans-serif;
 }
 
+.latest-posts {
+    margin-top: 5%;
+    display: grid;
+}
+
 .main-heading {
-    background-color: #ffcd55;
     text-align: center;
     width: 90%;
-    margin-top: 1%;
+    margin-top: 2%;
     margin-left: 5%;
     display: grid;
     place-items: center;
+    background-color: #ffcd55;
 }
 
 .posts-heading {
@@ -55,4 +60,11 @@
 .receiver-info > h4 {
     place-self: center;
     justify-self: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .latest-posts {
+        margin-top: 12%;
+        margin-left: 1%;
+    }
 }
