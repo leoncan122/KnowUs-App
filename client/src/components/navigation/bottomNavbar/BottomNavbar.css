@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap");
+
+.footer-navbar {
+    background-color: #7c80f0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1rem 2fr 1rem;
+    height: 5rem;
+}
+
+.search-boxx {
+    grid-column: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-field {
+    width: 16em;
+    border-radius: 0.5%;
+    text-align: center;
+}
+
+.submit-btn {
+    width: 5em;
+    border-radius: 0.5%;
+}
+
+/* Media Queries */
+@media (min-width: 540px) {
+    .footer-navbar {
+        display: none;
+    }
+}
+
+@media (min-width: 900px) {
+    .footer-navbar {
+        display: none;
+    }
+}

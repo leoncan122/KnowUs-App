@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import InputEmail from "../../../components/authentication/InputEmail";
 import InputPassword from "../../../components/authentication/InputPassword";
+import { userContext } from "../../../context/userContext";
 import fetchData from "../../../utils/fetchData";
 
-export default function Login() {
+export default function Login(props) {
+    const { userLoged, setUserLoged } = useContext(userContext);
+
     // email functionality
     const [email, setEmail] = useState("");
 
@@ -16,7 +19,14 @@ export default function Login() {
         e.preventDefault();
         const loginData = { email, password };
         const url = "http://localhost:4000/auth/login";
-        fetchData(loginData, url);
+        const data = await fetchData(loginData, url);
+
+        setUserLoged(data);
+        if (data) {
+            setInterval(() => {
+                props.history.push("/");
+            }, 1000);
+        }
     };
 
     return (
@@ -28,6 +38,7 @@ export default function Login() {
                 <button type="submit" className="btn">
                     Login
                 </button>
+                {userLoged === false && <p>Try again!</p>}
             </form>
             <h3>Already registered?</h3>
             <Link to="/register">SingUp</Link>
