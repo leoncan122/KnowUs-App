@@ -26,7 +26,7 @@ export default function Login() {
                 <InputEmail email={email} onChange={setEmail} />
                 <InputPassword password={password} onChange={setPassword} />
                 <button type="submit" className="btn">
-                    Signup
+                    Login
                 </button>
             </form>
             <h3>Already registered?</h3>
