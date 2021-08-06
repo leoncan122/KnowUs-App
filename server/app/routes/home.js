@@ -6,10 +6,12 @@ const {
     //Search by word or category
     searchPublications,
 } = require("../controllers/user/home/searchPublications");
+const { getUserProfile } = require("../controllers/user/home/getUserProfile");
 
 const router = express.Router();
 
-router.get("/", getLastPublications);
+router.get("/lastones", getLastPublications);
 router.get("/search", searchPublications);
+router.get("/user", getUserProfile);
 
 module.exports = router;
