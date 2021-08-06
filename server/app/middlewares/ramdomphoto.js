@@ -2,9 +2,9 @@ function random() {
     const PhotoLinks = [
         "https://i.imgur.com/DVJcEE3.jpeg",
         "https://i.imgur.com/9yEsHCI.jpeg",
-        "https://i.imgur.com/ov8hkdD.jpeg",
+        "https://i.imgur.com/9yEsHCI.jpeg",
         "https://i.imgur.com/CBb2Mbh.jpeg",
-        " https://i.imgur.com/p81Eh87.jpeg",
+        "https://i.imgur.com/p81Eh87.jpeg",
         "https://i.imgur.com/DpmCVGl.jpeg",
         "https://i.imgur.com/qZap19H.jpeg",
         "https://i.imgur.com/124sR77.jpeg",
