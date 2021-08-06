@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fetchData from "../../../utils/fetchData";
 import "./aside.css";
+import ProfileCard from "./ProfileCard";
 
 function Aside() {
     const [data, setData] = useState(null);
@@ -10,15 +11,13 @@ function Aside() {
     console.log(error, loading);
 
     useEffect(() => {
-        const url = "http://localhost:4000/home";
+        const url = "http://localhost:4000/home/randomuser";
         async function fetching() {
             try {
                 setLoading(false);
-                const res = await fetchData(null, url, "GET");
-                const rawData = await res.json();
-
-                if (!res.ok) {
-                    setError(data.error);
+                const rawData = await fetchData(null, url, "GET");
+                if (rawData.error) {
+                    setError(rawData.error);
                 }
                 setData(rawData);
             } catch (err) {
@@ -29,10 +28,12 @@ function Aside() {
     }, []);
     return (
         <div className="aside">
-            <div>Foto</div>
-            <div>Foto</div>
-            <div>Foto</div>
-            <div>Foto</div>
+            {data &&
+                data.map((profile) => (
+                    <div>
+                        <ProfileCard data={profile} />
+                    </div>
+                ))}
         </div>
     );
 }
