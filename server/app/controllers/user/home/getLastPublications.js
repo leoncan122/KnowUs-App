@@ -14,14 +14,17 @@ const getLastPublications = (req, res) => {
     try {
         pool.connect((error, client, release) => {
             if (error) {
-                return res.status(404).send({ message: error.message });
+                return res.status(404).send({ error: error.message });
             }
             client.query(query, (err, result) => {
                 release();
                 if (err) {
                     return res
                         .status(404)
-                        .send({ isSuccesful: false, message: err.message });
+                        .send({
+                            isSuccesful: false,
+                            error: "Failed connection to server",
+                        });
                 }
                 return res
                     .status(200)
@@ -29,7 +32,7 @@ const getLastPublications = (req, res) => {
             });
         });
     } catch (error) {
-        return res.status(500).send({ message: error.message });
+        return res.status(500).send({ error: error.message });
     }
 };
 module.exports = { getLastPublications };

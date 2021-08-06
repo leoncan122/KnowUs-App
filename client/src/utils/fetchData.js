@@ -23,20 +23,9 @@ const fetchData = async (handleData, url, methodType) => {
             credentials: "include",
             body: JSON.stringify(handleData),
         });
-        if (!res.ok) {
-            return res.ok;
-        }
         data = await res.json();
     }
 
-    if (!handleData && methodType === "GET") {
-        const res = await fetch(url);
-        if (!res.ok) {
-            return res.ok;
-        }
-
-        data = await res.json();
-    }
     return data;
 };
 

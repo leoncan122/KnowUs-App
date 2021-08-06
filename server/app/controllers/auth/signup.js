@@ -26,7 +26,7 @@ const signup = async (req, res) => {
 
     pool.connect((error, client, release) => {
         if (error) {
-            return res.status(404).send({ message: error.message });
+            return res.status(404).send({ error: error.message });
         }
         try {
             client.query(query, values, (err, result) => {
