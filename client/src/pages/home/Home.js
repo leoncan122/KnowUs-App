@@ -9,7 +9,7 @@ function Home() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        const url = "http://localhost:4000/home";
+        const url = "http://localhost:4000/home/lastones";
 
         async function fetching() {
             try {

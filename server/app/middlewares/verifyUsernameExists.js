@@ -1,38 +1,46 @@
 const { pool } = require("../services/poolService");
 
-const verifyUsernameExists = async (req, res, next) => {
-    const { username } = req.body;
+const verifyUserOrMailExists = async (req, res, next) => {
+    const findUser = {
+        username: req.body.username.toLowerCase(),
+        email: req.body.email.toLowerCase(),
+    };
 
-    if (!username) {
+    const values = [findUser.username, findUser.email];
+
+    if (!findUser.username) {
         return res.status(400).send({ message: "You must insert a username" });
     }
-
-    const query = "SELECT * FROM users WHERE user_name = $1";
-
-    try {
-        pool.connect((error, client, release) => {
-            if (error) {
-                return res.status(404).send({ message: error.message });
-            }
-
-            client.query(query, [username], (err, result) => {
-                release();
-                if (err) {
-                    return res.status(404).send({ message: err.message });
-                }
-
-                if (result.rowCount === 1) {
-                    return res.status(400).send({
-                        message: `${username} username already exists`,
-                    });
-                }
-
-                next();
-            });
-        });
-    } catch (error) {
-        return res.status(500).send({ error: error.message });
+    if (!findUser.email) {
+        return res.status(400).send({ message: "You must insert a usermail" });
     }
+    const query = "SELECT * FROM users WHERE user_name = $1 or user_mail= $2";
+    pool.connect((error, client, release) => {
+        if (error) {
+            return console.error("Error acquiring client", error.stack);
+        }
+        client.query(query, values, (err, result) => {
+            release();
+            if (err) {
+                console.log(err.message);
+                return res.status(400).json({ err });
+            }
+            const user = result.rows[0];
+            if (!user) {
+                next();
+            } else if (user.user_name === findUser.username) {
+                res.status(400).send({
+                    message: "Failed! Username is already in use!",
+                });
+                return;
+            } else if (user.user_mail === findUser.email) {
+                res.status(400).send({
+                    message: "Failed! Email is already in use!",
+                });
+                return;
+            }
+        });
+    });
 };
 
-module.exports = { verifyUsernameExists };
+module.exports = { verifyUserOrMailExists };

@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { pool } = require("../../services/poolService");
+const { random } = require("../../middlewares/ramdomphoto");
 
 require("dotenv").config({ path: "../../../../.env" });
 
@@ -21,8 +22,7 @@ const signup = async (req, res) => {
 
     const values = [username, email, hashedPassword];
 
-    const query =
-        "INSERT INTO users (user_name, user_mail, user_pass) VALUES ($1, $2, $3) RETURNING *";
+    const query = `INSERT INTO users (user_name, user_mail, user_pass, photo) VALUES (lower($1), lower($2), ($3), '${random()}') RETURNING *`;
 
     pool.connect((error, client, release) => {
         if (error) {
