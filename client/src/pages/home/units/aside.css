@@ -8,9 +8,24 @@
 
     background-color: rgb(121, 204, 204);
     border-radius: 10%;
-    box-shadow: 5px 2px 8px 1px black;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.375);
 }
 .aside > div {
     width: 20%;
     text-align: center;
+}
+
+@media (min-width: 900px) {
+    .aside {
+        flex-direction: column;
+        align-content: center;
+        align-self: start;
+        grid-column: 2/3;
+        grid-row: 2 / 4;
+        background-color: white;
+    }
+    .aside > div {
+        height: 20%;
+        text-align: center;
+    }
 }

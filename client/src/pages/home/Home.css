@@ -10,6 +10,7 @@
     justify-items: center;
 }
 .main-heading {
+    display: none;
     background-color: #ffcd55;
     text-align: center;
     width: 90%;
@@ -63,6 +64,21 @@
 }
 
 @media (min-width: 900px) {
+    .home-content {
+        grid-template-rows: 1.1fr 1fr 4.4fr;
+
+        grid-template-columns: 2.5fr 1fr;
+    }
+    .main-heading {
+        display: block;
+    }
+    .posts-heading {
+        grid-row: 2/3;
+    }
+    .post-content {
+        width: 100%;
+        grid-column: 1 / 2;
+    }
     .post {
         font-size: 1.2rem;
     }
