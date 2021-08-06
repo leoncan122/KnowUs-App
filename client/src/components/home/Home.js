@@ -6,7 +6,7 @@ function Home() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        const url = "http://localhost:4000/home";
+        const url = "http://localhost:4000/home/lastones";
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
