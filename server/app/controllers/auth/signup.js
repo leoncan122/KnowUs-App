@@ -20,7 +20,7 @@ const signup = async (req, res) => {
 
     const values = [username, email, hashedPassword];
 
-    const query = `INSERT INTO users (user_name, user_mail, user_pass, photo) VALUES (lower($1), lower($2), ($3), '${random()}') RETURNING *`;
+    const query = `INSERT INTO users (user_name, user_mail, user_pass,is_profesional , photo) VALUES (lower($1), lower($2), ($3), 'false','${random()}') RETURNING *`;
 
     pool.connect((error, client, release) => {
         if (error) {
