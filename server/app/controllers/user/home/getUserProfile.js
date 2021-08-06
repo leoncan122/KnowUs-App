@@ -1,11 +1,11 @@
 const { pool } = require("../../../services/poolService");
 
 const query =
-    "select id ,user_name ,user_mail , country ,city ,profession , is_profesional , photo from users where user_name =$1 or user_mail = $2 or id=$3";
+    "select id ,user_name ,user_mail , country ,city ,profession , is_profesional , photo from users where id=$1";
 
 const getUserProfile = (req, res) => {
-    const { email, userName, userId } = req.body;
-    const values = [email, userName, userId];
+    const { userId } = req.body;
+    const values = [userId];
 
     pool.connect((error, client, release) => {
         if (error) {
