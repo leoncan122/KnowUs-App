@@ -12,7 +12,7 @@ export default function TopNavbar() {
         <nav className="main-nav">
             <div className="logo">
                 <h2>
-                    <Link to="/home">
+                    <Link to="/">
                         {" "}
                         <span>K</span>now<span>U</span>s
                     </Link>
