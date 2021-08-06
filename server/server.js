@@ -30,6 +30,12 @@ app.use("/auth", auth);
 app.use("/home", home);
 app.use("/user", questions);
 
+//logout
+app.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    return res.status(200).send({ message: "Bye bye :)" });
+});
+
 const { PORT } = process.env;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

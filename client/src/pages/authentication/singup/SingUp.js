@@ -11,6 +11,8 @@ import "../SingupAndLogin.css";
 export default function SingUp(props) {
     const { setUserLoged } = useContext(userContext);
 
+    const [error, setError] = useState("");
+
     // email functionality
     const [email, setEmail] = useState("");
     // name functionality
@@ -23,13 +25,16 @@ export default function SingUp(props) {
         e.preventDefault();
         const signupData = { email, username, password };
         const url = "http://localhost:4000/auth/signup";
-        const data = await fetchData(signupData, url);
+        const data = await fetchData(signupData, url, "POST");
 
-        setUserLoged(data);
-        if (data) {
-            setInterval(() => {
+        if (data.error) {
+            setError(data.error);
+        }
+        if (data.isAuthenticated) {
+            setUserLoged(data);
+            setTimeout(() => {
                 props.history.push("/");
-            }, 2000);
+            }, 1000);
         }
     };
 
@@ -43,6 +48,7 @@ export default function SingUp(props) {
                 <button type="submit" className="btn">
                     Signup
                 </button>
+                {error && <p>{error}</p>}
             </form>
             <h3>Already registered?</h3>
             <Link to="/login">Login</Link>

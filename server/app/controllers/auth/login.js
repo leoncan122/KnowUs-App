@@ -8,7 +8,7 @@ const ONEDAY = 86400;
 const login = (req, res) => {
     const { email, password } = req.body;
     const values = [email, password];
-
+    console.log(values);
     if (!email || !password) {
         return res
             .status(400)
