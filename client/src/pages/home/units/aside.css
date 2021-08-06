@@ -1,0 +1,16 @@
+.aside {
+    place-self: center;
+    width: 80%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    background-color: rgb(121, 204, 204);
+    border-radius: 10%;
+    box-shadow: 5px 2px 8px 1px black;
+}
+.aside > div {
+    width: 20%;
+    text-align: center;
+}
