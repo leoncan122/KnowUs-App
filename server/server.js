@@ -33,6 +33,7 @@ app.use("/user", questions);
 //logout
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
+    res.clearCookie("id");
     return res.status(200).send({ message: "Bye bye :)" });
 });
 
