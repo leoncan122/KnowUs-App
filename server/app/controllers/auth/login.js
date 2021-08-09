@@ -45,6 +45,9 @@ const login = (req, res) => {
             });
 
             res.cookie("token", token, { httpOnly: true });
+            res.cookie('id',user.id)
+            res.cookie('photo', user.photo)
+            
             res.status(201).json({
                 userId: user.id,
                 userName: user.user_name,
