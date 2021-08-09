@@ -6,6 +6,7 @@ import Login from "./pages/authentication/login/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
 import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
 import Home from "./pages/home/Home";
+import ProfilePrueba from "./components/asideUserInfo/ProfilePrueba";
 // import { userContext } from "./context/userContext";
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
                 <Route path="/login" component={Login} />
 
                 <Route path="/register" component={SingUp} />
+
+                <Route path="/profile" component={ProfilePrueba} />
             </Switch>
             <BottomNavbar />
         </div>

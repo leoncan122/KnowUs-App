@@ -3,8 +3,10 @@ import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
 import { userContext } from "../../context/userContext";
 
+import cookieMonster from "../../utils/cookieMonster";
+
 const Logout = () => {
-    const { setUserLoged } = useContext(userContext);
+    const { setUserLoged, setIsLoged } = useContext(userContext);
 
     const logOut = async () => {
         const deleteCookie = await fetch("http://localhost:4000/logout", {
@@ -13,6 +15,8 @@ const Logout = () => {
         });
         if (deleteCookie.ok) {
             setUserLoged(null);
+            const tokenBoolean = cookieMonster("token");
+            setIsLoged(tokenBoolean);
         }
     };
 

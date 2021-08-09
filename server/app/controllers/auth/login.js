@@ -8,7 +8,7 @@ const ONEDAY = 86400;
 const login = (req, res) => {
     const { email, password } = req.body;
     const values = [email, password];
-    console.log(values);
+
     if (!email || !password) {
         return res
             .status(400)
@@ -45,8 +45,18 @@ const login = (req, res) => {
             });
 
             res.cookie("token", token, { httpOnly: true });
+            res.cookie("id", user.id);
+            res.cookie("photo", user.photo);
+
             res.status(201).json({
-                username: user.user_name,
+                userId: user.id,
+                userName: user.user_name,
+                userMail: user.user_mail,
+                userCountry: user.country,
+                userCity: user.city,
+                userProfession: user.profession,
+                userProfessional: user.is_profesional,
+                userPhoto: user.photo,
                 accessToken: token,
                 isAuthenticated: true,
                 message: `Welcome back ${user.user_name}`,

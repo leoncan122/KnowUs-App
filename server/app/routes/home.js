@@ -14,7 +14,7 @@ const router = express.Router();
 //http://localhost:4000/home
 router.get("/lastones", getLastPublications);
 router.get("/search", searchPublications);
-router.get("/user", getUserProfile);
+router.get("/user/:userId", getUserProfile);
 router.get("/randomuser", getRandomUser);
 
 module.exports = router;
