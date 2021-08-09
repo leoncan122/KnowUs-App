@@ -19,17 +19,20 @@ const answer = (req, res) => {
             if (err) {
                 return res.status(404).send({ message: err.message });
             }
-            if (values[1] === "true") {
-                return res
-                    .status(200)
-                    .send({ message: "Mesage saved as draft" });
-            } else
+            if (values[1] === "false") {
                 client.query(query2, [values[2]], (err, result) => {
                     release();
                     return res
                         .status(200)
                         .send({ message: "Message sent correctly" });
                 });
+            }
+            if (values[1] === "true") {
+                release();
+                return res
+                    .status(200)
+                    .send({ message: "Mesage saved as draft" });
+            }
         });
     });
 };

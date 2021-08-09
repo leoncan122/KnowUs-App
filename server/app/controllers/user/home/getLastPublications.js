@@ -11,7 +11,6 @@ const getLastPublications = (req, res) => {
     JOIN users u ON pq.from_userid = u.id
     JOIN users p ON pq.to_userid = p.id
     WHERE is_answered = true ORDER by a.date DESC LIMIT 15;`;
-
     try {
         pool.connect((error, client, release) => {
             if (error) {
