@@ -20,7 +20,7 @@ const signup = async (req, res) => {
 
     const values = [username, email, hashedPassword];
 
-    const query = `INSERT INTO users (user_name, user_mail, user_pass,is_profesional , photo) VALUES (lower($1), lower($2), ($3), 'false','${random()}') RETURNING *`;
+    const query = `INSERT INTO users (user_name, user_mail, user_pass,is_profesional , photo) VALUES (lower($1), lower($2), ($3), 'false','${random()}') RETURNING id,user_name ,user_mail ,country ,city ,profession ,is_profesional ,photo`;
 
     pool.connect((error, client, release) => {
         if (error) {
@@ -45,7 +45,14 @@ const signup = async (req, res) => {
                     res.cookie("token", token, { httpOnly: true });
 
                     res.status(201).json({
-                        username: user.user_name,
+                        userId: user.id,
+                        userName: user.user_name,
+                        userMail: user.user_mail,
+                        userCountry: user.country,
+                        userCity: user.city,
+                        userProfession: user.profession,
+                        userProfessional: user.is_profesional,
+                        userPhoto: user.photo,
                         accessToken: token,
                         isAuthenticated: true,
                         message: `User ${user.user_name} was registered with success`,

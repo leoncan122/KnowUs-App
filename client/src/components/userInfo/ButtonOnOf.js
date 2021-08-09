@@ -2,11 +2,10 @@ import React from "react";
 import fetchData from "../../utils/fetchData";
 import "./ButtonOnOf.css";
 
-const isprofeesional2 = "false";
+const isprofeesional2 = "false"; // variante hardcoriada esto debe venir desde el fetch que se haga en profile
+const userId = 4; // variante hardcoriada esto debe venir desde el fetch que se haga en profile
 
 export default function ButtonOnOf() {
-    // const [isOff, isOn] = useState('false')
-
     async function whenSwitch() {
         const [isprofeesional, setisprofessional] = useState(isprofeesional2);
 
@@ -14,7 +13,7 @@ export default function ButtonOnOf() {
 
         const url = "http://localhost:4000/home/putProfile";
 
-        const handleData = { userId: "4", on: isprofeesional };
+        const handleData = { userId, on: isprofeesional };
 
         const data = await fetchData(handleData, url, "PUT");
     }
@@ -22,7 +21,7 @@ export default function ButtonOnOf() {
         // eslint-disable-next-line jsx-a11y/label-has-associated-control
         <label className="switch">
             <input type="checkbox" />
-            <span className="slider" />
+            <span className="slider" useState />
         </label>
     );
 }
