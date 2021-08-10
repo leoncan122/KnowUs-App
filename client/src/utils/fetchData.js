@@ -25,6 +25,10 @@ const fetchData = async (handleData, url, methodType) => {
         });
         data = await res.json();
     }
+    if (methodType === "GET" && !handleData) {
+        const res = await fetch(url);
+        data = await res.json();
+    }
 
     return data;
 };
