@@ -6,7 +6,7 @@ import Login from "./pages/authentication/login/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
 import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
 import Home from "./pages/home/Home";
-import ProfilePrueba from "./components/asideUserInfo/ProfilePrueba";
+import UserProfile from "./pages/profile/UserProfile";
 // import { userContext } from "./context/userContext";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 
                 <Route path="/register" component={SingUp} />
 
-                <Route path="/profile" component={ProfilePrueba} />
+                <Route path="/profile" component={UserProfile} />
             </Switch>
             <BottomNavbar />
         </div>

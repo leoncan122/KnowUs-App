@@ -6,7 +6,9 @@ const {
     //Search by word or category
     searchPublications,
 } = require("../controllers/user/home/searchPublications");
-const { getUserProfile } = require("../controllers/user/home/getUserProfile");
+const {
+    getUserProfile,
+} = require("../controllers/user/profile/getUserProfile");
 
 const { getRandomUser } = require("../controllers/user/home/getRandomUser");
 
