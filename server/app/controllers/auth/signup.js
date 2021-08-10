@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { pool } = require("../../services/poolService");
+const { random } = require("../../middlewares/ramdomphoto");
 
 require("dotenv").config({ path: "../../../../.env" });
 
@@ -21,12 +22,11 @@ const signup = async (req, res) => {
 
     const values = [username, email, hashedPassword];
 
-    const query =
-        "INSERT INTO users (user_name, user_mail, user_pass) VALUES ($1, $2, $3) RETURNING *";
+    const query = `INSERT INTO users (user_name, user_mail, user_pass, photo) VALUES (lower($1), lower($2), ($3), '${random()}') RETURNING *`;
 
     pool.connect((error, client, release) => {
         if (error) {
-            return res.status(404).send({ message: error.message });
+            return res.status(404).send({ error: error.message });
         }
         try {
             client.query(query, values, (err, result) => {
@@ -45,9 +45,18 @@ const signup = async (req, res) => {
                         }
                     );
                     res.cookie("token", token, { httpOnly: true });
+                    res.cookie("id", user.id);
+                    res.cookie("photo", user.photo);
 
                     res.status(201).json({
-                        username: user.user_name,
+                        userId: user.id,
+                        userName: user.user_name,
+                        userMail: user.user_mail,
+                        userCountry: user.country,
+                        userCity: user.city,
+                        userProfession: user.profession,
+                        userProfessional: user.is_profesional,
+                        userPhoto: user.photo,
                         accessToken: token,
                         isAuthenticated: true,
                         message: `User ${user.user_name} was registered with success`,

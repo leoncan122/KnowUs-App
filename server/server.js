@@ -21,7 +21,9 @@ const corsConfig = {
 app.use(cors(corsConfig));
 
 app.get("/", (req, res) => {
-    res.status(200).send("welcome to Knowus project application");
+    res.status(200).send(
+        "welcome to Knowus project application, you can use /auth, /home or /user"
+    );
 });
 
 //User endpoints
@@ -32,6 +34,7 @@ app.use("/user", questions);
 //logout
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
+    res.clearCookie("id");
     return res.status(200).send({ message: "Bye bye :)" });
 });
 

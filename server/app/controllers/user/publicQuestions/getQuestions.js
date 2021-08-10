@@ -1,7 +1,7 @@
 const { pool } = require("../../../services/poolService");
 
 const getQuestions = (req, res) => {
-    const { id } = req;
+    const { id } = req; // id = userId
 
     const query =
         "SELECT * FROM users u JOIN public_questions pq ON u.id = pq.from_userid WHERE pq.to_userid = $1 AND is_draft = false ORDER by pq.date DESC";

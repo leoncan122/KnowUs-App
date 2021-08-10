@@ -1,18 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
 import Search from "../../search/Search";
 import { userContext } from "../../../context/userContext";
 import Logout from "../../logout/Logout";
+import cookieMonster from "../../../utils/cookieMonster";
 
 export default function TopNavbar() {
-    const { userLoged } = useContext(userContext);
+    const { isLoged, setIsLoged } = useContext(userContext);
+
+    useEffect(() => {
+        const tokenBoolean = cookieMonster("token");
+        setIsLoged(tokenBoolean);
+    });
 
     return (
         <nav className="main-nav">
             <div className="logo">
                 <h2>
-                    <Link to="/home">
+                    <Link to="/">
                         {" "}
                         <span>K</span>now<span>U</span>s
                     </Link>
@@ -25,7 +31,7 @@ export default function TopNavbar() {
 
             <div className="menu-link">
                 <ul>
-                    {userLoged ? (
+                    {isLoged ? (
                         <li>
                             <Logout />
                         </li>

@@ -6,7 +6,9 @@ import { userContext } from "../../../context/userContext";
 import fetchData from "../../../utils/fetchData";
 
 export default function Login(props) {
-    const { userLoged, setUserLoged } = useContext(userContext);
+    const { setUserLoged } = useContext(userContext);
+
+    const [error, setError] = useState("");
 
     // email functionality
     const [email, setEmail] = useState("");
@@ -19,11 +21,15 @@ export default function Login(props) {
         e.preventDefault();
         const loginData = { email, password };
         const url = "http://localhost:4000/auth/login";
-        const data = await fetchData(loginData, url);
+        const data = await fetchData(loginData, url, "POST");
 
-        setUserLoged(data);
-        if (data) {
-            setInterval(() => {
+        if (data.error) {
+            setError(data.error);
+        }
+        if (data.isAuthenticated) {
+            setUserLoged(data);
+
+            setTimeout(() => {
                 props.history.push("/");
             }, 1000);
         }
@@ -38,7 +44,7 @@ export default function Login(props) {
                 <button type="submit" className="btn">
                     Login
                 </button>
-                {userLoged === false && <p>Try again!</p>}
+                {error && <p>{error}</p>}
             </form>
             <h3>Already registered?</h3>
             <Link to="/register">SingUp</Link>
