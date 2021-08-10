@@ -20,7 +20,7 @@ function App() {
 
                 <Route path="/register" component={SingUp} />
 
-                <Route path="/profile" component={UserProfile} />
+                <Route path="/user/profile/:id" component={UserProfile} />
             </Switch>
             <BottomNavbar />
         </div>

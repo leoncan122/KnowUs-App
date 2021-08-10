@@ -6,8 +6,9 @@
     align-content: center;
 }
 .info-profile {
-    height: 30%;
+    height: 25%;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: 2fr 1fr;
+    border-bottom: 1px solid black;
 }

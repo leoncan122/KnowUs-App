@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import Aside from "./units/Aside";
+import Aside from "./components/Aside";
+
 // import { userContext } from "../../context/userContext";
 
 function Home() {

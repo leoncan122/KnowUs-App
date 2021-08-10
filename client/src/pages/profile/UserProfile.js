@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import "./userProfile.css";
+import AsideUserInfo from "../../components/asideUserInfo/AsideUserInfo";
 
 const userProfile = () => {
     const [data, setData] = useState(null);
     const [error, setError] = useState("");
+    const { id } = useParams();
 
     useEffect(() => {
-        const url = `http://localhost:4000/home/user/4`;
+        const url = `http://localhost:4000/home/user/${id}`;
         async function fetching() {
             const rawData = await fetchData(null, url, "GET");
             if (rawData.error) {
@@ -18,15 +21,19 @@ const userProfile = () => {
         fetching();
     }, []);
 
-    console.log(data, error);
     return (
         <div className="main-content">
             <div className="info-profile">
-                <div>info</div>
+                <AsideUserInfo info={data} />
                 <div>photo</div>
                 <div>send msg or public ask</div>
             </div>
             <div className="publications">publications</div>
+            {error && (
+                <center>
+                    <strong>{error}</strong>
+                </center>
+            )}
         </div>
     );
 };
