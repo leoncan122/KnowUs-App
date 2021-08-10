@@ -7,7 +7,7 @@ VALUES ('toño','toni@hotmail.com','1234','chile','santiago','devora pasteles','
 INSERT INTO users (user_name,user_mail,user_pass,country,city,profession,profesional)
 VALUES ('manpreet','manpreet@hotmail.com','1234','India','nueva delhi','escritor de novelas','yes');
 INSERT INTO users (user_name,user_mail,user_pass,country,city,profession,profesional)
-VALUES ('Jeff Bezos','jeffy@hotmail.com','1234','EEUU','los angeles','empresario','yes');
+VALUES ('Jeff Bezos','jeffy@hotmail.com','1234','EEUU','los angeproles','empresario','yes');
 INSERT INTO users (user_name,user_mail,user_pass,country,city,profession,profesional)
 VALUES ('fidel castro','patriaomuerte@hotmail.com','1234','cuba','La habana','politico','yes');
 INSERT INTO users (user_name,user_mail,user_pass,country,city,profession,profesional)

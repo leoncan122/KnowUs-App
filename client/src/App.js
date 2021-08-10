@@ -6,6 +6,7 @@ import Login from "./pages/authentication/login/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
 import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
 import Home from "./components/home/Home";
+import ProfileImage from "./components/profile-image/ProfileImage";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
 
                 <Route path="/register" component={SingUp} />
             </Switch>
+            <ProfileImage />
             <BottomNavbar />
         </div>
     );
