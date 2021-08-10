@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Aside from "./components/Aside";
+import Search from "../../components/search/Search";
 
 // import { userContext } from "../../context/userContext";
 
@@ -21,7 +22,7 @@ function Home() {
                     setError(data.error);
                 }
 
-                setContentData(data);
+                setContentData(data.publications);
             } catch (err) {
                 setError("The comunication failed, try again later");
             }
@@ -29,10 +30,15 @@ function Home() {
         fetching();
     }, []);
 
-    const lastPosts = contentData?.publications;
+    const handleSearch = (result) => {
+        if (result) {
+            setContentData(result);
+        }
+    };
 
     return (
         <div className="home-content">
+            <Search className="search-bar" fn={handleSearch} />
             <div className="main-heading">
                 <h2>
                     Bienvenido a la plataforma dondé podras interactuar con
@@ -45,8 +51,8 @@ function Home() {
                 <h1>Last Answers / Result of search</h1>
             </div>
             <div className="post-content">
-                {lastPosts
-                    ? lastPosts.map((post) => (
+                {contentData
+                    ? contentData.map((post) => (
                           <div className="post" key={post.answer_id}>
                               <div className="sender-info">
                                   <h4>{post.sender_username}</h4>

@@ -4,7 +4,7 @@ require("dotenv").config({ path: "../../../../.env" });
 const searchPublications = (req, res) => {
     const { word } = req.query;
     const query = `SELECT u.id sender_id, u.user_name sender_username, pq.text question_text ,pq.category,pq.is_answered,
-    p.id prof_id, p.user_name prof_username, a.text answer_text, a.hour
+    p.id prof_id, p.user_name prof_username, a.text answer_text, a.date
     FROM public_questions pq JOIN answers a ON pq.id = a.question_id
     JOIN users u ON pq.from_userid = u.id
     JOIN users p ON pq.to_userid = p.id
@@ -15,17 +15,17 @@ const searchPublications = (req, res) => {
     if (!word) {
         return res
             .status(404)
-            .send({ message: "Cant read an empty book, insert words" });
+            .send({ error: "Cant read an empty book, insert words" });
     }
     try {
         pool.connect((error, client, release) => {
             if (error) {
-                return res.status(404).send({ message: error.message });
+                return res.status(404).send({ error: error.message });
             }
             client.query(query, [word], (err, result) => {
                 release();
                 if (err) {
-                    return res.status(404).send({ message: err.message });
+                    return res.status(404).send({ error: err.message });
                 }
                 if (result.rowCount === 0) {
                     return res.status(404).send({
@@ -39,7 +39,7 @@ const searchPublications = (req, res) => {
             });
         });
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        res.status(500).send({ error: error.message });
     }
 };
 

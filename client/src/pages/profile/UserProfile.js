@@ -28,7 +28,7 @@ const userProfile = () => {
                 <div>photo</div>
                 <div>send msg or public ask</div>
             </div>
-            <div className="publications">publications</div>
+            <div className="publications" />
             {error && (
                 <center>
                     <strong>{error}</strong>

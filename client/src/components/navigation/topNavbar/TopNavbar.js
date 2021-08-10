@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
-import Search from "../../search/Search";
 import { userContext } from "../../../context/userContext";
 import Logout from "../../logout/Logout";
 import cookieMonster from "../../../utils/cookieMonster";
@@ -23,10 +22,6 @@ export default function TopNavbar() {
                         <span>K</span>now<span>U</span>s
                     </Link>
                 </h2>
-            </div>
-
-            <div className="search-box">
-                <Search />
             </div>
 
             <div className="menu-link">
