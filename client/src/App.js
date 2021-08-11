@@ -8,6 +8,8 @@ import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
 import Home from "./pages/home/Home";
 import UserProfile from "./pages/profile/UserProfile";
 import { SearchProvider } from "./context/SearchContext";
+import MakeQuestion from "./components/question/MakeQuestion";
+
 // import { userContext } from "./context/userContext";
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
 
                     <Route path="/register" component={SingUp} />
 
-                    <Route path="/user/profile/:id" component={UserProfile} />
+                    <Route exact path="/user/:id" component={UserProfile} />
+
+                    <Route path="/user/:id/question" component={MakeQuestion} />
                 </Switch>
                 <BottomNavbar />
             </SearchProvider>
