@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 
-import { userContext } from "../../context/userContext";
+export default function AsideUserInfo({ info }) {
+    const [userData, setUserData] = useState(info[0]);
 
-export default function AsideUserInfo() {
-    const { userLoged } = useContext(userContext);
-
-    console.log(userLoged);
+    console.log(setUserData);
 
     return (
         <div className="aside-user-info">
-            <h3>Lorenzo Bandoneon</h3>
-            <h3>Profession: Manager de ventas</h3>
-            <h3>Lives in: Alicante </h3>
+            <h3>{userData.user_name}</h3>
+            <h3>Profession: {userData.profession}</h3>
+            <h3>
+                Lives in: {userData.city}, {userData.country}{" "}
+            </h3>
         </div>
     );
 }

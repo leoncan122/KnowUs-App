@@ -24,7 +24,7 @@ const userProfile = () => {
     return (
         <div className="main-content">
             <div className="info-profile">
-                <AsideUserInfo info={data} />
+                {data && <AsideUserInfo info={data} />}
                 <div>photo</div>
                 <div>send msg or public ask</div>
             </div>

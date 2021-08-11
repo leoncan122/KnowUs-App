@@ -31,9 +31,6 @@ const Search = () => {
                 value={word}
                 onChange={handleSearch}
             />
-            <button type="button" onClick={() => setWord("")}>
-                x
-            </button>
         </div>
     );
 };
