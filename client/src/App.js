@@ -5,24 +5,27 @@ import SingUp from "./pages/authentication/singup/SingUp";
 import Login from "./pages/authentication/login/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
 import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
-import Home from "./components/home/Home";
-import ProfilePrueba from "./components/asideUserInfo/ProfilePrueba";
+import Home from "./pages/home/Home";
+import UserProfile from "./pages/profile/UserProfile";
+import { SearchProvider } from "./context/SearchContext";
 // import { userContext } from "./context/userContext";
 
 function App() {
     return (
         <div className="App">
-            <TopNavbar />
-            <Switch>
-                <Route exact path="/" component={Home} />
+            <SearchProvider>
+                <TopNavbar />
+                <Switch>
+                    <Route exact path="/" component={Home} />
 
-                <Route path="/login" component={Login} />
+                    <Route path="/login" component={Login} />
 
-                <Route path="/register" component={SingUp} />
+                    <Route path="/register" component={SingUp} />
 
-                <Route path="/profile" component={ProfilePrueba} />
-            </Switch>
-            <BottomNavbar />
+                    <Route path="/user/profile/:id" component={UserProfile} />
+                </Switch>
+                <BottomNavbar />
+            </SearchProvider>
         </div>
     );
 }

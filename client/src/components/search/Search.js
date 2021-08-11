@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Fragment, useState } from "react";
 
 const Search = () => {
@@ -52,6 +53,45 @@ const Search = () => {
                 </table>
             </div>
         </>
+=======
+import React, { useEffect, useState, useContext } from "react";
+import fetchData from "../../utils/fetchData";
+import "./Search.css";
+import { SearchContext } from "../../context/SearchContext";
+
+const Search = () => {
+    const { setResult } = useContext(SearchContext);
+    const [word, setWord] = useState("");
+
+    useEffect(() => {
+        const url = `http://localhost:4000/home/search?word=${word}`;
+        async function fetching() {
+            const data = await fetchData(null, url, "GET");
+
+            if (data.isSuccesful) {
+                setResult(data.publications);
+            }
+        }
+        fetching();
+    }, [word]);
+
+    const handleSearch = (e) => {
+        setWord(e.target.value);
+    };
+    return (
+        <div className="search-container">
+            <input
+                type="text"
+                placeholder="Search something"
+                className="search-bar"
+                value={word}
+                onChange={handleSearch}
+            />
+            <button type="button" onClick={() => setWord("")}>
+                x
+            </button>
+        </div>
+>>>>>>> 86a14a5ee006102338bd0557300f6070755c38e6
     );
 };
 

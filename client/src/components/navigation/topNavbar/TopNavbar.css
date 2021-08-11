@@ -36,13 +36,6 @@ li {
     align-items: center;
 }
 
-.search-box {
-    grid-column: 3/4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 form {
     display: flex;
     justify-content: center;

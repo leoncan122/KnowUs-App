@@ -1,0 +1,29 @@
+.card {
+    font-size: 1rem;
+    color: black;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+}
+.card > img {
+    width: 25px;
+    margin: auto;
+}
+.card > p {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (min-width: 900px) {
+    .card {
+        align-items: center;
+        grid-template-rows: 0.5fr 2fr;
+        grid-template-columns: 1fr 2.5fr;
+    }
+    .card > img {
+        width: 40px;
+        grid-row: 2/3;
+    }
+    .card > p {
+        grid-column: 2/3;
+    }
+}

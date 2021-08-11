@@ -4,27 +4,26 @@
     box-sizing: border-box;
     font-family: "Jost", sans-serif;
 }
-
-.latest-posts {
-    margin-top: 5%;
+.home-content {
     display: grid;
+    grid-template-rows: 15vh 8vh 80vh;
+    justify-items: center;
 }
-
 .main-heading {
+    display: none;
+    background-color: #ffcd55;
     text-align: center;
     width: 90%;
-    margin-top: 2%;
-    margin-left: 5%;
-    display: grid;
-    place-items: center;
-    background-color: #ffcd55;
 }
 
 .posts-heading {
-    margin-top: 5em;
     text-align: center;
+    place-self: center;
 }
-
+.post-content {
+    display: grid;
+    justify-items: center;
+}
 .post {
     color: white;
     font-weight: 1.1rem;
@@ -33,7 +32,6 @@
     text-align: center;
     width: 80%;
     height: 10em;
-    margin-left: 10%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -65,8 +63,36 @@
 .receiver-info > p {
     place-self: start;
 }
+.search-box {
+    display: none;
+}
 
 @media (min-width: 900px) {
+    .home-content {
+        grid-template-rows: 15vh 10vh 5vh 80vh;
+        grid-template-columns: 3.5fr 1fr;
+    }
+    .search-box {
+        width: 100%;
+        grid-column: 1/3;
+        display: block;
+        place-content: center;
+    }
+
+    .main-heading {
+        display: block;
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+    .posts-heading {
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+    .post-content {
+        width: 100%;
+        grid-column: 1 / 2;
+        grid-row: 4/5;
+    }
     .post {
         font-size: 1.2rem;
     }
