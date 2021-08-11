@@ -23,6 +23,10 @@ export default function AsideUserInfo() {
                 setUserCity(data[0].city);
             };
             fetching();
+        } else {
+            setUserName(null);
+            setUserProfession(null);
+            setUserCity(null);
         }
     });
 
