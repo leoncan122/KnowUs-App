@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import "./userProfile.css";
 import AsideUserInfo from "../../components/asideUserInfo/AsideUserInfo";
+import ProfileImage from "../../components/profile-image/ProfileImage";
 
 const userProfile = () => {
     const [data, setData] = useState(null);
@@ -16,16 +17,16 @@ const userProfile = () => {
             if (rawData.error) {
                 setError(rawData.error);
             }
-            setData(rawData);
+            setData(rawData[0]);
         }
         fetching();
     }, []);
-
+    console.log(data);
     return (
         <div className="main-content">
             <div className="info-profile">
                 {data && <AsideUserInfo info={data} />}
-                <div>photo</div>
+                {data && <ProfileImage photo={data.photo} />}
                 <div>send msg or public ask</div>
             </div>
             <div className="publications" />

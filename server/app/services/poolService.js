@@ -6,5 +6,5 @@ exports.pool = new Pool({
     password: process.env.PG_PASS,
     database: process.env.PG_DATABASE,
     port: process.env.PG_PORT,
-    ssl: process.env.DATABASE_URL ? true : false,
+    // ssl: process.env.DATABASE_URL ? true : false,
 });

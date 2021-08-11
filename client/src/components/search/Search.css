@@ -1,5 +1,6 @@
 .search-container {
-    width: 100%;
+    width: 80%;
+    height: 80%;
     display: grid;
     place-items: center;
 }

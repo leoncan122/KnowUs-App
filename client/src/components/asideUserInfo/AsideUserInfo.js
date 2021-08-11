@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function AsideUserInfo({ info }) {
-    const [userData, setUserData] = useState(info[0]);
+    const [userData, setUserData] = useState(info);
 
     console.log(setUserData);
 
