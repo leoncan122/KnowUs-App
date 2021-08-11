@@ -44,8 +44,8 @@ const login = (req, res) => {
                 expiresIn: ONEDAY,
             });
 
-            res.cookie("token", token, { httpOnly: true });
-            res.cookie("id", user.id);
+            res.cookie("token", token);
+            res.cookie("userId", user.id);
             res.cookie("photo", user.photo);
 
             res.status(201).json({
