@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import fetchData from "../../utils/fetchData";
 import "./Search.css";
+import { SearchContext } from "../../context/SearchContext";
 
-const Search = ({ fn }) => {
-    const [word, setword] = useState();
+const Search = () => {
+    const { setResult } = useContext(SearchContext);
+    const [word, setWord] = useState("");
 
     useEffect(() => {
         const url = `http://localhost:4000/home/search?word=${word}`;
@@ -11,14 +13,14 @@ const Search = ({ fn }) => {
             const data = await fetchData(null, url, "GET");
 
             if (data.isSuccesful) {
-                fn(data.publications);
+                setResult(data.publications);
             }
         }
         fetching();
     }, [word]);
 
     const handleSearch = (e) => {
-        setword(e.target.value);
+        setWord(e.target.value);
     };
     return (
         <div className="search-container">
@@ -26,8 +28,12 @@ const Search = ({ fn }) => {
                 type="text"
                 placeholder="Search something"
                 className="search-bar"
+                value={word}
                 onChange={handleSearch}
             />
+            <button type="button" onClick={() => setWord("")}>
+                x
+            </button>
         </div>
     );
 };
