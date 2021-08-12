@@ -1,8 +1,8 @@
 const { pool } = require("../../../services/poolService");
 const sendQuery =
-    "insert into answers (text,is_draft,question_id)values($1,$2,$3)returning*";
+    "INSERT INTO answers (text,is_draft,question_id)values($1,$2,$3)RETURNING *";
 const draftQuery =
-    "update public_questions set  is_answered = 'yes' where id=$1";
+    "UPDATE public_questions SET  is_answered = true WHERE id=$1 RETURNING *";
 
 const answer = (req, res) => {
     const { text, draft, questionId } = req.body;
@@ -30,7 +30,7 @@ const answer = (req, res) => {
             });
         }
         if (values[1] === true) {
-            client.query(draftQuery, values, (err, result) => {
+            client.query(draftQuery, [values[2]], (err, result) => {
                 release();
                 if (err) {
                     return res.status(404).send({ error: err.message });

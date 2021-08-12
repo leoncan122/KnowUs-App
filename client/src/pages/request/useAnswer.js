@@ -18,6 +18,17 @@ function useAnswer(props) {
                 },
             ];
         }
+        if (action.type === "draft_answer") {
+            const currentState = state[state.length - 1];
+            return [
+                ...state,
+                {
+                    ...currentState,
+                    text: action.input.text,
+                    [action.input.name]: action.input.value,
+                },
+            ];
+        }
 
         return state;
     };
