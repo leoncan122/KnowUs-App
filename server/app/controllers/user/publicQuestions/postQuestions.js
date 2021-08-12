@@ -1,33 +1,48 @@
 const { pool } = require("../../../services/poolService");
-const query =
-    "insert into public_questions (text,from_userid ,to_userid,category ,is_draft, is_answered )values ($1,$2,$3,$4,$5,'no')";
+const sendQuery =
+    "insert into public_questions (text,from_userid ,to_userid,category ,is_draft, is_answered )values ($1,$2,$3,$4,$5,false) RETURNING *";
+const draftQuery =
+    "insert into public_questions (text,from_userid ,to_userid,category ,is_draft, is_answered )values ($1,$2,$3,$4,$5,false) RETURNING *";
 
 const postQuestions = (req, res) => {
-    const { message, from, to, category, draft } = req.body;
-    const values = [message, from, to, category, draft];
-    if (!message || !from || !to || !category || !draft) {
-        return res
-            .status(400)
-            .send({ message: "Must complete all the fields" });
+    const { text, to, category, draft } = req.body;
+    const from = req.id; //gettin id from the token
+
+    const values = [text, from, to, category, draft];
+
+    if (!text || !from || !to || !category || draft === null) {
+        return res.status(400).send({ error: "Must complete all the fields" });
     }
     pool.connect((error, client, release) => {
         if (error) {
-            return res.status(404).send({ message: error.message });
+            return res.status(404).send({ error: error.message });
         }
-        client.query(query, values, (err, result) => {
-            release();
-            if (err) {
-                return res.status(404).send({ message: err.message });
-            }
-            if (values[4] === "true") {
-                return res
-                    .status(200)
-                    .send({ message: "Mesage saved as draft" });
-            } else
+        if (values[4] === false) {
+            client.query(sendQuery, values, (err, result) => {
+                release();
+                if (err) {
+                    return res.status(404).send({ error: err.message });
+                }
+                if (result.rowCount > 0) {
+                }
                 res.status(200).send({
                     message: "message sent correctly",
                 });
-        });
+            });
+        }
+        if (values[4] === true) {
+            client.query(draftQuery, values, (err, result) => {
+                release();
+                if (err) {
+                    return res.status(404).send({ error: err.message });
+                }
+                if (result.rowCount > 0) {
+                    return res
+                        .status(200)
+                        .send({ message: "Mesage saved as draft" });
+                }
+            });
+        }
     });
 };
 

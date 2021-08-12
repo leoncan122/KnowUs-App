@@ -11,7 +11,11 @@ app.use(helmet());
 const auth = require("./app/routes/auth");
 const home = require("./app/routes/home");
 const questions = require("./app/routes/publicQuestions");
+<<<<<<< HEAD
 const profile = require("./app/routes/profile");
+=======
+const { search } = require("./app/routes/auth");
+>>>>>>> 429ded80c28759979e83c912d4fcff3f1c7b84be
 
 //cors
 const corsConfig = {

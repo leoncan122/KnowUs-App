@@ -1,5 +1,6 @@
 .search-container {
-    width: 100%;
+    width: 80%;
+    height: 80%;
     display: grid;
     place-items: center;
 }
@@ -8,5 +9,17 @@
     width: 90%;
     border-radius: 0.5%;
     text-align: center;
-    display: none;
+}
+
+@media (min-width: 900px) {
+    .search-container {
+        height: 70%;
+        display: grid;
+        place-items: center;
+    }
+    .search-bar {
+        display: block;
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
 }

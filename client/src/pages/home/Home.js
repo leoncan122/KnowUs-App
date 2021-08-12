@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Home.css";
 import Aside from "./components/Aside";
 import Search from "../../components/search/Search";
-
-// import { userContext } from "../../context/userContext";
+import { SearchContext } from "../../context/SearchContext";
 
 function Home() {
-    // const { userLoged } = useContext(userContext);
+    const { result } = useContext(SearchContext);
     const [contentData, setContentData] = useState(null);
     const [error, setError] = useState("");
+
+    // Here result of search or fetchedData
+    const publications = result || contentData;
 
     useEffect(() => {
         const url = "http://localhost:4000/home/lastones";
@@ -27,18 +29,15 @@ function Home() {
                 setError("The comunication failed, try again later");
             }
         }
+
         fetching();
     }, []);
 
-    const handleSearch = (result) => {
-        if (result) {
-            setContentData(result);
-        }
-    };
-
     return (
         <div className="home-content">
-            <Search className="search-bar" fn={handleSearch} />
+            <div className="search-box">
+                <Search />
+            </div>
             <div className="main-heading">
                 <h2>
                     Bienvenido a la plataforma dondé podras interactuar con
@@ -51,8 +50,8 @@ function Home() {
                 <h1>Last Answers / Result of search</h1>
             </div>
             <div className="post-content">
-                {contentData
-                    ? contentData.map((post) => (
+                {publications
+                    ? publications.map((post) => (
                           <div className="post" key={post.answer_id}>
                               <div className="sender-info">
                                   <h4>{post.sender_username}</h4>

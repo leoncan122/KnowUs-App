@@ -6,7 +6,7 @@
 }
 .home-content {
     display: grid;
-    grid-template-rows: 0vh 15vh 8vh 80vh;
+    grid-template-rows: 15vh 8vh 80vh;
     justify-items: center;
 }
 .main-heading {
@@ -63,7 +63,7 @@
 .receiver-info > p {
     place-self: start;
 }
-.search-bar {
+.search-box {
     display: none;
 }
 
@@ -72,11 +72,13 @@
         grid-template-rows: 15vh 10vh 5vh 80vh;
         grid-template-columns: 3.5fr 1fr;
     }
-    .search-bar {
+    .search-box {
+        width: 100%;
+        grid-column: 1/3;
         display: block;
-        grid-column: 1/2;
-        grid-row: 1/2;
+        place-content: center;
     }
+
     .main-heading {
         display: block;
         grid-column: 1/2;

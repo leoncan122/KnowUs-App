@@ -10,8 +10,8 @@ const { answer } = require("../controllers/user/publicQuestions/answer");
 const { verifyToken } = require("../middlewares/verifyToken");
 const router = express.Router();
 
-router.post("/questions", verifyToken, postQuestions);
-router.get("/questions", verifyToken, getQuestions);
+router.post("/question", verifyToken, postQuestions);
+router.get("/question", verifyToken, getQuestions);
 router.post("/answer", verifyToken, answer);
 
 module.exports = router;

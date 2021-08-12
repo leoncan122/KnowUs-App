@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import "./userProfile.css";
 import AsideUserInfo from "../../components/asideUserInfo/AsideUserInfo";
+import ProfileImage from "../../components/profile-image/ProfileImage";
 
-const userProfile = () => {
+const userProfile = ({ match }) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState("");
     const { id } = useParams();
-
+    console.log(id);
     useEffect(() => {
         const url = `http://localhost:4000/home/user/${id}`;
         async function fetching() {
@@ -16,7 +17,7 @@ const userProfile = () => {
             if (rawData.error) {
                 setError(rawData.error);
             }
-            setData(rawData);
+            setData(rawData[0]);
         }
         fetching();
     }, []);
@@ -24,9 +25,10 @@ const userProfile = () => {
     return (
         <div className="main-content">
             <div className="info-profile">
-                <AsideUserInfo info={data} />
-                <div>photo</div>
-                <div>send msg or public ask</div>
+                {data && <AsideUserInfo info={data} />}
+                {data && <ProfileImage photo={data.photo} />}
+
+                <Link to={`${match.url}/question`}>public question</Link>
             </div>
             <div className="publications" />
             {error && (

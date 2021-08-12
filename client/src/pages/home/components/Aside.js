@@ -16,6 +16,7 @@ function Aside() {
             try {
                 setLoading(false);
                 const rawData = await fetchData(null, url, "GET");
+
                 if (rawData.error) {
                     setError(rawData.error);
                 }
