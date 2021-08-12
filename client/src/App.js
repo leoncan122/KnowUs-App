@@ -9,6 +9,7 @@ import Home from "./pages/home/Home";
 import UserProfile from "./pages/profile/UserProfile";
 import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
+import Request from "./pages/request/Request";
 
 // import { userContext } from "./context/userContext";
 
@@ -27,6 +28,8 @@ function App() {
                     <Route exact path="/user/:id" component={UserProfile} />
 
                     <Route path="/user/:id/question" component={MakeQuestion} />
+
+                    <Route path="/question" component={Request} />
                 </Switch>
                 <BottomNavbar />
             </SearchProvider>

@@ -1,22 +1,22 @@
-import "./MessagePanel.css";
-import React, { useState, useEffect } from "react";
-// import PropTypes from "prop-types";
+import "./messagePanel.css";
+import React, { useState } from "react";
 
-function MessagePanel({ fn }) {
-    const [posts, setPosts] = useState([]);
-    useEffect(() => {
-        fetch("http://localhost:4000/home")
-            .then((res) => res.json())
-            .then((data) => setPosts(data.publications));
-    }, [posts]);
+function MessagePanel({ fn, data }) {
+    const [posts, setPosts] = useState(data);
+    console.log(setPosts, posts);
 
     return (
         <div className="panel">
-            {posts.map((post) => (
-                <button key={post.id} type="button" onClick={() => fn(post)}>
-                    {post.text}
-                </button>
-            ))}
+            {data &&
+                data.map((post) => (
+                    <button
+                        key={post.id}
+                        type="button"
+                        onClick={() => fn(post)}
+                    >
+                        {post.text}
+                    </button>
+                ))}
         </div>
     );
 }

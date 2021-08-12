@@ -51,6 +51,7 @@ const MakeQuestion = ({ match, history }) => {
                     value={question.text}
                     onChange={handleQuestion}
                     placeholder="What are your doubts?"
+                    required
                 />
                 <input
                     type="text"
@@ -59,6 +60,7 @@ const MakeQuestion = ({ match, history }) => {
                     value={question.category}
                     onChange={handleQuestion}
                     placeholder="category"
+                    required
                 />
                 <button
                     name="send"
