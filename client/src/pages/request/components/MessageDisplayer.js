@@ -37,9 +37,8 @@ function MessageDisplayer({ data, url }) {
         dispatch({
             type: "draft_answer",
             input: {
-                text: answer,
                 name: e.target.name,
-                value: true,
+                value: answer,
             },
         });
     };
@@ -52,7 +51,12 @@ function MessageDisplayer({ data, url }) {
             </div>
 
             <form className="text-area">
-                <input name="input" type="input" onKeyUp={handleAnswer} />
+                <input
+                    name="input"
+                    type="input"
+                    defaultValue="mike"
+                    onKeyUp={handleAnswer}
+                />
                 <input
                     name="text"
                     type="submit"
@@ -60,7 +64,7 @@ function MessageDisplayer({ data, url }) {
                     onClick={handleSendAnswer}
                 />
                 <input
-                    name="draft"
+                    name="text"
                     type="submit"
                     value="save"
                     onClick={handleDraftAnswer}

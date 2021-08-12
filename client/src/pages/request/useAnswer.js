@@ -14,6 +14,7 @@ function useAnswer(props) {
                 ...state,
                 {
                     ...currentState,
+                    draft: false,
                     [action.input.name]: action.input.value,
                 },
             ];
@@ -24,7 +25,7 @@ function useAnswer(props) {
                 ...state,
                 {
                     ...currentState,
-                    text: action.input.text,
+                    draft: true,
                     [action.input.name]: action.input.value,
                 },
             ];
