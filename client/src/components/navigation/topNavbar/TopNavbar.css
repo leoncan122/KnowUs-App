@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap");
 /* Basic Configuration */
 
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Jost", sans-serif;
-}
+} */
 
 html {
     font-size: 62.5%;
@@ -36,7 +36,7 @@ li {
     align-items: center;
 }
 
-form {
+/* form {
     display: flex;
     justify-content: center;
     background: none;
@@ -47,11 +47,11 @@ form {
     outline: unset;
     height: 40px;
 
-    /* padding-left: 10px; */
-    border-radius: 0;
+    /* padding-left: 10px
+    /* border-radius: 0;
     /* width: calc(100% - 10px); */
-    -webkit-appearance: none;
-}
+/* -webkit-appearance: none;
+} */
 
 .menu-link {
     grid-column: 4/5;

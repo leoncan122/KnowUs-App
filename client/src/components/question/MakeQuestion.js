@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import fetchData from "../../utils/fetchData";
+import "./makeQuestion.css";
 
 const MakeQuestion = ({ match, history }) => {
     const [question, setQuestion] = useState({
@@ -41,11 +42,12 @@ const MakeQuestion = ({ match, history }) => {
         }
     };
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
+        <div className="question-content">
+            <form className="question-form" onSubmit={handleSubmit}>
+                <textarea
                     type="text"
                     name="text"
+                    className="input-question"
                     value={question.text}
                     onChange={handleQuestion}
                     placeholder="What are your doubts?"
@@ -53,6 +55,7 @@ const MakeQuestion = ({ match, history }) => {
                 <input
                     type="text"
                     name="category"
+                    className="input-category"
                     value={question.category}
                     onChange={handleQuestion}
                     placeholder="category"
