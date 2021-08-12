@@ -6,9 +6,7 @@ const { random } = require("../../middlewares/ramdomphoto");
 require("dotenv").config({ path: "../../../../.env" });
 
 const signup = async (req, res) => {
-    console.log("test***");
     const { email, password, username } = req.body;
-    console.log("test***", req.body);
 
     if (!email || !password || !username) {
         return res
@@ -22,7 +20,7 @@ const signup = async (req, res) => {
 
     const values = [username, email, hashedPassword];
 
-    const query = `INSERT INTO users (user_name, user_mail, user_pass, photo) VALUES (lower($1), lower($2), ($3), '${random()}') RETURNING *`;
+    const query = `INSERT INTO users (user_name, user_mail, user_pass,is_profesional , photo) VALUES (lower($1), lower($2), ($3), 'false','${random()}') RETURNING id,user_name ,user_mail ,country ,city ,profession ,is_profesional ,photo`;
 
     pool.connect((error, client, release) => {
         if (error) {

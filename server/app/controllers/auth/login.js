@@ -14,7 +14,7 @@ const login = (req, res) => {
             .status(400)
             .send({ message: "Must complete all the fields" });
     }
-    const query = "SELECT * FROM users WHERE user_mail = $1";
+    const query = "SELECT * FROM users WHERE user_mail = $1 ";
 
     pool.connect((error, client, release) => {
         if (error) {
