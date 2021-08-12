@@ -8,10 +8,12 @@ function MessageDisplayer({ data, url }) {
         draft: false,
     });
     const [answer, setAnswer] = useState();
+    const currentState = state[state.length - 1];
 
     useEffect(() => {
         async function fetching() {
-            const rawData = await fetchData(state, url, "POST");
+            const rawData = await fetchData(currentState, url, "POST");
+            console.log(rawData);
         }
         fetching();
     }, [state]);
@@ -29,11 +31,12 @@ function MessageDisplayer({ data, url }) {
             },
         });
     };
+
     return (
         <>
             <div>
                 {data.text}
-                {state.text}
+                {currentState.text}
             </div>
             <form>
                 <input name="input" type="input" onKeyUp={handleAnswer} />
