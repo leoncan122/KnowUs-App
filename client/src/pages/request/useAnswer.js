@@ -18,9 +18,6 @@ function useAnswer(props) {
                 },
             ];
         }
-        if (action.type === "reset_input") {
-            return initState;
-        }
 
         return state;
     };

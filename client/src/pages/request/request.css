@@ -1,11 +1,13 @@
 .requestPage {
     display: grid;
-    grid-template: 1fr 5fr 0.5fr / 1fr;
+    grid-template: 1fr 11fr 0fr / 1fr;
 }
 .nav {
     grid-row: 1;
 }
 .content {
+    display: grid;
+    grid-template: 5fr 1fr / 1fr;
     background-color: antiquewhite;
     grid-row: 2;
 }

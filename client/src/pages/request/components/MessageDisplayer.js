@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fetchData from "../../../utils/fetchData";
 import useAnswer from "../useAnswer";
+import "./messageDisplayer.css";
 
 function MessageDisplayer({ data, url }) {
     const [state, dispatch] = useAnswer({
@@ -34,11 +35,12 @@ function MessageDisplayer({ data, url }) {
 
     return (
         <>
-            <div>
-                {data.text}
-                {currentState.text}
+            <div className="messages-area">
+                <div className="text-question">{data.text}</div>
+                <div className="text-answer">{currentState.text}</div>
             </div>
-            <form>
+
+            <form className="text-area">
                 <input name="input" type="input" onKeyUp={handleAnswer} />
                 <input name="text" type="submit" onClick={handleSendAnswer} />
             </form>
