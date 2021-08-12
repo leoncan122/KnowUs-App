@@ -7,6 +7,7 @@ import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
 import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
 import Home from "./components/home/Home";
 import ProfilePrueba from "./components/asideUserInfo/ProfilePrueba";
+import EditProfile from "./pages/editProfile/EditProfile";
 // import { userContext } from "./context/userContext";
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
 
                 <Route path="/register" component={SingUp} />
 
-                <Route path="/profile" component={ProfilePrueba} />
+                <Route exact path="/profile" component={ProfilePrueba} />
+
+                <Route path="/profile/edit" component={EditProfile} />
             </Switch>
             <BottomNavbar />
         </div>
