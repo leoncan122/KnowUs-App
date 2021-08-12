@@ -4,14 +4,22 @@ import React, { useState } from "react";
 import fetchData from "../../utils/fetchData";
 import "./ButtonOnOf.css";
 
-const professionalBolean = false; // variante hardcoriada esto debe venir desde el fetch que se haga en profile
-const userId = 4; // variante hardcoriada esto debe venir desde el fetch que se haga en profile
+// const userId = 4;
+export default function ButtonOnOf({ userId, state }) {
+    // async function fetching() {
+    //     const url2 = `http://localhost:4000/home/user/${userId}`;
+    //     const rawData = await fetchData(false, url2, "GET");
+    //     // const data = rawData[0].is_profesional;
 
-export default function ButtonOnOf() {
-    const [isProfeesional, setIsProfessional] = useState(professionalBolean);
-    async function whenSwitch() {
-        setIsProfessional(!isProfeesional);
-        const value = !isProfeesional;
+    //     // console.log(data, "dentro de fetching");
+    // }
+    // fetching();
+
+    const [isProfesional, setIsProfessional] = useState(state);
+    function whenSwitch() {
+        setIsProfessional(!isProfesional);
+        const value = !isProfesional;
+        console.log(userId);
         const url = "http://localhost:4000/home/putProfile";
         const handleData = { userId, on: value };
         fetchData(handleData, url, "PUT");
@@ -23,7 +31,7 @@ export default function ButtonOnOf() {
         <label className="switch">
             <input
                 type="checkbox"
-                checked={isProfeesional}
+                checked={isProfesional}
                 onChange={whenSwitch}
             />
             <span className="slider" />

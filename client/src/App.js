@@ -11,8 +11,6 @@ import EditProfile from "./pages/editProfile/EditProfile";
 import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
 
-// import { userContext } from "./context/userContext";
-
 function App() {
     return (
         <div className="App">
@@ -25,7 +23,7 @@ function App() {
 
                     <Route path="/register" component={SingUp} />
 
-                    <Route exact path="/user/:id" component={UserProfile} />
+                    <Route exact path="/my-profile" component={UserProfile} />
 
                     <Route path="/user/:id/question" component={MakeQuestion} />
 
