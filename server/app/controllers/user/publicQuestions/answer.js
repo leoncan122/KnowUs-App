@@ -7,7 +7,7 @@ const draftQuery =
 const answer = (req, res) => {
     const { text, draft, questionId } = req.body;
     const values = [text, draft, questionId];
-    console.log(values);
+
     if (!text || !questionId) {
         return res.status(400).send({ error: "Must complete all the fields" });
     }
