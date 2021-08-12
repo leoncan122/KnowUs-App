@@ -11,6 +11,7 @@ app.use(helmet());
 const auth = require("./app/routes/auth");
 const home = require("./app/routes/home");
 const questions = require("./app/routes/publicQuestions");
+const profile = require("./app/routes/profile");
 
 //cors
 const corsConfig = {
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 app.use("/auth", auth);
 app.use("/home", home);
 app.use("/user", questions);
+app.use("/profile", profile);
 
 //logout
 app.get("/logout", (req, res) => {
