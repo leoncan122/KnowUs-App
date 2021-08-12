@@ -4,7 +4,7 @@ const getQuestions = (req, res) => {
     const { id } = req; // id = userId
 
     const query =
-        "SELECT * FROM users u JOIN public_questions pq ON u.id = pq.from_userid WHERE pq.to_userid = $1 AND is_draft = false ORDER by pq.date DESC";
+        "SELECT pq.id, pq.date,pq.text, u.photo FROM users u JOIN public_questions pq ON u.id = pq.from_userid WHERE pq.to_userid = $1 AND is_draft = false ORDER by pq.date DESC";
     try {
         pool.connect((error, client, release) => {
             if (error) {

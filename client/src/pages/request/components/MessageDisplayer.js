@@ -10,7 +10,7 @@ function MessageDisplayer({ data, url }) {
     });
     const [answer, setAnswer] = useState();
     const currentState = state[state.length - 1];
-
+    console.log(state);
     useEffect(() => {
         async function fetching() {
             const rawData = await fetchData(currentState, url, "POST");
@@ -32,6 +32,16 @@ function MessageDisplayer({ data, url }) {
             },
         });
     };
+    const handleDraftAnswer = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: "draft_answer",
+            input: {
+                name: e.target.name,
+                value: answer,
+            },
+        });
+    };
 
     return (
         <>
@@ -41,8 +51,24 @@ function MessageDisplayer({ data, url }) {
             </div>
 
             <form className="text-area">
-                <input name="input" type="input" onKeyUp={handleAnswer} />
-                <input name="text" type="submit" onClick={handleSendAnswer} />
+                <input
+                    name="input"
+                    type="input"
+                    defaultValue="mike"
+                    onKeyUp={handleAnswer}
+                />
+                <input
+                    name="text"
+                    type="submit"
+                    value="send"
+                    onClick={handleSendAnswer}
+                />
+                <input
+                    name="text"
+                    type="submit"
+                    value="save"
+                    onClick={handleDraftAnswer}
+                />
             </form>
         </>
     );

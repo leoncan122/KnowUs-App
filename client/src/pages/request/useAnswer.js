@@ -14,6 +14,18 @@ function useAnswer(props) {
                 ...state,
                 {
                     ...currentState,
+                    draft: false,
+                    [action.input.name]: action.input.value,
+                },
+            ];
+        }
+        if (action.type === "draft_answer") {
+            const currentState = state[state.length - 1];
+            return [
+                ...state,
+                {
+                    ...currentState,
+                    draft: true,
                     [action.input.name]: action.input.value,
                 },
             ];

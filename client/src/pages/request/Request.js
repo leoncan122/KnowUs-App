@@ -7,7 +7,7 @@ import MessagePanel from "./components/MessagePanel";
 import MessageDisplayer from "./components/MessageDisplayer";
 
 function Request() {
-    const [msg, setMsg] = useState(null);
+    const [msgSelected, setMsgSelected] = useState(null);
     const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
 
@@ -24,9 +24,11 @@ function Request() {
         fetching();
     }, []);
 
+    // allows access to messages displayer, and see the message when click on conversation,
+
     const useRequest = (conversation) => {
         setTextboardState("active");
-        setMsg(conversation);
+        setMsgSelected(conversation);
     };
 
     return (
@@ -35,7 +37,7 @@ function Request() {
                 {textboardState === "active" ? (
                     <MessageDisplayer
                         className="textboard"
-                        data={msg}
+                        data={msgSelected}
                         url="http://localhost:4000/user/answer"
                     />
                 ) : (
