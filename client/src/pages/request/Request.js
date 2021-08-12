@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 // import { Route } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 
-import MessagePanel from "./components/MessagePanel";
-import MessageDisplayer from "./components/MessageDisplayer";
+import MessagePanel from "./components/panel/MessagePanel";
+import MessageDisplayer from "./components/textboard/MessageDisplayer";
 
 function Request() {
     const [msgSelected, setMsgSelected] = useState(null);

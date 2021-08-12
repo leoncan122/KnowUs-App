@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import fetchData from "../../../utils/fetchData";
-import useAnswer from "../useAnswer";
-import "./messageDisplayer.css";
+import fetchData from "../../../../utils/fetchData";
+import useAnswer from "../../useAnswer";
+import "./messageDisplayer";
 
 function MessageDisplayer({ data, url }) {
     const [state, dispatch] = useAnswer({
