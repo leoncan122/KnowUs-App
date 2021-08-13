@@ -12,7 +12,7 @@ export default function EditProfile() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const editData = { profession, country, city };
-        const url = "http://localhost:4000/";
+        // const url = "http://localhost:4000/"; debo completar
         const data = await fetchData(editData, url, "PUT");
         console.log(data);
     };
