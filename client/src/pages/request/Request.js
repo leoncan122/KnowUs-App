@@ -10,7 +10,6 @@ function Request() {
     const [msgSelected, setMsgSelected] = useState(null);
     const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
-
     useEffect(() => {
         const url = "http://localhost:4000/user/question";
         async function fetching() {
@@ -25,7 +24,6 @@ function Request() {
     }, []);
 
     // allows access to messages displayer, and see the message when click on conversation,
-
     const useRequest = (conversation) => {
         setTextboardState("active");
         setMsgSelected(conversation);
@@ -38,7 +36,6 @@ function Request() {
                     <MessageDisplayer
                         className="textboard"
                         data={msgSelected}
-                        url="http://localhost:4000/user/answer"
                     />
                 ) : (
                     <MessagePanel

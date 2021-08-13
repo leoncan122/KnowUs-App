@@ -30,6 +30,7 @@ const MakeQuestion = ({ match, history }) => {
         console.log(question);
         const url = `http://localhost:4000/user/question`;
         const data = await fetchData(question, url, "POST");
+        console.log(data);
 
         if (data.error) {
             setError(data.error);

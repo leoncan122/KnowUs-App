@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
+// import GeneralInput from "../../../../components/units/generalInput/GeneralInput";
 import fetchData from "../../../../utils/fetchData";
 import useAnswer from "../../useAnswer";
-import "./messageDisplayer";
+import "./messageDisplay.css";
 
-function MessageDisplayer({ data, url }) {
+function MessageDisplayer({ data }) {
     const [state, dispatch] = useAnswer({
         questionId: data.id,
         draft: false,
     });
-    const [answer, setAnswer] = useState();
+    const [answer, setAnswer] = useState("");
     const currentState = state[state.length - 1];
     console.log(state);
+
     useEffect(() => {
+        const url = "http://localhost:4000/user/answer";
         async function fetching() {
             const rawData = await fetchData(currentState, url, "POST");
             console.log(rawData);
@@ -22,25 +25,16 @@ function MessageDisplayer({ data, url }) {
     const handleAnswer = (e) => {
         setAnswer(e.target.value);
     };
-    const handleSendAnswer = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({
-            type: "send_answer",
+            type: `${e.target.value}_answer`,
             input: {
                 name: e.target.name,
                 value: answer,
             },
         });
-    };
-    const handleDraftAnswer = (e) => {
-        e.preventDefault();
-        dispatch({
-            type: "draft_answer",
-            input: {
-                name: e.target.name,
-                value: answer,
-            },
-        });
+        setAnswer("");
     };
 
     return (
@@ -54,20 +48,20 @@ function MessageDisplayer({ data, url }) {
                 <input
                     name="input"
                     type="input"
-                    defaultValue="mike"
-                    onKeyUp={handleAnswer}
+                    value={answer}
+                    onChange={handleAnswer}
                 />
                 <input
                     name="text"
                     type="submit"
                     value="send"
-                    onClick={handleSendAnswer}
+                    onClick={handleSubmit}
                 />
                 <input
                     name="text"
                     type="submit"
-                    value="save"
-                    onClick={handleDraftAnswer}
+                    value="draft"
+                    onClick={handleSubmit}
                 />
             </form>
         </>
