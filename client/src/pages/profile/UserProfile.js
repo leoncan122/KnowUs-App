@@ -32,7 +32,7 @@ const UserProfile = () => {
         <div className="main-content">
             <div className="info-profile">
                 {userLoged.userCity.length !== 0 && (
-                    <AsideUserInfo info={userLoged} />
+                    <AsideUserInfo info="prueba" />
                 )}
                 {userLoged && <ProfileImage photo={userLoged.userPhoto} />}
 

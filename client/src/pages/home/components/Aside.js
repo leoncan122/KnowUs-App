@@ -8,7 +8,7 @@ function Aside() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
-    console.log(error, loading);
+    // console.log(error, loading);
 
     useEffect(() => {
         const url = "http://localhost:4000/home/randomuser";
@@ -35,6 +35,10 @@ function Aside() {
                         <ProfileCard data={profile} />
                     </div>
                 ))}
+            <p>
+                {loading}
+                {error}
+            </p>
         </div>
     );
 }
