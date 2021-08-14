@@ -1,6 +1,7 @@
 const { pool } = require("../../../services/poolService");
 const sendQuery =
     "INSERT INTO answers (text,is_draft,question_id)values($1,$2,$3)RETURNING *";
+
 const answeredTrue =
     "UPDATE public_questions SET is_answered = true WHERE id=$1 RETURNING *";
 
@@ -28,6 +29,7 @@ const answer = (req, res) => {
                 }
                 client.query(answeredTrue, [questionId], (err, result) => {
                     release();
+                    console.log(result.rows);
                     res.status(200).send({
                         message: "message sent correctly",
                     });

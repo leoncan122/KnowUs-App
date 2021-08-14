@@ -11,7 +11,7 @@ function MessageDisplayer({ data }) {
     });
     const [answer, setAnswer] = useState("");
     const currentState = state[state.length - 1];
-    console.log(state);
+    console.log(data);
 
     useEffect(() => {
         const url = "http://localhost:4000/user/answer";

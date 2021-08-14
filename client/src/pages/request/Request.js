@@ -11,10 +11,10 @@ function Request() {
     const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
     useEffect(() => {
+        console.log("fetching once again");
         const url = "http://localhost:4000/user/question";
         async function fetching() {
             const rawData = await fetchData(null, url, "GET");
-            console.log(rawData);
 
             if (rawData.isSuccesful) {
                 setData(rawData.questions);
