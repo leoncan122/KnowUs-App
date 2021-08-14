@@ -8,6 +8,7 @@ import BottomNavbar from "./components/navigation/bottomNavbar/BottomNavbar";
 import Home from "./pages/home/Home";
 import UserProfile from "./pages/profile/UserProfile";
 import { SearchProvider } from "./context/SearchContext";
+
 // import { userContext } from "./context/userContext";
 
 function App() {

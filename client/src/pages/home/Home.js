@@ -3,6 +3,7 @@ import "./Home.css";
 import Aside from "./components/Aside";
 import Search from "../../components/search/Search";
 import { SearchContext } from "../../context/SearchContext";
+import CollapseCards from "../../components/collapse-cards/CollapseCards";
 
 function Home() {
     const { result } = useContext(SearchContext);
@@ -53,15 +54,7 @@ function Home() {
                 {publications
                     ? publications.map((post) => (
                           <div className="post" key={post.answer_id}>
-                              <div className="sender-info">
-                                  <h4>{post.sender_username}</h4>
-                                  <p>Ask: {post.question_text}</p>
-                                  <p>#{post.category}</p>
-                              </div>
-                              <div className="receiver-info">
-                                  <h4>{post.prof_username}</h4>
-                                  <p>Answers: {post.answer_text}</p>
-                              </div>
+                              <CollapseCards posts={post} />
                           </div>
                       ))
                     : error && (

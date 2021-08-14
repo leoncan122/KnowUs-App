@@ -1,4 +1,7 @@
 module.exports = {
+    rules: {
+        camelcase: ["error", { allow: ["aa_bb"] }],
+    },
     env: {
         commonjs: true,
         es2021: true,
@@ -11,11 +14,9 @@ module.exports = {
     },
     settings: {
         "import/resolver": {
-        "node": {
-        "extensions": [
-        ".js",
-        ".jsx",
-        ".json"
-        ]
+            node: {
+                extensions: [".js", ".jsx", ".json"],
+            },
         },
-}
+    },
+};

@@ -29,7 +29,7 @@ function Aside() {
     return (
         <div className="aside">
             {data &&
-                data.map((profile) => (
+                [data].map((profile) => (
                     <div>
                         <ProfileCard data={profile} />
                     </div>
