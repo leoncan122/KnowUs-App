@@ -11,17 +11,18 @@ function Request() {
     const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
     useEffect(() => {
-        console.log("fetching once again");
-        const url = "http://localhost:4000/user/question";
         async function fetching() {
+            const url = "http://localhost:4000/user/question";
             const rawData = await fetchData(null, url, "GET");
-
             if (rawData.isSuccesful) {
                 setData(rawData.questions);
             }
         }
-        fetching();
-    }, []);
+
+        if (textboardState === "unable") {
+            fetching();
+        }
+    }, [textboardState]);
 
     // allows access to messages displayer, and see the message when click on conversation,
     const useRequest = (conversation) => {
@@ -38,11 +39,7 @@ function Request() {
                         data={msgSelected}
                     />
                 ) : (
-                    <MessagePanel
-                        className="panel"
-                        fn={useRequest}
-                        data={data}
-                    />
+                    <MessagePanel fn={useRequest} data={data} />
                 )}
             </div>
 
