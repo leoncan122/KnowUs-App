@@ -1,4 +1,4 @@
-const { pool } = require("../../../services/poolService");
+const { pool } = require("../../services/poolService");
 
 const sendMessages = (message) => {
     const { text, from_id, to_id } = message;

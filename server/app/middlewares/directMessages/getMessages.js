@@ -1,4 +1,4 @@
-const { pool } = require("../../../services/poolService");
+const { pool } = require("../../services/poolService");
 
 const getMessages = (id) => {
     const query = `SELECT dm.from_userid sender_id, u.user_name sender, u.photo sender_photo,

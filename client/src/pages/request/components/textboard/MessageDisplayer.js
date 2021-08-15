@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import GeneralInput from "../../../../components/units/generalInput/GeneralInput";
 import fetchData from "../../../../utils/fetchData";
 import useAnswer from "../../useAnswer";
 import "./messageDisplay.css";
@@ -11,7 +10,6 @@ function MessageDisplayer({ data }) {
     });
     const [answer, setAnswer] = useState("");
     const currentState = state[state.length - 1];
-    console.log(data);
 
     useEffect(() => {
         const url = "http://localhost:4000/user/answer";
@@ -45,19 +43,23 @@ function MessageDisplayer({ data }) {
             </div>
 
             <form className="text-area">
-                <input
+                <textarea
+                    className="dashboard"
                     name="input"
-                    type="input"
+                    type="textarea"
                     value={answer}
                     onChange={handleAnswer}
+                    required
                 />
                 <input
+                    className="send-btn"
                     name="text"
                     type="submit"
                     value="send"
                     onClick={handleSubmit}
                 />
                 <input
+                    className="draft-btn"
                     name="text"
                     type="submit"
                     value="draft"

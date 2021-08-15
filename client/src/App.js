@@ -11,6 +11,8 @@ import EditProfile from "./pages/editProfile/EditProfile";
 import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
 import Request from "./pages/request/Request";
+// import MessagesInbox from "./pages/directMessages/MessageInbox";
+import Chat from "./pages/directMessages/Chat";
 
 // import { userContext } from "./context/userContext";
 
@@ -31,6 +33,9 @@ function App() {
                     <Route path="/user/:id/question" component={MakeQuestion} />
 
                     <Route path="/question" component={Request} />
+
+                    <Route path="/messages" component={Chat} />
+
                     <Route path="/profile/edit" component={EditProfile} />
                 </Switch>
                 <BottomNavbar />

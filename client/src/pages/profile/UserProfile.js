@@ -29,6 +29,7 @@ const userProfile = ({ match }) => {
                 {data && <ProfileImage photo={data.photo} />}
 
                 <Link to={`${match.url}/question`}>public question</Link>
+                <Link to={`/messages/user/${id}`}>direct message</Link>
             </div>
             <div className="publications" />
             {error && (

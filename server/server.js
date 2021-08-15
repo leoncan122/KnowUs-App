@@ -24,12 +24,11 @@ const questions = require("./app/routes/publicQuestions");
 const profile = require("./app/routes/profile");
 const messages = require("./app/routes/directMessages");
 
+//middlewares
 const {
     sendMessages,
-} = require("./app/controllers/user/directMessages/sendMessage");
-const {
-    getMessages,
-} = require("./app/controllers/user/directMessages/getMessages");
+} = require("./app/middlewares/directMessages/sendMessage");
+const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 
 //cors
 const corsConfig = {
@@ -44,6 +43,7 @@ app.get("/", (req, res) => {
     );
 });
 
+// socket part
 const emitMessages = (msg) => {
     getMessages(msg.to_id).then((messages) => {
         console.log(messages, "hola");
@@ -51,7 +51,6 @@ const emitMessages = (msg) => {
     });
 };
 
-// socket part
 io.on("connection", (socket) => {
     socket.on("priv-msg", (msg) => {
         sendMessages(msg).then(() => {
@@ -65,7 +64,6 @@ app.use("/auth", auth);
 app.use("/home", home);
 app.use("/user", questions);
 app.use("/profile", profile);
-//app.use("/messages", messages);
 
 //logout
 app.get("/logout", (req, res) => {
