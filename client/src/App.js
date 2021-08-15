@@ -11,6 +11,7 @@ import EditProfile from "./pages/editProfile/EditProfile";
 import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
 
+
 function App() {
     return (
         <div className="App">

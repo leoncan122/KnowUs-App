@@ -9,31 +9,12 @@ import { userContext } from "../../context/userContext";
 
 const UserProfile = () => {
     const { userLoged } = useContext(userContext);
-    console.log(userLoged);
-
-    // const [data, setData] = useState(null);
-    // const [error, setError] = useState("");
-    // const { id } = useParams();
-    // const userId = userLoged.id;
-
-    // useEffect(() => {
-    //     const url = `http://localhost:4000/home/user/${id}`;
-    //     async function fetching() {
-    //         const rawData = await fetchData(null, url, "GET");
-    //         if (rawData.error) {
-    //             setError(rawData.error);
-    //         }
-    //         setData(rawData[0]);
-    //     }
-    //     fetching();
-    // }, []);
 
     return (
         <div className="main-content">
             <div className="info-profile">
-                {userLoged.userCity.length !== 0 && (
-                    <AsideUserInfo info="prueba" />
-                )}
+                <AsideUserInfo info={userLoged} />
+
                 {userLoged && <ProfileImage photo={userLoged.userPhoto} />}
 
                 <Link to={`${userLoged.userId}/question`}>public question</Link>
