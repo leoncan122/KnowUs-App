@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 
-const Chat = () => {
+const Chat = ({ to, from }) => {
     const [sent, setSent] = useState({
         text: "",
-        from_id: parseInt(1, 10),
-        to_id: parseInt(5, 10),
+        from_id: from,
+        to_id: to,
     });
 
     const [data, setData] = useState(null);
     const socket = io("http://localhost:4000");
-    console.log(data);
 
     // receiving messages from server
     useEffect(() => {
+        socket.emit("priv-msg", sent);
         socket.on("priv-msg", (messages) => {
-            console.log(messages);
-
             setData(messages);
         });
     }, []);
@@ -26,17 +24,25 @@ const Chat = () => {
             ...sent,
             [e.target.name]: e.target.value,
         });
-        console.log(sent);
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
         // sending messages to server
         socket.emit("priv-msg", sent);
+
+        setSent({ ...sent, text: "" });
     };
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <textarea name="text" type="input" onChange={handleMsg} />
+                <textarea
+                    name="text"
+                    type="input"
+                    value={sent.text}
+                    onChange={handleMsg}
+                />
                 <input type="submit" value="send" />
             </form>
 

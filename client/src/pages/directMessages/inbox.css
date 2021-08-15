@@ -1,0 +1,4 @@
+.inbox-page {
+    display: grid;
+    grid-template: 1fr 11fr 0fr / 1fr;
+}

@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 
 // socket part
 const emitMessages = (msg) => {
-    getMessages(msg.to_id).then((messages) => {
+    getMessages(msg.to_id, msg.from_id).then((messages) => {
         console.log(messages, "hola");
         io.emit("priv-msg", messages);
     });
@@ -64,6 +64,7 @@ app.use("/auth", auth);
 app.use("/home", home);
 app.use("/user", questions);
 app.use("/profile", profile);
+app.use("/message", messages);
 
 //logout
 app.get("/logout", (req, res) => {

@@ -1,16 +1,16 @@
 const { pool } = require("../../services/poolService");
 
-const getMessages = (id) => {
-    const query = `SELECT dm.from_userid sender_id, u.user_name sender, u.photo sender_photo,
-    dm.id msg_id, dm.text, dm.date
-    FROM direct_messages dm JOIN users u ON u.id = dm.from_userid
-    WHERE dm.to_userid = $1
+const getMessages = (to, from) => {
+    const query = `SELECT * FROM direct_messages
+    WHERE (from_userid = $1 AND  to_userid = $2 OR from_userid = $2 AND  to_userid = $1)
     ORDER by date DESC;`;
 
+    const values = [from, to];
+    console.log(values);
     return new Promise((resolve, reject) => {
         try {
             pool.connect((error, client, release) => {
-                client.query(query, [id], (err, result) => {
+                client.query(query, values, (err, result) => {
                     release();
 
                     if (result.rowCount > 0) {

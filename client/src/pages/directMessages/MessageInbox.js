@@ -1,23 +1,27 @@
-import "../request/request.css";
+import "./inbox.css";
 import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
+import cookieMonster from "../../utils/cookieMonster";
 
-// import MessagePanel from "../request/components/panel/MessagePanel";
 import Chat from "./Chat";
+import MessagePanel from "../request/components/panel/MessagePanel";
 
 function MessagesInbox() {
-    // const [msgSelected, setMsgSelected] = useState(null);
-    // const [data, setData] = useState(null);
+    const [msgSelected, setMsgSelected] = useState(null);
+    const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
+
+    const userId = cookieMonster("userId");
+
     useEffect(() => {
         async function fetching() {
-            const url = "http://localhost:4000/messages/inbox";
+            const url = "http://localhost:4000/message/inbox";
             const rawData = await fetchData(null, url, "GET");
             console.log(rawData);
-            // if (rawData.isSuccesful) {
-            //     setData(rawData.questions);
-            // }
+            if (rawData.messages) {
+                setData(rawData.messages);
+            }
         }
 
         if (textboardState === "unable") {
@@ -26,17 +30,19 @@ function MessagesInbox() {
     }, [textboardState]);
 
     // allows access to messages displayer, and see the message when click on conversation,
-    // const useRequest = (conversation) => {
-    //     setTextboardState("active");
-    //     setMsgSelected(conversation);
-    // };
+    const useRequest = (conversation) => {
+        setTextboardState("active");
+        setMsgSelected(conversation);
+    };
 
     return (
-        <div className="requestPage">
+        <div className="inbox-page">
             <div className="content">
-                <Route path="/user">
-                    <Chat />
-                </Route>
+                {textboardState === "active" ? (
+                    <Chat to={msgSelected.sender_id} from={userId} />
+                ) : (
+                    <MessagePanel fn={useRequest} data={data} />
+                )}
             </div>
 
             <div className="footer">
