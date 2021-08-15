@@ -1,4 +1,4 @@
 .App {
     display: grid;
-    grid-template-rows: 15vh 75vh 10vh;
+    /* grid-template-rows: 15vh 75vh 10vh; */
 }

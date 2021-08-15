@@ -14,7 +14,7 @@ function MessagePanel({ fn, data }) {
                         type="button"
                         onClick={() => fn(post)}
                     >
-                        {post.sender}
+                        {post.text || post.sender}
                     </button>
                 ))}
         </div>

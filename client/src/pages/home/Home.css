@@ -44,12 +44,14 @@
     border-radius: 5%;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    overflow: scroll;
 }
 .receiver-info {
     height: 50%;
     display: grid;
     grid-template-columns: 1fr 4fr;
     place-self: center/ center;
+    overflow: scroll;
 }
 .receiver-info > h4 {
     place-self: center;

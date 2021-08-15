@@ -10,10 +10,10 @@ const Chat = ({ to, from }) => {
 
     const [data, setData] = useState(null);
     const socket = io("http://localhost:4000");
+    console.log(data);
 
     // receiving messages from server
     useEffect(() => {
-        socket.emit("priv-msg", sent);
         socket.on("priv-msg", (messages) => {
             setData(messages);
         });
@@ -35,19 +35,31 @@ const Chat = ({ to, from }) => {
         setSent({ ...sent, text: "" });
     };
     return (
-        <div>
+        <>
+            <div className="messages-area">
+                {data &&
+                    data.map((msg) => {
+                        if (msg.from_userid === to) {
+                            return (
+                                <div className="text-question">{msg.text}</div>
+                            );
+                        }
+
+                        return <div className="text-answer">{msg.text}</div>;
+                    })}
+            </div>
+
             <form onSubmit={handleSubmit}>
                 <textarea
                     name="text"
                     type="input"
+                    className="dashboard"
                     value={sent.text}
                     onChange={handleMsg}
                 />
                 <input type="submit" value="send" />
             </form>
-
-            {data && data.map((msg) => <p>{msg.text}</p>)}
-        </div>
+        </>
     );
 };
 
