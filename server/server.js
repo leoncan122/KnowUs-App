@@ -43,22 +43,27 @@ app.get("/", (req, res) => {
     );
 });
 
+// -----------------------------------------------
 // socket part
 const emitMessages = (msg) => {
     getMessages(msg.to_id, msg.from_id).then((messages) => {
-        console.log(messages, "hola");
         io.emit("priv-msg", messages);
     });
 };
 
 io.on("connection", (socket) => {
+    // this socket just receive the users-id and  send all the messages
+    socket.on("users", (userId) => {
+        emitMessages(userId);
+    });
+    // this socket listen the message, save in database and get all the messages again
     socket.on("priv-msg", (msg) => {
         sendMessages(msg).then(() => {
             emitMessages(msg);
         });
     });
 });
-
+//-----------------------------------------------
 //User endpoints
 app.use("/auth", auth);
 app.use("/home", home);

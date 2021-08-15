@@ -10,10 +10,10 @@ const Chat = ({ to, from }) => {
 
     const [data, setData] = useState(null);
     const socket = io("http://localhost:4000");
-    console.log(data);
 
     // receiving messages from server
     useEffect(() => {
+        socket.emit("users", { from_id: from, to_id: to });
         socket.on("priv-msg", (messages) => {
             setData(messages);
         });
@@ -41,11 +41,17 @@ const Chat = ({ to, from }) => {
                     data.map((msg) => {
                         if (msg.from_userid === to) {
                             return (
-                                <div className="text-question">{msg.text}</div>
+                                <div key={msg.id} className="text-question">
+                                    {msg.text}
+                                </div>
                             );
                         }
 
-                        return <div className="text-answer">{msg.text}</div>;
+                        return (
+                            <div key={msg.id} className="text-answer">
+                                {msg.text}
+                            </div>
+                        );
                     })}
             </div>
 
