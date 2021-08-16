@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import OthersProfiles from "./pages/profile/OthersProfiles";
 import SingUp from "./pages/authentication/singup/SingUp";
 import Login from "./pages/authentication/login/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
@@ -10,7 +11,6 @@ import UserProfile from "./pages/profile/UserProfile";
 import EditProfile from "./pages/editProfile/EditProfile";
 import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
-
 
 function App() {
     return (
@@ -25,6 +25,11 @@ function App() {
                     <Route path="/register" component={SingUp} />
 
                     <Route exact path="/my-profile" component={UserProfile} />
+                    <Route
+                        exact
+                        path="/user/profile/:profile"
+                        component={OthersProfiles}
+                    />
 
                     <Route path="/user/:id/question" component={MakeQuestion} />
 

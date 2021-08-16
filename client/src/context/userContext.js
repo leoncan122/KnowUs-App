@@ -8,7 +8,7 @@ export function UserProvider({ children }) {
     const id = 0;
 
     const [userLoged, setUserLoged] = useState(id);
-    console.log(userLoged);
+
     /* lo que viene a continuacion funciona cuando la pagina se refresca
     o sea cuando el user logged tiene un numero mayor a cero, este es el id que le va entregar la
     cookie monster o sea si hay cooki id, esto se ejecuta, en caso contrario se vuelve null, pero
@@ -17,13 +17,10 @@ export function UserProvider({ children }) {
     if (userLoged === 0 && document.cookie) {
         const data1 = cookieMonster("userId");
 
-        console.log("entro??");
         const url = `http://localhost:4000/home/user/${data1}`;
-        console.log(data1);
 
         const fetching = async () => {
             const data = await fetchData(false, url, "GET");
-            console.log(data);
 
             setUserLoged(data);
 
