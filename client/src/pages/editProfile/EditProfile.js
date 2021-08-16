@@ -8,13 +8,14 @@ export default function EditProfile() {
     const [profession, setProfession] = useState("");
     const [country, setCountry] = useState("");
     const [city, setCity] = useState("");
+    const [profileMessage, setProfileMessage] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const editData = { profession, country, city };
-        const url = "http://localhost:4000/";
+        const url = "http://localhost:4000/profile/edit";
         const data = await fetchData(editData, url, "PUT");
-        console.log(data);
+        setProfileMessage(data.message);
     };
 
     return (
@@ -32,6 +33,7 @@ export default function EditProfile() {
                     Submit
                 </button>
             </form>
+            <h2>{profileMessage}</h2>
         </div>
     );
 }
