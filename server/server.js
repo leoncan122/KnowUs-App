@@ -17,20 +17,20 @@ const io = require("socket.io")(server, {
     },
 });
 
-//routes
+// routes
 const auth = require("./app/routes/auth");
 const home = require("./app/routes/home");
 const questions = require("./app/routes/publicQuestions");
 const profile = require("./app/routes/profile");
 const messages = require("./app/routes/directMessages");
 
-//middlewares
+// middlewares
 const {
     sendMessages,
 } = require("./app/middlewares/directMessages/sendMessage");
 const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 
-//cors
+// cors
 const corsConfig = {
     origin: "http://localhost:3000",
     credentials: true,
@@ -46,8 +46,8 @@ app.get("/", (req, res) => {
 // -----------------------------------------------
 // socket part
 const emitMessages = (msg) => {
-    getMessages(msg.to_id, msg.from_id).then((messages) => {
-        io.emit("priv-msg", messages);
+    getMessages(msg.to_id, msg.from_id).then((result) => {
+        io.emit("priv-msg", result);
     });
 };
 
@@ -64,14 +64,14 @@ io.on("connection", (socket) => {
     });
 });
 //-----------------------------------------------
-//User endpoints
+// User endpoints
 app.use("/auth", auth);
 app.use("/home", home);
 app.use("/user", questions);
 app.use("/profile", profile);
 app.use("/message", messages);
 
-//logout
+// logout
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
     res.clearCookie("userId");
