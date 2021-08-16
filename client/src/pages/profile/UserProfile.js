@@ -27,8 +27,10 @@ const userProfile = ({ match }) => {
             <div className="info-profile">
                 {data && <AsideUserInfo info={data} />}
                 {data && <ProfileImage photo={data.photo} />}
-
-                <Link to={`${match.url}/question`}>public question</Link>
+                <div className="interacion-btn">
+                    <Link to={`${match.url}/question`}>public question</Link>
+                    <Link to={`/messages/user/${id}`}>direct message</Link>
+                </div>
             </div>
             <div className="publications" />
             {error && (

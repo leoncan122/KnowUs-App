@@ -51,7 +51,9 @@ export default function SingUp(props) {
                 {error && <p>{error}</p>}
             </form>
             <h3>Already registered?</h3>
-            <Link to="/login">Login</Link>
+            <Link className="link" to="/login">
+                Login
+            </Link>
         </div>
     );
 }

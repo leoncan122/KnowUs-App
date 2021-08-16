@@ -10,7 +10,10 @@ const fetchData = async (handleData, url, methodType) => {
         data = await res.json();
     }
     if (methodType === "GET" && !handleData) {
-        const res = await fetch(url);
+        const res = await fetch(url, {
+            method: methodType,
+            credentials: "include",
+        });
         data = await res.json();
     }
 

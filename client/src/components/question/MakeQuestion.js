@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import fetchData from "../../utils/fetchData";
+import "./makeQuestion.css";
 
 const MakeQuestion = ({ match, history }) => {
     const [question, setQuestion] = useState({
@@ -29,6 +30,7 @@ const MakeQuestion = ({ match, history }) => {
         console.log(question);
         const url = `http://localhost:4000/user/question`;
         const data = await fetchData(question, url, "POST");
+        console.log(data);
 
         if (data.error) {
             setError(data.error);
@@ -41,21 +43,25 @@ const MakeQuestion = ({ match, history }) => {
         }
     };
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
+        <div className="question-content">
+            <form className="question-form" onSubmit={handleSubmit}>
+                <textarea
                     type="text"
                     name="text"
+                    className="input-question"
                     value={question.text}
                     onChange={handleQuestion}
                     placeholder="What are your doubts?"
+                    required
                 />
                 <input
                     type="text"
                     name="category"
+                    className="input-category"
                     value={question.category}
                     onChange={handleQuestion}
                     placeholder="category"
+                    required
                 />
                 <button
                     name="send"

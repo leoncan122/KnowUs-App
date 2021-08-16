@@ -2,15 +2,20 @@
     font-size: 1rem;
     color: black;
     display: grid;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 2fr 1fr;
 }
 .card > img {
-    width: 25px;
+    width: 45px;
     margin: auto;
 }
 .card > p {
     white-space: nowrap;
     overflow: hidden;
+}
+.interacion-btn {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1%;
 }
 
 @media (min-width: 900px) {
@@ -25,5 +30,6 @@
     }
     .card > p {
         grid-column: 2/3;
+        font-size: smaller;
     }
 }

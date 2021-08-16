@@ -1,12 +1,12 @@
 .main-content {
     justify-self: center;
     width: 90%;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-content: center;
 }
 .info-profile {
-    height: 25%;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 2fr 1fr;
