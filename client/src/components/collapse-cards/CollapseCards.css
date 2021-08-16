@@ -1,0 +1,12 @@
+.arrow-btn {
+    display: flex;
+    justify-content: flex-end;
+    width: 500%;
+}
+
+.toggleDown {
+    background-color: violet;
+    border-radius: 2px;
+    float: right;
+    margin-top: 1em;
+}
