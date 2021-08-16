@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./CollapseCards.css";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+<<<<<<< HEAD
 // import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+=======
+>>>>>>> develop
 
 const CollapseCards = ({ posts }) => {
     const [isOpen, setIsOpen] = useState(false);
