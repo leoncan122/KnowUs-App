@@ -3,6 +3,7 @@ import EditProfession from "../../components/editProfile/EditProfession";
 import EditCountry from "../../components/editProfile/EditCountry";
 import EditCity from "../../components/editProfile/EditCity";
 import fetchData from "../../utils/fetchData";
+import "./EditProfile.css";
 
 export default function EditProfile() {
     const [profession, setProfession] = useState("");
