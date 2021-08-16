@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function AsideUserInfo({ info }) {
-    const [userData, setUserData] = useState(info);
-
-    console.log(setUserData);
+    // const info = {
+    //     isAuthenticated:
+    //     message:
+    //     userCity: ,
+    //     userCountry:
+    //     userId:
+    //     userMail:
+    //     userName:
+    //     userPhoto:
+    //     userProfession:
+    //     userProfessional:
+    // };
 
     return (
         <div className="aside-user-info">
-            <h3>{userData.user_name}</h3>
-            <h3>Profession: {userData.profession}</h3>
+            <h3>Name: {info.userName}</h3>
+            <h3>Profession: {info.userProfession}</h3>
             <h3>
-                Lives in: {userData.city}, {userData.country}{" "}
+                Lives in: {info.userCity}, {info.userCountry}{" "}
             </h3>
         </div>
     );

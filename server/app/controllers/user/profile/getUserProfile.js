@@ -18,7 +18,19 @@ const getUserProfile = (req, res) => {
                 return res.status(404).send({ message: err.message });
             }
             if (result.rowCount > 0) {
-                res.status(200).json(result.rows);
+                const user = result.rows[0];
+                res.status(200).json({
+                    userId: user.id,
+                    userName: user.user_name,
+                    userMail: user.user_mail,
+                    userCountry: user.country,
+                    userCity: user.city,
+                    userProfession: user.profession,
+                    userProfessional: user.is_profesional,
+                    userPhoto: user.photo,
+                    isAuthenticated: true,
+                    message: `Welcome back ${user.user_name}`,
+                });
             }
         });
     });

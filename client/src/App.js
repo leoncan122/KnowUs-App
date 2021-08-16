@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import OthersProfiles from "./pages/profile/OthersProfiles";
 import SingUp from "./pages/authentication/singup/SingUp";
 import Login from "./pages/authentication/login/Login";
 import TopNavbar from "./components/navigation/topNavbar/TopNavbar";
@@ -25,7 +26,12 @@ function App() {
 
                     <Route path="/register" component={SingUp} />
 
-                    <Route exact path="/user/:id" component={UserProfile} />
+                    <Route exact path="/my-profile" component={UserProfile} />
+                    <Route
+                        exact
+                        path="/user/profile/:profile"
+                        component={OthersProfiles}
+                    />
 
                     <Route path="/user/:id/question" component={MakeQuestion} />
 

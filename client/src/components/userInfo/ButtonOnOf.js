@@ -1,17 +1,12 @@
-// funciona en http://localhost:3000/pbutton
-
 import React, { useState } from "react";
 import fetchData from "../../utils/fetchData";
 import "./ButtonOnOf.css";
 
-const professionalBolean = false; // variante hardcoriada esto debe venir desde el fetch que se haga en profile
-const userId = 4; // variante hardcoriada esto debe venir desde el fetch que se haga en profile
-
-export default function ButtonOnOf() {
-    const [isProfeesional, setIsProfessional] = useState(professionalBolean);
-    async function whenSwitch() {
-        setIsProfessional(!isProfeesional);
-        const value = !isProfeesional;
+export default function ButtonOnOf({ userId, state }) {
+    const [isProfesional, setIsProfessional] = useState(state);
+    function whenSwitch() {
+        setIsProfessional(!isProfesional);
+        const value = !isProfesional;
         const url = "http://localhost:4000/home/putProfile";
         const handleData = { userId, on: value };
         fetchData(handleData, url, "PUT");
@@ -23,7 +18,7 @@ export default function ButtonOnOf() {
         <label className="switch">
             <input
                 type="checkbox"
-                checked={isProfeesional}
+                checked={isProfesional}
                 onChange={whenSwitch}
             />
             <span className="slider" />

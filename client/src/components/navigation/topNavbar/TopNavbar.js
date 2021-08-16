@@ -29,6 +29,7 @@ export default function TopNavbar() {
                     {isLoged ? (
                         <li>
                             <Logout />
+                            <Link to="/my-profile">Profile</Link>
                         </li>
                     ) : (
                         <li className="log-register-btn">
