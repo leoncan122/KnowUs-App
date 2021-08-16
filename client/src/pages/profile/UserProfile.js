@@ -13,11 +13,15 @@ const UserProfile = () => {
     return (
         <div className="main-content">
             <div className="info-profile">
-                <AsideUserInfo info={userLoged} />
+                {userLoged && <AsideUserInfo info={userLoged} />}
 
                 {userLoged && <ProfileImage photo={userLoged.userPhoto} />}
 
-                <Link to={`${userLoged.userId}/question`}>public question</Link>
+                {userLoged && (
+                    <Link to={`${userLoged.userId}/question`}>
+                        public question
+                    </Link>
+                )}
             </div>
             <div className="publications" />
             {/* {error && (
@@ -27,10 +31,12 @@ const UserProfile = () => {
             )} */}
 
             <div>
-                <ButtonOnOf
-                    userId={userLoged.userId}
-                    state={userLoged.userProfessional}
-                />
+                {userLoged && (
+                    <ButtonOnOf
+                        userId={userLoged.userId}
+                        state={userLoged.userProfessional}
+                    />
+                )}
             </div>
         </div>
     );

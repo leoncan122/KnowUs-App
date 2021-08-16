@@ -29,7 +29,7 @@ function App() {
                     <Route exact path="/my-profile" component={UserProfile} />
                     <Route
                         exact
-                        path="/user/profile/:profile"
+                        path="/user/:user"
                         component={OthersProfiles}
                     />
 
