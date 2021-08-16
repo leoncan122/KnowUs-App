@@ -18,7 +18,7 @@ function MessagesInbox() {
         async function fetching() {
             const url = "http://localhost:4000/message/inbox";
             const rawData = await fetchData(null, url, "GET");
-            console.log(rawData);
+
             if (rawData.messages) {
                 setData(rawData.messages);
             }

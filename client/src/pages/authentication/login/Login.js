@@ -47,7 +47,9 @@ export default function Login(props) {
                 {error && <p>{error}</p>}
             </form>
             <h3>Already registered?</h3>
-            <Link to="/register">SingUp</Link>
+            <Link className="link" to="/register">
+                SingUp
+            </Link>
         </div>
     );
 }

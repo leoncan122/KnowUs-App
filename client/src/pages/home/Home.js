@@ -3,6 +3,8 @@ import "./Home.css";
 import Aside from "./components/Aside";
 import Search from "../../components/search/Search";
 import { SearchContext } from "../../context/SearchContext";
+import BottomNavbar from "../../components/navigation/bottomNavbar/BottomNavbar";
+import MainHeading from "./components/MainHeading";
 
 function Home() {
     const { result } = useContext(SearchContext);
@@ -38,16 +40,10 @@ function Home() {
             <div className="search-box">
                 <Search />
             </div>
-            <div className="main-heading">
-                <h2>
-                    Bienvenido a la plataforma dondé podras interactuar con
-                    Trabajadores, emprendedores y profesionales de todo el mundo
-                    a través de preguntas publicas y mensajes.
-                </h2>
-            </div>
+            <MainHeading />
             <Aside />
             <div className="posts-heading">
-                <h1>Last Answers / Result of search</h1>
+                <h3>Last Answers / Result of search</h3>
             </div>
             <div className="post-content">
                 {publications
@@ -70,6 +66,7 @@ function Home() {
                           </center>
                       )}
             </div>
+            <BottomNavbar />
         </div>
     );
 }
