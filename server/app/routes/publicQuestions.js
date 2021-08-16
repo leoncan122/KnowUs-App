@@ -6,8 +6,8 @@ const {
     postQuestions,
 } = require("../controllers/user/publicQuestions/postQuestions");
 const { answer } = require("../controllers/user/publicQuestions/answer");
-
 const { verifyToken } = require("../middlewares/verifyToken");
+
 const router = express.Router();
 
 router.post("/question", verifyToken, postQuestions);

@@ -14,6 +14,8 @@ const MakeQuestion = ({ match, history }) => {
     const handleQuestion = (e) => {
         setQuestion({ ...question, [e.target.name]: e.target.value });
     };
+
+    // this sets if message will be drafted
     const handleStatusQuestion = (boolean) => {
         setQuestion({
             ...question,
@@ -27,7 +29,7 @@ const MakeQuestion = ({ match, history }) => {
         if (click === "save") {
             setQuestion({ ...question, draft: true });
         }
-        console.log(question);
+
         const url = `http://localhost:4000/user/question`;
         const data = await fetchData(question, url, "POST");
         console.log(data);
@@ -37,7 +39,6 @@ const MakeQuestion = ({ match, history }) => {
         }
         if (data.message) {
             setTimeout(() => {
-                console.log(data.message);
                 history.push(`/user/${question.to}`);
             }, 1000);
         }

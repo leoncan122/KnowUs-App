@@ -6,20 +6,19 @@ const getMessages = (to, from) => {
     ORDER by date DESC;`;
 
     const values = [from, to];
-    console.log(values);
+
     return new Promise((resolve, reject) => {
         try {
             pool.connect((error, client, release) => {
                 client.query(query, values, (err, result) => {
                     release();
-
                     if (result.rowCount > 0) {
                         resolve(result.rows);
                     }
                 });
             });
         } catch (error) {
-            reject({ error: error.message });
+            reject(error.message);
         }
     });
 };
