@@ -6,6 +6,7 @@ import AsideUserInfo from "../../components/asideUserInfo/AsideUserInfo";
 import ProfileImage from "../../components/profile-image/ProfileImage";
 import ButtonOnOf from "../../components/userInfo/ButtonOnOf";
 import { userContext } from "../../context/userContext";
+import MyProfileCards from "../../components/myProfileCards/MyProfileCards";
 
 const UserProfile = () => {
     const { userLoged } = useContext(userContext);
@@ -38,6 +39,7 @@ const UserProfile = () => {
                     />
                 )}
             </div>
+            {userLoged && <MyProfileCards />}
         </div>
     );
 };

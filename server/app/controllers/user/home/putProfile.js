@@ -3,12 +3,13 @@ const { pool } = require("../../../services/poolService");
 const putProfile = (req, res) => {
     const { userId, on } = req.body;
     const values = [userId, on];
-    query = `update users set is_profesional = $2  where id =$1 returning is_profesional, id`;
+    const query = `update users set is_profesional = $2  where id =$1 returning is_profesional, id`;
 
     pool.query(query, values, (error, result) => {
         if (error) {
             return res.status(404).send({ message: error.message });
-        } else return res.status(200).json(result.rows);
+        }
+        return res.status(200).json(result.rows);
     });
 };
 

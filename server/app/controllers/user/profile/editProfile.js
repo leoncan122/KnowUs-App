@@ -3,9 +3,9 @@ const { pool } = require("../../../services/poolService");
 const query =
     "update users set profession = $1, country = $2, city = $3 where id = $4 returning *";
 
-const editProfile = async (req, res) => {
+const editProfile = (req, res) => {
     const userId = req.id;
-    console.log(req);
+
     const { profession, country, city } = req.body;
     const values = [profession, country, city, userId];
 
@@ -26,7 +26,9 @@ const editProfile = async (req, res) => {
                     .send({ isSuccesful: true, message: "Profile Modified" });
             });
         });
-    } catch (error) {}
+    } catch (error) {
+        return res.status(500).send({ error: error.message });
+    }
 };
 
 module.exports = editProfile;
