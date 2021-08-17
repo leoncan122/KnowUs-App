@@ -5,12 +5,12 @@ const query = `select a.text from answers a
     where pq.to_userid = $1`;
 
 const getMyAnswer = async (req, res) => {
-    const userId = 6; // req.id;
+    const userId = req.id;
     try {
         const result = await pool.query(query, [userId]);
         return res.json(result.rows);
     } catch (error) {
-        return res.send(error);
+        return res.send({ message: "Error connecting database" });
     }
 };
 
