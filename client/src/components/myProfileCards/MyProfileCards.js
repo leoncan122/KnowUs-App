@@ -7,6 +7,7 @@ export default function MyProfileCards() {
     useEffect(async () => {
         const url = "http://localhost:4000/profile/cards";
         const data = await fetchData(false, url, "GET");
+        console.log(data[0]);
         if (data[0]) {
             setAnswer(data[0].text);
         } else {

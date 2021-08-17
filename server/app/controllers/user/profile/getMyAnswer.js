@@ -5,7 +5,7 @@ const query = `select a.text from answers a
     where pq.to_userid = $1`;
 
 const getMyAnswer = async (req, res) => {
-    const userId = req.id;
+    const userId = 6; // req.id;
     try {
         const result = await pool.query(query, [userId]);
         return res.json(result.rows);
