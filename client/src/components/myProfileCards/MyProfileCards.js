@@ -8,16 +8,16 @@ export default function MyProfileCards() {
     useEffect(async () => {
         const url = "http://localhost:4000/profile/cards";
         const data = await fetchData(false, url, "GET");
-        if (data) {
-            setAnswer(data);
-        } else {
-            setAnswer("You haven't answered any questions");
-        }
-        console.log(answers);
+
+        setAnswer(data);
     }, []);
     return (
         <div>
-            {answers && answers.map((card) => <CollapseCards posts={card} />)}
+            {answers.length > 0 ? (
+                answers.map((card) => <CollapseCards posts={card} />)
+            ) : (
+                <h1>You havent answered any questions</h1>
+            )}
         </div>
     );
 }
