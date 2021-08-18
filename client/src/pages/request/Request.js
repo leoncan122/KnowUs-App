@@ -10,6 +10,7 @@ function Request() {
     const [msgSelected, setMsgSelected] = useState(null);
     const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
+
     useEffect(() => {
         async function fetching() {
             const url = "http://localhost:4000/user/question";
@@ -32,6 +33,23 @@ function Request() {
 
     return (
         <div className="requestPage">
+            <div className="header">
+                {textboardState === "active" && (
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setTextboardState("unable");
+                        }}
+                    >
+                        back
+                    </button>
+                )}
+                {textboardState === "active" ? (
+                    <p>{msgSelected.sender}</p>
+                ) : (
+                    <p>Questions</p>
+                )}
+            </div>
             <div className="content">
                 {textboardState === "active" ? (
                     <MessageDisplayer
@@ -41,17 +59,6 @@ function Request() {
                 ) : (
                     <MessagePanel fn={useRequest} data={data} />
                 )}
-            </div>
-
-            <div className="footer">
-                <button
-                    type="button"
-                    onClick={() => {
-                        setTextboardState("unable");
-                    }}
-                >
-                    back
-                </button>
             </div>
         </div>
     );

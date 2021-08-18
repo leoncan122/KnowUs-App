@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
+import "./chat.css";
 
 const Chat = ({ to, from }) => {
     const [sent, setSent] = useState({
@@ -13,7 +14,10 @@ const Chat = ({ to, from }) => {
 
     // receiving messages from server
     useEffect(() => {
+        // this line serves to get all the messages of the converstation just send id's
         socket.emit("users", { from_id: from, to_id: to });
+
+        // receiveing messages from socket
         socket.on("priv-msg", (messages) => {
             setData(messages);
         });
@@ -29,7 +33,7 @@ const Chat = ({ to, from }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // sending messages to server
+        // sending messages to socket
         socket.emit("priv-msg", sent);
 
         setSent({ ...sent, text: "" });

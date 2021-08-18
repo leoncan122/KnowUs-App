@@ -1,0 +1,33 @@
+.burger {
+    width: 250px;
+    position: absolute;
+    height: 100%;
+    left: 0px;
+    z-index: 10;
+    background-color: rgba(95, 158, 160, 0.39);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.burger > a > button {
+    font-size: 2rem;
+    background-color: #7c80f0;
+    border-style: none;
+    text-transform: capitalize;
+    color: rgba(255, 254, 254, 1);
+    transition: 0.5s ease;
+}
+
+.burger > a > button:hover {
+    transform-origin: left;
+    color: rgba(0, 0, 3, 1);
+    transition: 0.5s ease;
+}
+
+@media (min-width: 900px) {
+    .burger {
+        width: 600px;
+    }
+}

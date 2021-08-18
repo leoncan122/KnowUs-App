@@ -1,0 +1,23 @@
+import React, { useState, useEffect } from "react";
+import fetchData from "../../utils/fetchData";
+import CollapseCards from "../collapse-cards/CollapseCards";
+
+export default function MyProfileCards() {
+    const [answers, setAnswer] = useState([]);
+
+    useEffect(async () => {
+        const url = "http://localhost:4000/profile/cards";
+        const data = await fetchData(false, url, "GET");
+
+        setAnswer(data);
+    }, []);
+    return (
+        <div>
+            {answers.length > 0 ? (
+                answers.map((card) => <CollapseCards posts={card} />)
+            ) : (
+                <h1>You havent answered any questions</h1>
+            )}
+        </div>
+    );
+}
