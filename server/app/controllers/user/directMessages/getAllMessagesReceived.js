@@ -17,7 +17,6 @@ const MessagesReceived = (req, res) => {
             client.query(query, [1], (err, result) => {
                 release();
                 if (result.rowCount > 0) {
-                    console.log(result.rows);
                     return res.status(200).send({ messages: result.rows });
                 }
             });

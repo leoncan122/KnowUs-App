@@ -1,5 +1,15 @@
 .inbox-page {
-    height: 88vh;
+    height: 91vh;
     display: grid;
-    grid-template: 1fr 11fr 0fr / 1fr;
+    grid-template: 1fr 8fr / 1fr;
+}
+.header {
+    grid-row: 1/2;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 0.2fr 5fr;
+}
+.header > p {
+    grid-column: 2/3;
+    text-align: center;
 }

@@ -13,7 +13,6 @@ function MessagesInbox() {
     const [textboardState, setTextboardState] = useState("unable");
 
     const userId = cookieMonster("userId");
-
     useEffect(() => {
         async function fetching() {
             const url = "http://localhost:4000/message/inbox";
@@ -37,23 +36,29 @@ function MessagesInbox() {
 
     return (
         <div className="inbox-page">
+            <div className="header">
+                {textboardState === "active" && (
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setTextboardState("unable");
+                        }}
+                    >
+                        back
+                    </button>
+                )}
+                {textboardState === "active" ? (
+                    <p>{msgSelected.sender}</p>
+                ) : (
+                    <p>Messages</p>
+                )}
+            </div>
             <div className="content">
                 {textboardState === "active" ? (
                     <Chat to={msgSelected.sender_id} from={userId} />
                 ) : (
                     <MessagePanel fn={useRequest} data={data} />
                 )}
-            </div>
-
-            <div className="footer">
-                <button
-                    type="button"
-                    onClick={() => {
-                        setTextboardState("unable");
-                    }}
-                >
-                    back
-                </button>
             </div>
         </div>
     );
