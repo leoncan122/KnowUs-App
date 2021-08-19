@@ -39,7 +39,7 @@ function App() {
 
                     <Route path="/question" component={Request} />
 
-                    <Route path="/messages" component={MessagesInbox} />
+                    <Route path="/messages/:id?" component={MessagesInbox} />
 
                     <Route path="/profile/edit" component={EditProfile} />
                 </Switch>

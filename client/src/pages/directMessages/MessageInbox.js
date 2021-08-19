@@ -1,5 +1,6 @@
 import "./inbox.css";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 // import { Route } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import cookieMonster from "../../utils/cookieMonster";
@@ -12,7 +13,10 @@ function MessagesInbox() {
     const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
 
+    // ids to start a conversation
+    const { id } = useParams();
     const userId = cookieMonster("userId");
+
     useEffect(() => {
         async function fetching() {
             const url = "http://localhost:4000/message/inbox";
@@ -54,8 +58,8 @@ function MessagesInbox() {
                 )}
             </div>
             <div className="content">
-                {textboardState === "active" ? (
-                    <Chat to={msgSelected.sender_id} from={userId} />
+                {textboardState === "active" || id ? (
+                    <Chat to={id || msgSelected.sender_id} from={userId} />
                 ) : (
                     <MessagePanel fn={useRequest} data={data} />
                 )}
