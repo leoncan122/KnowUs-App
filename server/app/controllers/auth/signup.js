@@ -39,7 +39,7 @@ const signup = async (req, res) => {
                         { user: user.id },
                         process.env.SECRET,
                         {
-                            expiresIn: 28800, //8 hours
+                            expiresIn: 28800, // 8 hours
                         }
                     );
                     res.cookie("token", token, { httpOnly: true });
