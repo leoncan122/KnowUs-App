@@ -29,17 +29,13 @@ function App() {
                     <Route path="/register" component={SingUp} />
 
                     <Route exact path="/my-profile" component={UserProfile} />
-                    <Route
-                        exact
-                        path="/user/:user"
-                        component={OthersProfiles}
-                    />
+                    <Route exact path="/user/:id" component={OthersProfiles} />
 
                     <Route path="/user/:id/question" component={MakeQuestion} />
 
                     <Route path="/question" component={Request} />
 
-                    <Route path="/messages" component={MessagesInbox} />
+                    <Route path="/messages/:id?" component={MessagesInbox} />
 
                     <Route path="/profile/edit" component={EditProfile} />
                 </Switch>
