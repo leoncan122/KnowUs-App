@@ -10,10 +10,10 @@ const draftQuery =
     "INSERT INTO answers (text,is_draft,question_id)values($1,$2,$3)";
 
 const answer = (req, res) => {
-    const { message, draft, questionId } = req.body;
-    const values = [message, draft, questionId];
+    const { text, draft, questionId } = req.body;
+    const values = [text, draft, questionId];
 
-    if (!message || !questionId) {
+    if (!text || !questionId) {
         return res.status(400).send({ error: "Must complete all the fields" });
     }
     pool.connect((error, client, release) => {
