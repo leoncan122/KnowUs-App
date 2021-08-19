@@ -56,7 +56,7 @@ export default function TopNavbar() {
                     )}
                 </ul>
             </div>
-            {menuActive && <Hamburger />}
+            {menuActive && isLoged && <Hamburger />}
         </nav>
     );
 }

@@ -1,6 +1,6 @@
 .singup,
 .login {
-    height: 130vh;
+    height: 90vh;
 
     background: linear-gradient(
         312deg,
@@ -10,7 +10,7 @@
     );
     color: rgba(15, 224, 164, 1);
     display: grid;
-    grid-template-rows: 15% 60% 10% 1%;
+    grid-template-rows: 15% 50% 10% 1%;
     place-items: center;
 
     padding-bottom: 1rem;
@@ -18,18 +18,17 @@
 
 .singup-form,
 .login-form {
-    height: 70%;
+    align-self: start;
+    height: 90%;
     background: rgba(152, 46, 184, 0.425);
     /* -webkit-box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.91);
     box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.91); */
     display: grid;
-    gap: 2rem;
     border-radius: 3%;
     padding: 1rem;
-    z-index: 10;
 }
 .singup-form {
-    height: 90%;
+    height: 100%;
 }
 .singup-form:hover,
 .login-form:hover {
@@ -49,6 +48,7 @@
     font-size: 1.6rem;
     color: rgba(15, 224, 164, 1);
 }
+
 .btn {
     min-width: 60%;
     justify-self: center;
@@ -61,9 +61,8 @@
     transition: 0.5s;
     text-decoration: none;
 }
-@media (min-width: 900px) {
+/* @media (min-width: 900px) {
     .singup,
     .login {
-        height: 78vh;
     }
-}
+} */

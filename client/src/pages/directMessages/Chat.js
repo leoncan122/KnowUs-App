@@ -59,7 +59,7 @@ const Chat = ({ to, from }) => {
                     })}
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form className="chat-dashboard" onSubmit={handleSubmit}>
                 <textarea
                     name="text"
                     type="input"

@@ -24,7 +24,7 @@
     padding: 3% 2%;
 }
 
-form {
+.chat-dashboard {
     display: grid;
     grid-template: 1fr / 5fr 1fr;
 }
