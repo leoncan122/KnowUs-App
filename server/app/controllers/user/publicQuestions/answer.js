@@ -1,4 +1,5 @@
 const { pool } = require("../../../services/poolService");
+
 const sendQuery =
     "INSERT INTO answers (text,is_draft,question_id)values($1,$2,$3)RETURNING *";
 
@@ -9,46 +10,37 @@ const draftQuery =
     "INSERT INTO answers (text,is_draft,question_id)values($1,$2,$3)";
 
 const answer = (req, res) => {
-    const { text, draft, questionId } = req.body;
-    const values = [text, draft, questionId];
+    const { message, draft, questionId } = req.body;
+    const values = [message, draft, questionId];
 
-    if (!text || !questionId) {
+    if (!message || !questionId) {
         return res.status(400).send({ error: "Must complete all the fields" });
     }
-
     pool.connect((error, client, release) => {
         if (error) {
             return res.status(404).send({ error: error.message });
         }
-        if (values[1] === false) {
-            client.query(sendQuery, values, (err, result) => {
-                if (err) {
-                    return res.status(404).send({ error: err.message });
-                }
-                if (result.rowCount > 0) {
-                }
-                client.query(answeredTrue, [questionId], (err, result) => {
-                    release();
-                    console.log(result.rows);
-                    res.status(200).send({
-                        message: "message sent correctly",
-                    });
-                });
-            });
-        }
-        if (values[1] === true) {
-            client.query(draftQuery, [values[2]], (err, result) => {
+        client.query(sendQuery, values, (err, result) => {
+            if (err) {
+                res.status(404).send({ error: err.message });
+            }
+
+            if (result.rowCount > 0 && values[1] === "true") {
+                return res
+                    .status(200)
+                    .send({ message: "Mesage saved as draft" });
+            }
+            client.query(answeredTrue, [values[2]], (err, result) => {
                 release();
+
                 if (err) {
-                    return res.status(404).send({ error: err.message });
+                    res.status(404).send({ error: err.message });
                 }
                 if (result.rowCount > 0) {
-                    return res
-                        .status(200)
-                        .send({ message: "Mesage saved as draft" });
+                    res.status(201).send({ message: "Mesage has been sent" });
                 }
             });
-        }
+        });
     });
 };
 
