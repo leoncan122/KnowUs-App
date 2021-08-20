@@ -1,22 +1,16 @@
 import React, { useState } from "react";
 
 const TextEditor = () => {
-    const [text, setText] = useState();
-    let input = document.getElementById("msg");
+    const [text, setText] = useState("");
+    // let input = document.getElementById("msg");
     // const resultado = document.getElementById("resultado");
-    console.log(input, text);
 
-    function etiquetaStrong() {
-        const desde = input.selectionStart;
-        const hasta = input.selectionEnd;
+    function etiquetaStrong(cmd) {
+        const desde = text.charAt(text.length - 1);
+        console.log(desde);
+        text.setRangeText(`${cmd}`, desde, desde, "select");
 
-        const sel = input.value.substring(desde, hasta);
-
-        if (sel.length > 0) {
-            // si hay algo seleccionado
-            input.setRangeText(`<pre>${sel}</pre>`, desde, hasta, "select");
-            input = input.value;
-        }
+        etiquetaStrong(`</${cmd}>`);
     }
     return (
         <>
@@ -24,7 +18,7 @@ const TextEditor = () => {
             <button type="button" name="text" onClick={etiquetaStrong}>
                 code
             </button>
-            <p id="resultado" />
+            <p id="resultado">{}</p>
         </>
     );
 };

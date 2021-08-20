@@ -45,14 +45,14 @@ const Chat = ({ to, from }) => {
                     data.map((msg) => {
                         if (msg.from_userid === to) {
                             return (
-                                <div key={msg.id} className="text-question">
+                                <div key={msg.id} className="msg-question">
                                     {msg.text}
                                 </div>
                             );
                         }
 
                         return (
-                            <div key={msg.id} className="text-answer">
+                            <div key={msg.id} className="msg-answer">
                                 {msg.text}
                             </div>
                         );

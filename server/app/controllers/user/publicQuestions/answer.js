@@ -36,7 +36,10 @@ const answer = (req, res) => {
                     res.status(404).send({ error: errors.message });
                 }
                 if (results.rowCount > 0) {
-                    res.status(201).send({ message: "Mesage has been sent" });
+                    res.status(201).send({
+                        message: "Mesage has been sent",
+                        response: results.rows[0],
+                    });
                 }
             });
         });
