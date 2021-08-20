@@ -17,7 +17,7 @@ const Hamburger = () => (
         <Link to="/draft">
             <button type="button">draft</button>
         </Link>
-        <Link to="/my-profile/edit">
+        <Link to="/profile/edit">
             <button type="button">settings</button>
         </Link>
         <Logout />

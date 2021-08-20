@@ -14,9 +14,8 @@ export function UserProvider({ children }) {
     cookie monster o sea si hay cooki id, esto se ejecuta, en caso contrario se vuelve null, pero
      te tiene que redireccionar a home */
 
-    if (!userLoged && document.cookie) {
+    if (userLoged === 0 && document.cookie) {
         const data1 = cookieMonster("userId");
-
         const url = `http://localhost:4000/home/user/${data1}`;
 
         const fetching = async () => {

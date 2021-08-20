@@ -10,14 +10,16 @@ function MessageDisplayer({ data }) {
     });
     const [answer, setAnswer] = useState("");
     const currentState = state[state.length - 1];
-
     useEffect(() => {
         const url = "http://localhost:4000/user/answer";
         async function fetching() {
             const rawData = await fetchData(currentState, url, "POST");
             console.log(rawData);
         }
-        fetching();
+
+        if (currentState.text) {
+            fetching();
+        }
     }, [state]);
 
     const handleAnswer = (e) => {
@@ -32,13 +34,17 @@ function MessageDisplayer({ data }) {
                 value: answer,
             },
         });
-        setAnswer("");
     };
 
     return (
         <>
-            <div className="messages-area">
-                <div className="text-question">{data.text}</div>
+            <div className="question-area">
+                <div className="text-question">
+                    <h4>{data.text}</h4>
+                    <img src={data.photo} alt="" width="30px" />
+                    <p>From: </p>
+                    <p>Date:</p>
+                </div>
                 <div className="text-answer">{currentState.text}</div>
             </div>
 

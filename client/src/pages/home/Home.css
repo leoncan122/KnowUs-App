@@ -8,6 +8,7 @@
     display: grid;
     grid-template-rows: 30vh 8vh 80vh;
     justify-items: center;
+    overflow: scroll;
 }
 
 .posts-heading {
