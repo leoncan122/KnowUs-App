@@ -3,12 +3,12 @@ import "./TopNavbar.css";
 import { Link } from "react-router-dom";
 import { userContext } from "../../../context/userContext";
 import Hamburger from "../hamburguer/Hamburger";
-// import Logout from "../../logout/Logout";
 import cookieMonster from "../../../utils/cookieMonster";
 
 export default function TopNavbar() {
     const { isLoged, setIsLoged } = useContext(userContext);
     const [menuActive, setMenuActive] = useState(false);
+    console.log(menuActive);
 
     useEffect(() => {
         const tokenBoolean = cookieMonster("token");
@@ -16,15 +16,9 @@ export default function TopNavbar() {
     });
 
     function handleMenu() {
-        if (menuActive === true) {
-            setMenuActive(false);
-        } else {
-            setMenuActive(true);
-        }
+        setMenuActive(!menuActive);
     }
 
-    // <Logout />
-    // <Link to="/my-profile">Profile</Link>
     return (
         <nav className="main-nav">
             <div className="logo">
