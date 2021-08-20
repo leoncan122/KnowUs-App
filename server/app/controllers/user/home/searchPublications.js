@@ -10,7 +10,7 @@ const searchPublications = (req, res) => {
     JOIN users p ON pq.to_userid = p.id
     WHERE a.text ILIKE '%'||$1||'%' AND is_answered = true
     OR pq.category ILIKE '%'||$1||'%' AND is_answered = true
-    ORDER BY a.id DESC`;
+    ORDER BY a.id DESC LIMIT 15`;
 
     if (!word) {
         return res
@@ -33,6 +33,7 @@ const searchPublications = (req, res) => {
                         message: "Can't find anything, try again ;)",
                     });
                 }
+
                 return res
                     .status(200)
                     .send({ isSuccesful: true, publications: result.rows });

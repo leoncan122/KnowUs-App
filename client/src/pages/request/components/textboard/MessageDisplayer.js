@@ -1,39 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import fetchData from "../../../../utils/fetchData";
-import useAnswer from "../../useAnswer";
 import "./messageDisplay.css";
 
 function MessageDisplayer({ data }) {
-    const [state, dispatch] = useAnswer({
+    const [answer, setAnswer] = useState({
+        text: "",
         questionId: data.id,
         draft: false,
     });
-    const [answer, setAnswer] = useState("");
-    const currentState = state[state.length - 1];
-    useEffect(() => {
-        const url = "http://localhost:4000/user/answer";
-        async function fetching() {
-            const rawData = await fetchData(currentState, url, "POST");
-            console.log(rawData);
-        }
-
-        if (currentState.text) {
-            fetching();
-        }
-    }, [state]);
 
     const handleAnswer = (e) => {
-        setAnswer(e.target.value);
+        setAnswer({
+            ...answer,
+            [e.target.name]: e.target.value,
+        });
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({
-            type: `${e.target.value}_answer`,
-            input: {
-                name: e.target.name,
-                value: answer,
-            },
+
+        // declare draft value from input value
+        function draft() {
+            if (e.target.value === "send") {
+                return false;
+            }
+            return true;
+        }
+
+        setAnswer({
+            ...answer,
+            [e.target.name]: draft(),
         });
+        const url = "http://localhost:4000/user/answer";
+
+        async function fetching() {
+            const rawData = await fetchData(answer, url, "POST");
+            console.log(rawData);
+        }
+        fetching();
     };
 
     return (
@@ -41,34 +44,36 @@ function MessageDisplayer({ data }) {
             <div className="question-area">
                 <div className="text-question">
                     <h4>{data.text}</h4>
-                    <img src={data.photo} alt="" width="30px" />
-                    <p>From: </p>
-                    <p>Date:</p>
+                    <div className="question-info">
+                        <img src={data.photo} alt="" width="30px" />
+                        <p>From: </p>
+                        <p>Date:</p>
+                    </div>
+                    <div className="question-desc">Description of question</div>
                 </div>
-                <div className="text-answer">{currentState.text}</div>
+                <div className="text-answer">{answer.text}</div>
             </div>
 
             <form className="text-area">
                 <textarea
                     className="dashboard"
-                    name="input"
+                    name="text"
                     type="textarea"
-                    value={answer}
                     onChange={handleAnswer}
                     required
                 />
                 <input
                     className="send-btn"
-                    name="text"
+                    name="draft"
                     type="submit"
                     value="send"
                     onClick={handleSubmit}
                 />
                 <input
                     className="draft-btn"
-                    name="text"
+                    name="draft"
                     type="submit"
-                    value="draft"
+                    value="save"
                     onClick={handleSubmit}
                 />
             </form>
