@@ -15,6 +15,7 @@ export default function InputUsername({ username, onChange }) {
                 label={label}
                 inputType={inputType}
                 onChange={onChange}
+                required="true"
             />
         </div>
     );

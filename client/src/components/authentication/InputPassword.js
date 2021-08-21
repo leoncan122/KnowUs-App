@@ -15,6 +15,7 @@ export default function InputPassword({ password, onChange }) {
                 label={label}
                 inputType={inputType}
                 onChange={onChange}
+                required="true"
             />
         </div>
     );

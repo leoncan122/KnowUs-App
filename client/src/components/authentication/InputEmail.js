@@ -15,6 +15,7 @@ export default function InputEmail({ email, onChange }) {
                 label={label}
                 inputType={inputType}
                 onChange={onChange}
+                required="true"
             />
         </div>
     );
