@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import fetchData from "../../utils/fetchData";
 import CollapseCards from "../collapse-cards/CollapseCards";
 
-export default function MyProfileCards() {
+export default function MyProfileCards({ userId }) {
     const [answers, setAnswer] = useState([]);
 
     useEffect(async () => {
-        const url = "http://localhost:4000/profile/cards";
+        const url = `http://localhost:4000/profile/cards/${userId}`;
         const data = await fetchData(false, url, "GET");
 
         setAnswer(data);
