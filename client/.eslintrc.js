@@ -16,5 +16,13 @@ module.exports = {
         "react/jsx-filename-extension": [0],
         "react/prop-types": "off",
     },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "paths": ["src"],
+            "extensions": [".js", ".ts", ".d.ts"]
+          }
+        }
+      }
     
 };

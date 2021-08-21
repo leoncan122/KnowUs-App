@@ -13,6 +13,17 @@
     font-family: "Fira Mono", "Andale Mono", "Consolas", monospace;
 }
 
+.searchIcon {
+    position: absolute;
+    margin-top: 1.5em;
+    margin-left: 3.3em;
+}
+
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 @media (min-width: 900px) {
     .search-container {
         height: 70%;
@@ -23,5 +34,10 @@
         display: block;
         grid-column: 1/2;
         grid-row: 1/2;
+    }
+    .searchIcon {
+        position: absolute;
+        margin-top: 1.5em;
+        margin-left: 5em;
     }
 }
