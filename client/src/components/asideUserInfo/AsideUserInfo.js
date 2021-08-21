@@ -1,4 +1,6 @@
 import React from "react";
+import github from "./icons/github.png";
+import linkedin from "./icons/linkedin.png";
 
 export default function AsideUserInfo({ info }) {
     // const info = {
@@ -12,6 +14,8 @@ export default function AsideUserInfo({ info }) {
     //     userPhoto:
     //     userProfession:
     //     userProfessional:
+    //     userGithub:
+    //     userLinkedin:
     // };
 
     return (
@@ -21,6 +25,28 @@ export default function AsideUserInfo({ info }) {
             <h3>
                 Lives in: {info.userCity}, {info.userCountry}{" "}
             </h3>
+            <div className="github-link">
+                {info.userGithub && (
+                    <a
+                        href={`https:${info.userGithub}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <img src={github} alt="github-icons" />
+                    </a>
+                )}
+            </div>
+            <div className="linkedin-link">
+                {info.userLinkedin && (
+                    <a
+                        href={`https:${info.userLinkedin}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <img src={linkedin} alt="linkedin-icons" />
+                    </a>
+                )}
+            </div>
         </div>
     );
 }

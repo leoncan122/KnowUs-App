@@ -8,11 +8,13 @@ import cookieMonster from "../../../utils/cookieMonster";
 export default function TopNavbar() {
     const { isLoged, setIsLoged } = useContext(userContext);
     const [menuActive, setMenuActive] = useState(false);
-    console.log(menuActive);
 
     useEffect(() => {
         const tokenBoolean = cookieMonster("token");
         setIsLoged(tokenBoolean);
+        if (tokenBoolean === false) {
+            setMenuActive(false);
+        }
     });
 
     function handleMenu() {
