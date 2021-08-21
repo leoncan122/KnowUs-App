@@ -1,7 +1,7 @@
 const { pool } = require("../../../services/poolService");
 
 const query =
-    "select id ,user_name ,user_mail , country ,city ,profession , is_profesional , photo from users where id=$1";
+    "select id ,user_name ,user_mail , country ,city ,profession , is_profesional , photo, github_account, linkedin_account from users where id=$1";
 
 const getUserProfile = (req, res) => {
     const userId = parseInt(req.params.userId);
