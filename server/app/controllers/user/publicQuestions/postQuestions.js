@@ -1,18 +1,18 @@
 const { pool } = require("../../../services/poolService");
 
 const sendQuery =
-    "insert into public_questions (text,from_userid ,to_userid,category ,is_draft, is_answered )values ($1,$2,$3,$4,$5,false) RETURNING *";
+    "insert into public_questions (title, text, from_userid, to_userid, category , is_draft, is_answered )values ($1, $2,$3,$4,$5,$6,false) RETURNING *";
 
 const postQuestions = (req, res) => {
-    const { text, to, category, draft } = req.body;
+    const { title, text, to, category, draft } = req.body;
     const from = req.id; // gettin id from the token
 
-    const values = [text, from, to, category, draft];
+    const values = [title, text, from, to, category, draft];
     if (!from) {
         return res.status(400).send({ error: "You must be loged" });
     }
 
-    if (!text || !to || !category) {
+    if (!title || !text || !to || !category) {
         return res
             .status(400)
             .send({ error: "Must complete all the fields indicated" });
@@ -26,7 +26,6 @@ const postQuestions = (req, res) => {
             }
 
             if (result.rows[0].is_draft === true) {
-                console.log("hola");
                 res.status(200).send({
                     message: "Mesage saved as draft",
                 });
