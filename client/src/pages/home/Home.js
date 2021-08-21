@@ -13,7 +13,9 @@ function Home() {
     const [error, setError] = useState("");
 
     // Here result of search or fetchedData
-    const publications = result || contentData;
+    const publications = !result.publications
+        ? contentData
+        : result.publications;
 
     useEffect(() => {
         const url = "http://localhost:4000/home/lastones";

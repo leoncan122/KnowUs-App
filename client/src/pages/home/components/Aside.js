@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { SearchContext } from "../../../context/SearchContext";
 import fetchData from "../../../utils/fetchData";
 import "./aside.css";
 import ProfileCard from "./ProfileCard";
 
 function Aside() {
+    const { result } = useContext(SearchContext);
     const [data, setData] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
+
+    // Here result of search or fetchedData
+    const users =
+        !result.users || result.users.length < 1 ? data : result.users;
 
     useEffect(() => {
         const url = "http://localhost:4000/home/randomuser";
@@ -30,8 +36,8 @@ function Aside() {
             {error ? (
                 <center>{error}</center>
             ) : (
-                data &&
-                data.map((profile) => (
+                users &&
+                users.map((profile) => (
                     <div key={profile.id}>
                         {loading ? (
                             <center>{loading}</center>
