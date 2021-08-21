@@ -28,6 +28,8 @@ const getUserProfile = (req, res) => {
                     userProfession: user.profession,
                     userProfessional: user.is_profesional,
                     userPhoto: user.photo,
+                    userGithub: user.github_account,
+                    userLinkedin: user.linkedin_account,
                     isAuthenticated: true,
                     message: `Welcome back ${user.user_name}`,
                 });
