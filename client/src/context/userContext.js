@@ -17,7 +17,6 @@ export function UserProvider({ children }) {
 
     if (userLoged === 0 && document.cookie) {
         const data1 = cookieMonster("userId");
-
         const url = `http://localhost:4000/home/user/${data1}`;
 
         const fetching = async () => {

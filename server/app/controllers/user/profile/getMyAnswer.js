@@ -1,8 +1,11 @@
 const { pool } = require("../../../services/poolService");
 
-const query = `select a.text from answers a
-    join public_questions pq on a.question_id = pq.id join users u on pq.to_userid = u.id
-    where pq.to_userid = $1`;
+const query = `SELECT u.id sender_id, u.user_name sender_username, pq.text question_text ,pq.category,pq.is_answered,
+p.id prof_id, p.user_name prof_username, a.id answer_id, a.text answer_text, a.date
+FROM public_questions pq JOIN answers a ON pq.id = a.question_id
+JOIN users u ON pq.from_userid = u.id
+JOIN users p ON pq.to_userid = p.id
+WHERE pq.to_userid = $1`;
 
 const getMyAnswer = async (req, res) => {
     const userId = req.id;

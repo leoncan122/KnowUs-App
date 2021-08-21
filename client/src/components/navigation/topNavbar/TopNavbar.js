@@ -1,17 +1,25 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
 import { userContext } from "../../../context/userContext";
-import Logout from "../../logout/Logout";
+import Hamburger from "../hamburguer/Hamburger";
 import cookieMonster from "../../../utils/cookieMonster";
 
 export default function TopNavbar() {
     const { isLoged, setIsLoged } = useContext(userContext);
+    const [menuActive, setMenuActive] = useState(false);
 
     useEffect(() => {
         const tokenBoolean = cookieMonster("token");
         setIsLoged(tokenBoolean);
+        if (tokenBoolean === false) {
+            setMenuActive(false);
+        }
     });
+
+    function handleMenu() {
+        setMenuActive(!menuActive);
+    }
 
     return (
         <nav className="main-nav">
@@ -28,8 +36,13 @@ export default function TopNavbar() {
                 <ul>
                     {isLoged ? (
                         <li>
-                            <Logout />
-                            <Link to="/my-profile">Profile</Link>
+                            <button
+                                className="options"
+                                type="button"
+                                onClick={handleMenu}
+                            >
+                                Options
+                            </button>
                         </li>
                     ) : (
                         <li className="log-register-btn">
@@ -39,6 +52,7 @@ export default function TopNavbar() {
                     )}
                 </ul>
             </div>
+            {isLoged && menuActive && <Hamburger />}
         </nav>
     );
 }

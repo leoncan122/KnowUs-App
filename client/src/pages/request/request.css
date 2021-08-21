@@ -1,6 +1,7 @@
 .requestPage {
+    height: 91vh;
     display: grid;
-    grid-template: 1fr 11fr 0fr / 1fr;
+    grid-template: 1fr 8fr / 1fr;
 }
 .nav {
     grid-row: 1;
@@ -9,7 +10,7 @@
     display: grid;
     grid-template: 5fr 1fr / 1fr;
     background-color: antiquewhite;
-    grid-row: 2;
+    grid-row: 2/3;
 }
 .panel {
     grid-column: 1;
@@ -17,6 +18,6 @@
 .textboard {
     grid-row: 2;
 }
-.footer {
-    grid-row: 3;
+.header {
+    grid-row: 1/2;
 }

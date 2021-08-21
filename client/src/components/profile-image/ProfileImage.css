@@ -10,14 +10,14 @@
 }
 
 /* Media Queries */
-@media (max-width: 900px) {
-    .photo {
-        height: 80px;
-    }
-}
 
-@media (max-width: 540px) {
+@media (min-width: 540px) {
     .photo {
         height: 50px;
+    }
+}
+@media (min-width: 900px) {
+    .photo {
+        height: 80px;
     }
 }

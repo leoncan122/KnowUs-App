@@ -1,58 +1,42 @@
-import "./request.css";
+import "./components/panel/messagePanel.css";
 import React, { useState, useEffect } from "react";
-// import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 
-import MessagePanel from "./components/panel/MessagePanel";
-import MessageDisplayer from "./components/textboard/MessageDisplayer";
-
 function Request() {
-    const [msgSelected, setMsgSelected] = useState(null);
+    // const [msgSelected, setMsgSelected] = useState(null);
     const [data, setData] = useState(null);
-    const [textboardState, setTextboardState] = useState("unable");
+
     useEffect(() => {
         async function fetching() {
             const url = "http://localhost:4000/user/question";
             const rawData = await fetchData(null, url, "GET");
+            console.log(rawData);
             if (rawData.isSuccesful) {
                 setData(rawData.questions);
             }
         }
-
-        if (textboardState === "unable") {
-            fetching();
-        }
-    }, [textboardState]);
-
-    // allows access to messages displayer, and see the message when click on conversation,
-    const useRequest = (conversation) => {
-        setTextboardState("active");
-        setMsgSelected(conversation);
-    };
+        fetching();
+    }, []);
 
     return (
-        <div className="requestPage">
-            <div className="content">
-                {textboardState === "active" ? (
-                    <MessageDisplayer
-                        className="textboard"
-                        data={msgSelected}
-                    />
-                ) : (
-                    <MessagePanel fn={useRequest} data={data} />
-                )}
-            </div>
-
-            <div className="footer">
-                <button
-                    type="button"
-                    onClick={() => {
-                        setTextboardState("unable");
-                    }}
-                >
-                    back
-                </button>
-            </div>
+        <div className="panel">
+            {data ? (
+                data.map((post) => (
+                    <Link
+                        to={{
+                            pathname: `/question/${post.id}`,
+                            state: post,
+                        }}
+                    >
+                        <button key={post.id} type="button">
+                            {post.text || post.sender}
+                        </button>
+                    </Link>
+                ))
+            ) : (
+                <center>You dont have any messages/questions already</center>
+            )}
         </div>
     );
 }

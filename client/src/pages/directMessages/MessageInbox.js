@@ -1,5 +1,6 @@
 import "./inbox.css";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 // import { Route } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import cookieMonster from "../../utils/cookieMonster";
@@ -12,6 +13,8 @@ function MessagesInbox() {
     const [data, setData] = useState(null);
     const [textboardState, setTextboardState] = useState("unable");
 
+    // ids to start a conversation
+    const { id } = useParams();
     const userId = cookieMonster("userId");
 
     useEffect(() => {
@@ -37,23 +40,29 @@ function MessagesInbox() {
 
     return (
         <div className="inbox-page">
-            <div className="content">
+            <div className="header">
+                {textboardState === "active" && (
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setTextboardState("unable");
+                        }}
+                    >
+                        back
+                    </button>
+                )}
                 {textboardState === "active" ? (
-                    <Chat to={msgSelected.sender_id} from={userId} />
+                    <p>{msgSelected.sender}</p>
+                ) : (
+                    <p>Messages</p>
+                )}
+            </div>
+            <div className="content">
+                {textboardState === "active" || id ? (
+                    <Chat to={id || msgSelected.sender_id} from={userId} />
                 ) : (
                     <MessagePanel fn={useRequest} data={data} />
                 )}
-            </div>
-
-            <div className="footer">
-                <button
-                    type="button"
-                    onClick={() => {
-                        setTextboardState("unable");
-                    }}
-                >
-                    back
-                </button>
             </div>
         </div>
     );

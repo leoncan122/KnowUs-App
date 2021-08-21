@@ -14,10 +14,9 @@ const MessagesReceived = (req, res) => {
     // ORDER by date DESC`;
     try {
         pool.connect((error, client, release) => {
-            client.query(query, [1], (err, result) => {
+            client.query(query, [userId], (err, result) => {
                 release();
                 if (result.rowCount > 0) {
-                    console.log(result.rows);
                     return res.status(200).send({ messages: result.rows });
                 }
             });

@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import AsideUserInfo from "../../components/asideUserInfo/AsideUserInfo";
 import ProfileImage from "../../components/profile-image/ProfileImage";
 import fetchData from "../../utils/fetchData";
+import { userContext } from "../../context/userContext";
 
-export default function OthersProfiles() {
+export default function OthersProfiles({ history }) {
+    const { userLoged } = useContext(userContext);
     const [data, setData] = useState(null);
     const { id } = useParams();
-    console.log(id);
+
+    // redirects to my-profile when the profile selected it's mine
+    if (userLoged.userId === parseInt(id, 10)) {
+        history.push("/my-profile");
+    }
 
     useEffect(() => {
         const url = `http://localhost:4000/home/user/${id}`;
         async function fetching() {
             const rawData = await fetchData(null, url, "GET");
-            console.log(rawData);
 
             setData(rawData);
         }

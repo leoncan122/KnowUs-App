@@ -1,13 +1,10 @@
 import "./messagePanel.css";
-import React, { useState } from "react";
+import React from "react";
 
 function MessagePanel({ fn, data }) {
-    const [posts, setPosts] = useState(data);
-    console.log(setPosts, posts);
-
     return (
         <div className="panel">
-            {data &&
+            {data ? (
                 data.map((post) => (
                     <button
                         key={post.id}
@@ -16,7 +13,10 @@ function MessagePanel({ fn, data }) {
                     >
                         {post.text || post.sender}
                     </button>
-                ))}
+                ))
+            ) : (
+                <center>You dont have any messages already</center>
+            )}
         </div>
     );
 }

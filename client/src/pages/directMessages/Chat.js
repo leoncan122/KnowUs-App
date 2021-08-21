@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
+import "./chat.css";
 
 const Chat = ({ to, from }) => {
     const [sent, setSent] = useState({
@@ -13,7 +14,10 @@ const Chat = ({ to, from }) => {
 
     // receiving messages from server
     useEffect(() => {
+        // this line serves to get all the messages of the converstation just send id's
         socket.emit("users", { from_id: from, to_id: to });
+
+        // receiveing messages from socket
         socket.on("priv-msg", (messages) => {
             setData(messages);
         });
@@ -29,7 +33,7 @@ const Chat = ({ to, from }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // sending messages to server
+        // sending messages to socket
         socket.emit("priv-msg", sent);
 
         setSent({ ...sent, text: "" });
@@ -41,21 +45,21 @@ const Chat = ({ to, from }) => {
                     data.map((msg) => {
                         if (msg.from_userid === to) {
                             return (
-                                <div key={msg.id} className="text-question">
+                                <div key={msg.id} className="msg-question">
                                     {msg.text}
                                 </div>
                             );
                         }
 
                         return (
-                            <div key={msg.id} className="text-answer">
+                            <div key={msg.id} className="msg-answer">
                                 {msg.text}
                             </div>
                         );
                     })}
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form className="chat-dashboard" onSubmit={handleSubmit}>
                 <textarea
                     name="text"
                     type="input"

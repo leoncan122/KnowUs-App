@@ -11,7 +11,9 @@ import EditProfile from "./pages/editProfile/EditProfile";
 import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
 import Request from "./pages/request/Request";
+import MessageDisplayer from "./pages/request/components/textboard/MessageDisplayer";
 import MessagesInbox from "./pages/directMessages/MessageInbox";
+
 // import { userContext } from "./context/userContext";
 
 function App() {
@@ -27,14 +29,23 @@ function App() {
                     <Route path="/register" component={SingUp} />
 
                     <Route exact path="/my-profile" component={UserProfile} />
+
                     <Route exact path="/user/:id" component={OthersProfiles} />
 
                     <Route path="/user/:id/question" component={MakeQuestion} />
 
-                    <Route path="/question" component={Request} />
+                    <Route exact path="/question" component={Request} />
 
-                    <Route path="/messages/:id?" component={MessagesInbox} />
+                    <Route
+                        path="/question/:questionId"
+                        component={MessageDisplayer}
+                    />
 
+                    <Route
+                        exact
+                        path="/messages/:id?"
+                        component={MessagesInbox}
+                    />
                     <Route path="/profile/edit" component={EditProfile} />
                 </Switch>
             </SearchProvider>
