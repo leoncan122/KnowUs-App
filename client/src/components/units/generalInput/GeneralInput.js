@@ -8,6 +8,7 @@ export default function GeneralInput({
     label,
     inputType,
     onChange,
+    required,
 }) {
     function handldeInput(e) {
         e.preventDefault();
@@ -25,7 +26,7 @@ export default function GeneralInput({
                 id={inputId}
                 value={inputValue}
                 onChange={handldeInput}
-                required
+                required={required}
             />
         </div>
     );
