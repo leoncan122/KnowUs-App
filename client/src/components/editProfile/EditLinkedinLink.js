@@ -1,21 +1,19 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import GeneralInput from "../units/generalInput/GeneralInput";
 
-export default function InputUsername({ username, onChange }) {
-    const inputId = "inputUsername";
-    const label = "Username";
+export default function EditLinkedinLink({ linkedin, onChange }) {
+    const inputId = "inputLinkedinLink";
+    const label = "Linkedin";
     const inputType = "text";
 
     return (
-        <div className="authentication">
+        <div className="edit-likedin">
             <GeneralInput
-                inputValue={username}
+                inputValue={linkedin}
                 inputId={inputId}
                 label={label}
                 inputType={inputType}
                 onChange={onChange}
-                required="true"
             />
         </div>
     );

@@ -44,7 +44,6 @@ const signup = async (req, res) => {
                     );
                     res.cookie("token", token, { httpOnly: true });
                     res.cookie("id", user.id);
-                    res.cookie("photo", user.photo);
 
                     res.status(201).json({
                         userId: user.id,
@@ -55,6 +54,8 @@ const signup = async (req, res) => {
                         userProfession: user.profession,
                         userProfessional: user.is_profesional,
                         userPhoto: user.photo,
+                        userGithub: user.github_account,
+                        userLinkedin: user.linkedin_account,
                         accessToken: token,
                         isAuthenticated: true,
                         message: `User ${user.user_name} was registered with success`,

@@ -46,7 +46,6 @@ const login = (req, res) => {
 
             res.cookie("token", token);
             res.cookie("userId", user.id);
-            res.cookie("photo", user.photo);
 
             res.status(201).json({
                 userId: user.id,
@@ -57,6 +56,8 @@ const login = (req, res) => {
                 userProfession: user.profession,
                 userProfessional: user.is_profesional,
                 userPhoto: user.photo,
+                userGithub: user.github_account,
+                userLinkedin: user.linkedin_account,
                 accessToken: token,
                 isAuthenticated: true,
                 message: `Welcome back ${user.user_name}`,

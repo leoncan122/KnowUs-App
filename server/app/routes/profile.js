@@ -5,7 +5,7 @@ const getMyAnswer = require("../controllers/user/profile/getMyAnswer");
 
 const router = express.Router();
 
-router.put("/edit", verifyToken, editProfile);
-router.get("/cards", verifyToken, getMyAnswer);
+router.put("/edit", [verifyToken], editProfile);
+router.get("/cards/:userId", getMyAnswer);
 
 module.exports = router;

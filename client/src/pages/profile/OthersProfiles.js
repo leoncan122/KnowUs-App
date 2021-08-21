@@ -4,6 +4,7 @@ import AsideUserInfo from "../../components/asideUserInfo/AsideUserInfo";
 import ProfileImage from "../../components/profile-image/ProfileImage";
 import fetchData from "../../utils/fetchData";
 import { userContext } from "../../context/userContext";
+import MyProfileCards from "../../components/myProfileCards/MyProfileCards";
 
 export default function OthersProfiles({ history }) {
     const { userLoged } = useContext(userContext);
@@ -34,6 +35,7 @@ export default function OthersProfiles({ history }) {
             <Link to={`/messages/${id}`}>Messages</Link>
             <div />
             <div className="publications" />
+            <MyProfileCards userId={id} />
         </div>
     );
 }

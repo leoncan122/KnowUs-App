@@ -31,7 +31,7 @@ const UserProfile = () => {
                 </center>
             )} */}
 
-            {userLoged && <MyProfileCards />}
+            {userLoged && <MyProfileCards userId={userLoged.userId} />}
         </div>
     );
 };

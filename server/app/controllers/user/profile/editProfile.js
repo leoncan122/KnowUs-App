@@ -1,13 +1,13 @@
 const { pool } = require("../../../services/poolService");
 
 const query =
-    "update users set profession = $1, country = $2, city = $3 where id = $4 returning *";
+    "update users set profession = $1, country = $2, city = $3, github_account = $4, linkedin_account = $5 where id = $6 returning *";
 
 const editProfile = (req, res) => {
     const userId = req.id;
 
-    const { profession, country, city } = req.body;
-    const values = [profession, country, city, userId];
+    const { profession, country, city, github, linkedin } = req.body;
+    const values = [profession, country, city, github, linkedin, userId];
 
     try {
         pool.connect((error, client, release) => {
