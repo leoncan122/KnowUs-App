@@ -11,7 +11,7 @@ const Search = () => {
         const url = `http://localhost:4000/home/search?word=${word}`;
         async function fetching() {
             const data = await fetchData(null, url, "GET");
-
+            console.log(data);
             if (data.isSuccesful) {
                 setResult(data.publications);
             }
