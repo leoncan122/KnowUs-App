@@ -40,6 +40,8 @@ const {
 } = require("./app/middlewares/directMessages/sendMessage");
 const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 
+console.log(process.env.FRONT_ORIGIN);
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", process.env.FRONT_ORIGIN);
     res.header(
