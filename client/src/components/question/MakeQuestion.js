@@ -4,6 +4,7 @@ import "./makeQuestion.css";
 
 const MakeQuestion = ({ match, history }) => {
     const [question, setQuestion] = useState({
+        title: "",
         text: "",
         to: parseInt(match.params.id, 10),
         category: "",
@@ -44,15 +45,23 @@ const MakeQuestion = ({ match, history }) => {
         }
     };
     return (
-        <div className="question-content">
+        <div className="question-main-content">
             <form className="question-form" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="title"
+                    className="title-question"
+                    value={question.title}
+                    onChange={handleQuestion}
+                    required
+                />
                 <textarea
                     type="text"
                     name="text"
                     className="input-question"
                     value={question.text}
                     onChange={handleQuestion}
-                    placeholder="What are your doubts?"
+                    placeholder="Describe your question"
                     required
                 />
                 <input

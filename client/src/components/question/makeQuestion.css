@@ -1,33 +1,42 @@
-.question-content {
+.question-main-content {
+    height: 90vh;
     display: grid;
-    justify-content: center;
+    place-items: center;
 }
 .question-form {
-    width: 80vh;
-    height: 70vh;
+    width: 85%;
+    height: 72vh;
     display: grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: 7fr 0.5fr 0.5fr;
+    grid-template-rows: 1fr 4fr 0.5fr 0.5fr;
+    gap: 2%;
 }
-.input-question {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-
-    font-size: 23px;
-    padding: 3% 2%;
-}
-.input-category {
-    grid-column: 1 / 2;
-    grid-row: 2 / 4;
+.title-question {
+    font-weight: bold;
+    grid-column: 1/3;
+    grid-row: 1/2;
 
     font-size: 27px;
-    padding-left: 2%;
+    padding: 2%;
+}
+.input-question {
+    grid-column: 1/3;
+    grid-row: 2/3;
+
+    padding: 2%;
+}
+.input-category {
+    grid-column: 1/2;
+    grid-row: 3/5;
+
+    font-size: 24px;
+    padding: 2%;
 }
 .question-form > button:first-child {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    grid-column: 2/3;
+    grid-row: 3/4;
 }
 .question-form > button:last-child {
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-column: 2/3;
+    grid-row: 4/5;
 }

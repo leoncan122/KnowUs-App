@@ -3,7 +3,7 @@ require("dotenv").config({ path: "../../../../.env" });
 
 const searchPublications = (req, res) => {
     const { word } = req.query;
-    const queryPublications = `SELECT u.id sender_id, u.user_name sender_username, pq.text question_text ,pq.category,pq.is_answered,
+    const queryPublications = `SELECT u.id sender_id, u.user_name sender_username,pq.title, pq.text question_text ,pq.category,pq.is_answered,
     p.id prof_id, p.user_name prof_username,p.is_profesional, a.text answer_text, a.date
     FROM public_questions pq
     JOIN answers a ON pq.id = a.question_id

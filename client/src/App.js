@@ -13,6 +13,7 @@ import MakeQuestion from "./components/question/MakeQuestion";
 import Request from "./pages/request/Request";
 import MessageDisplayer from "./pages/request/components/textboard/MessageDisplayer";
 import MessagesInbox from "./pages/directMessages/MessageInbox";
+import TextEditor from "./utils/TextEditor";
 
 // import { userContext } from "./context/userContext";
 
@@ -22,6 +23,8 @@ function App() {
             <SearchProvider>
                 <TopNavbar />
                 <Switch>
+                    <Route path="/editor" component={TextEditor} />
+
                     <Route exact path="/" component={Home} />
 
                     <Route path="/login" component={Login} />

@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./CollapseCards.css";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
 const CollapseCards = ({ posts }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const answerText = useRef();
+    useEffect(() => {
+        answerText.current.innerHTML = posts.answer_text;
+    }, []);
     return (
         <div>
             <div className="sender-info">
                 <h4>{posts.sender_username}</h4>
-                <p>Ask: {posts.question_text}</p>
+                <p>Ask: {posts.title}</p>
                 <p>#{posts.category}</p>
                 <div className="arrow-btn">
                     <ExpandMore
@@ -20,13 +24,12 @@ const CollapseCards = ({ posts }) => {
                     </ExpandMore>
                 </div>
             </div>
-
-            {isOpen && (
+            <div>
                 <div className="receiver-info">
                     <h4>{posts.prof_username}</h4>
-                    <p>Answers: {posts.answer_text}</p>
+                    <p ref={answerText} />
                 </div>
-            )}
+            </div>
         </div>
     );
 };

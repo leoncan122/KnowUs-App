@@ -12,7 +12,7 @@ export default function OthersProfiles({ history }) {
     const { id } = useParams();
 
     // redirects to my-profile when the profile selected it's mine
-    if (userLoged.userId === parseInt(id, 10)) {
+    if (userLoged && userLoged.userId === parseInt(id, 10)) {
         history.push("/my-profile");
     }
 
@@ -31,6 +31,7 @@ export default function OthersProfiles({ history }) {
                 {data && <AsideUserInfo info={data} />}
                 {data && <ProfileImage photo={data.userPhoto} />}
             </div>
+
             <Link to={`/user/${id}/question`}>make a question</Link>
             <Link to={`/messages/${id}`}>Messages</Link>
             <div />
