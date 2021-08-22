@@ -8,6 +8,13 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 
+// cors
+const corsConfig = {
+    origin: ["http://localhost:3000", "https://client-knowus.herokuapp.com/"],
+    credentials: true,
+};
+app.use(cors(corsConfig));
+
 // the socket that wraps the server needs http protocol
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
@@ -33,12 +40,7 @@ const {
 } = require("./app/middlewares/directMessages/sendMessage");
 const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 
-// cors
-const corsConfig = {
-    origin: ["http://localhost:3000", "https://client-knowus.herokuapp.com/"],
-    credentials: true,
-};
-app.use(cors(corsConfig));
+
 
 app.get("/", (req, res) => {
     res.status(200).send(
