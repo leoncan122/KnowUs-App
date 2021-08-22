@@ -45,7 +45,7 @@ const MakeQuestion = ({ match, history }) => {
         }
     };
     return (
-        <div className="question-content">
+        <div className="question-main-content">
             <form className="question-form" onSubmit={handleSubmit}>
                 <input
                     type="text"

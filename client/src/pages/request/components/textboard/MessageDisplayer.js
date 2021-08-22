@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import fetchData from "../../../../utils/fetchData";
+import TextEditor from "../../../../utils/TextEditor";
+import AnswerMessage from "./AnswerMessage";
 import "./messageDisplay.css";
+import QuestionMessage from "./QuestionMessage";
 
 function MessageDisplayer() {
+    const textAnswer = useRef();
+
     // receiving question data from Link
     const data = useLocation().state;
 
     const [answer, setAnswer] = useState({
         text: "",
-        questionId: data.id,
+        questionId: data.questionid,
         draft: false,
     });
     // response of POST answer
     const [response, setResponse] = useState(null);
     const [error, setError] = useState("");
 
-    const handleAnswer = (e) => {
+    const handleAnswer = (editedText) => {
         setAnswer({
             ...answer,
-            [e.target.name]: e.target.value,
+            text: editedText,
         });
     };
     const handleSubmit = (e) => {
@@ -37,57 +42,35 @@ function MessageDisplayer() {
             ...answer,
             [e.target.name]: draft(),
         });
-
         async function fetching() {
             const url = "http://localhost:4000/user/answer";
             const rawData = await fetchData(answer, url, "POST");
+
             if (rawData.error) {
                 setError(rawData.error);
             }
             setResponse(rawData.response);
-            setAnswer({
-                ...answer,
-                text: "",
-            });
+
+            // catch response from POST and put on ref=TextAnswer as HTML to render properly
+            textAnswer.current.innerHTML = rawData.response.text;
         }
         fetching();
     };
 
     return (
-        <>
+        <div className="displayer-content">
             <Link to="/question">Back</Link>
             <div className="question-area">
-                <div className="text-question">
-                    <h4>{data.text}</h4>
-                    <div className="question-info">
-                        <img src={data.photo} alt="" width="30px" />
-                        <p>From: </p>
-                        <p>Date:</p>
-                    </div>
-                    <div className="question-desc">Description of question</div>
-                </div>
+                <QuestionMessage data={data} />
 
                 {error && <center>{error}</center>}
                 {response && (
-                    <div className="text-answer">
-                        <div className="question-desc">{response.text}</div>
-                        <div className="question-info">
-                            <img src={response.photo} alt="" width="30px" />
-                            <p>Date:</p>
-                        </div>
-                    </div>
+                    <AnswerMessage refAnswer={textAnswer} response={response} />
                 )}
             </div>
 
             <form className="text-area">
-                <textarea
-                    className="input-area"
-                    name="text"
-                    type="textarea"
-                    value={answer.text}
-                    onChange={handleAnswer}
-                    required
-                />
+                <TextEditor fn={handleAnswer} />
                 <input
                     className="send-btn"
                     name="draft"
@@ -103,7 +86,7 @@ function MessageDisplayer() {
                     onClick={handleSubmit}
                 />
             </form>
-        </>
+        </div>
     );
 }
 

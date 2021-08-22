@@ -6,9 +6,6 @@ const sendQuery =
 const answeredTrue =
     "UPDATE public_questions SET is_answered = true WHERE id=$1 RETURNING *";
 
-// const draftQuery =
-//     "INSERT INTO answers (text,is_draft,question_id)values($1,$2,$3)";
-
 const answer = (req, res) => {
     const { text, draft, questionId } = req.body;
     const values = [text, draft, questionId];
@@ -23,13 +20,11 @@ const answer = (req, res) => {
             if (err) {
                 res.status(404).send({ error: err.message });
             }
-
             if (result.rowCount > 0 && values[1] === "true") {
                 return res
                     .status(200)
                     .send({ message: "Message saved as draft" });
             }
-
             client.query(answeredTrue, [questionId], (errors, results) => {
                 release();
                 if (errors) {
@@ -38,7 +33,7 @@ const answer = (req, res) => {
                 if (results.rowCount > 0) {
                     res.status(201).send({
                         message: "Mesage has been sent",
-                        response: results.rows[0],
+                        response: result.rows[0],
                     });
                 }
             });

@@ -1,25 +1,65 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
+import "./text.css";
 
-const TextEditor = () => {
-    const [text, setText] = useState("");
-    // let input = document.getElementById("msg");
-    // const resultado = document.getElementById("resultado");
+const TextEditor = ({ fn }) => {
+    const bold = useRef();
+    const italic = useRef();
+    const code = useRef();
+    const input = useRef();
 
-    function etiquetaStrong(cmd) {
-        const desde = text.charAt(text.length - 1);
-        console.log(desde);
-        text.setRangeText(`${cmd}`, desde, desde, "select");
+    function handleCommand(e) {
+        // attribut value data-... from the buttons
+        const command = e.target.dataset.element;
 
-        etiquetaStrong(`</${cmd}>`);
+        // this is for snippets
+        if (command === "formatBlock") {
+            document.execCommand(command, false, "<pre>");
+        }
+        // execCommand has diferents 'functions' there are more
+        document.execCommand(command, false, null);
+    }
+    function handleText() {
+        // Catch the formated text with innerHTML
+        fn(input.current.innerHTML);
     }
     return (
-        <>
-            <textarea id="msg" onChange={setText} />
-            <button type="button" name="text" onClick={etiquetaStrong}>
-                code
-            </button>
-            <p id="resultado">{}</p>
-        </>
+        <div className="editor-content">
+            <div
+                className="input"
+                onInput={handleText}
+                contentEditable="true"
+                ref={input}
+            />
+            <div className="text-editor">
+                <button
+                    type="button"
+                    className="bttn"
+                    ref={bold}
+                    data-element="bold"
+                    onClick={handleCommand}
+                >
+                    bold
+                </button>
+                <button
+                    type="button"
+                    className="bttn"
+                    ref={italic}
+                    data-element="italic"
+                    onClick={handleCommand}
+                >
+                    italic
+                </button>
+                <button
+                    type="button"
+                    className="bttn"
+                    ref={code}
+                    data-element="formatBlock"
+                    onClick={handleCommand}
+                >
+                    {"</>"}
+                </button>
+            </div>
+        </div>
     );
 };
 
