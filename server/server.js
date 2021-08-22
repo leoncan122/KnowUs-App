@@ -40,7 +40,14 @@ const {
 } = require("./app/middlewares/directMessages/sendMessage");
 const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 
-
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", process.env.FRONT_ORIGIN);
+    res.header(
+        "Access-Control-Allow-Headers",
+        "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+});
 
 app.get("/", (req, res) => {
     res.status(200).send(
