@@ -12,7 +12,10 @@ app.use(helmet());
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: [
+            "http://localhost:3000",
+            "https://client-knowus.herokuapp.com/",
+        ],
         methods: ["GET", "POST"],
     },
 });
@@ -32,7 +35,7 @@ const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 
 // cors
 const corsConfig = {
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://client-knowus.herokuapp.com/"],
     credentials: true,
 };
 app.use(cors(corsConfig));
