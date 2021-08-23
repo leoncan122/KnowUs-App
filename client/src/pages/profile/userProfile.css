@@ -8,6 +8,7 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 2fr 1fr;
+    gap: 5px;
     margin-bottom: 10%;
     border-bottom: 1px solid black;
 }
@@ -18,6 +19,9 @@
 }
 .aside-user-info {
     grid-row: 1/2;
+    border: 1px solid #fad237;
+    border-radius: 20px;
+    padding: 2% 3%;
 }
 .right-aside-info {
     display: grid;

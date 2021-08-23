@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Pragati+Narrow&family=Saira:wght@300&display=swap");
+.aside-user-info > h3 {
+    font-family: "Pragati Narrow", sans-serif;
+}
+.containter-social-icon {
+    width: 45%;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+}
+.linkedin-link > a > img,
+.github-link > a > img {
+    box-shadow: 2px 2px 4px #4c4c4c;
+}

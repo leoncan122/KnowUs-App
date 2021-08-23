@@ -42,15 +42,15 @@
 @media (min-width: 900px) {
     .card {
         align-items: center;
-        grid-template-rows: 0.5fr 2fr;
+        grid-template-rows: 1fr;
         grid-template-columns: 1fr 2.5fr;
     }
     .card > img {
-        width: 40px;
-        grid-row: 2/3;
+        width: 63px;
+        height: 100%;
     }
     .card > p {
-        grid-column: 2/3;
         font-size: smaller;
+        white-space: pre-wrap;
     }
 }

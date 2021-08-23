@@ -67,11 +67,17 @@ input:checked + .slider:before {
 .paragraphs-profesional-container {
     display: flex;
     align-items: center;
+    width: 30vw;
 }
 
 @media (min-width: 900px) {
     .button-info-movil {
         display: none;
+    }
+    .professional-btn {
+        grid-column: 3/4;
+        align-self: auto;
+        justify-self: center;
     }
     .professional-btn:hover .button-info {
         display: flex;
@@ -87,6 +93,10 @@ input:checked + .slider:before {
         width: 500px;
     }
     .container-profesional-btn {
-        display: block;
+        display: grid;
+        grid-template: 1fr 3fr / 1fr;
+    }
+    .switch {
+        justify-self: center;
     }
 }
