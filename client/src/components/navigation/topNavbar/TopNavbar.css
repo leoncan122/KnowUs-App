@@ -13,7 +13,7 @@ li {
     width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
-    background-color: #7c80f0;
+    background-color: #90adc6;
 }
 
 .logo {
@@ -129,5 +129,8 @@ li {
     } */
     .log-register-btn {
         margin-left: 500px;
+    }
+    .burger-mobile {
+        display: none;
     }
 }

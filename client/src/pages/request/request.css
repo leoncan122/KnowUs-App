@@ -32,9 +32,8 @@
 /* button */
 .link-question {
     margin: 2px;
-    border: 1px solid;
     box-shadow: inset 0px 0px 9px 1px #7a64af7c;
-    border-radius: 5px;
+    border-radius: 1px;
     display: grid;
 }
 .question-btn {

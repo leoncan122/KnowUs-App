@@ -37,12 +37,12 @@ function Aside() {
                 <center>{error}</center>
             ) : (
                 users &&
-                users.map((profile) => (
+                users.map((profile, index) => (
                     <div key={profile.id}>
                         {loading ? (
                             <center>{loading}</center>
                         ) : (
-                            <ProfileCard data={profile} />
+                            <ProfileCard clase={index} data={profile} />
                         )}
                     </div>
                 ))

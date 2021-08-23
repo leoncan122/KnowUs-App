@@ -6,9 +6,12 @@
     flex-direction: row;
     justify-content: space-evenly;
 
-    background-color: rgb(121, 204, 204);
+    background-color: transparent;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.375);
     align-items: center;
+
+    border: 1px solid #fad02c;
+    border-radius: 20px;
 }
 .aside > div {
     width: 20%;
@@ -34,6 +37,5 @@
         width: 100%;
         height: 20%;
         text-align: center;
-        border-bottom: 1px solid grey;
     }
 }

@@ -54,7 +54,9 @@ export default function TopNavbar() {
                         </li>
                     )}
                 </ul>
-                <li>{isLoged && menuActive && <Hamburger />}</li>
+                <li className="burger-mobile">
+                    {isLoged && menuActive && <Hamburger />}
+                </li>
             </div>
         </nav>
     );
