@@ -43,7 +43,7 @@ const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 console.log(process.env.FRONT_ORIGIN, "impriendo el front origin");
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", process.env.FRONT_ORIGIN);
+    res.header(`Access-Control-Allow-Origin: ${process.env.FRONT_ORIGIN}`);
     res.header(
         "Access-Control-Allow-Headers",
         "x-access-token, Origin, Content-Type, Accept"
