@@ -23,7 +23,7 @@
     color: white;
     font-weight: 1.1rem;
     margin-top: 2em;
-    background-color: #6f31f6;
+    background-color: #e9eaec;
     text-align: center;
     width: 80%;
     display: flex;
@@ -41,11 +41,13 @@
     overflow: scroll;
 }
 .receiver-info {
+    color: #333652;
+
     height: 100px;
     display: grid;
     grid-template-columns: 1fr 4fr;
-    place-self: center/ center;
-    overflow: hidden;
+    /* place-self: center/ center; */
+    overflow: scroll;
 }
 .receiver-info > h4 {
     place-self: center;
@@ -58,6 +60,7 @@
 .sender-info > p,
 .receiver-info > p {
     place-self: start;
+    color: #333652;
 }
 .search-box {
     display: none;

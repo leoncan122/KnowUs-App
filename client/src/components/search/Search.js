@@ -21,6 +21,7 @@ const Search = () => {
     const handleSearch = (e) => {
         setWord(e.target.value);
     };
+
     return (
         <div className="search-container">
             <input
@@ -32,7 +33,7 @@ const Search = () => {
             />
 
             <span className="searchIcon">
-                <SearchIcon />
+                <SearchIcon color="primary" style={{ fontSize: 40 }} />
             </span>
         </div>
     );

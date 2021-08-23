@@ -7,7 +7,8 @@
 .info-profile {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    margin-bottom: 10%;
     border-bottom: 1px solid black;
 }
 .professional-btn {
@@ -16,13 +17,26 @@
     padding-left: 3%;
 }
 .aside-user-info {
-    grid-row: 2/3;
+    grid-row: 1/2;
+}
+.right-aside-info {
+    display: grid;
+    grid-column: 1/2;
 }
 .second-div {
-    grid-row: 2/3;
+    grid-row: 1/2;
 }
-@media (min-width: 900px) {
+
+@media (min-width: 540px) {
     .info-profile {
         grid-template: 1fr / 3fr 1fr 3fr;
+        width: 85%;
+        align-self: center;
+    }
+    .right-aside-info {
+        grid-column: 3/4;
+
+        display: grid;
+        justify-content: end;
     }
 }

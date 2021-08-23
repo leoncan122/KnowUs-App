@@ -1,7 +1,7 @@
 .card-0,
 .card-2 {
     color: white;
-    background-color: #414a9ed5;
+    background-color: #333652;
 
     display: grid;
     justify-content: center;
@@ -14,7 +14,7 @@
 .card-1,
 .card-3 {
     color: white;
-    background-color: #ca7b56c9;
+    background-color: #c7876abb;
 
     display: grid;
     justify-content: center;

@@ -53,6 +53,7 @@ const MakeQuestion = ({ match, history }) => {
                     className="title-question"
                     value={question.title}
                     onChange={handleQuestion}
+                    placeholder="Ask here..."
                     required
                 />
                 <textarea

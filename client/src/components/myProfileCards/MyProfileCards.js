@@ -14,7 +14,14 @@ export default function MyProfileCards({ userId }) {
     return (
         <div>
             {answers.length > 0 ? (
-                answers.map((card) => <CollapseCards posts={card} />)
+                answers.map((card) => (
+                    <>
+                        <p>
+                            Her/Him has <span>{answers.length}</span> answers
+                        </p>
+                        <CollapseCards posts={card} />
+                    </>
+                ))
             ) : (
                 <h1>You havent answered any questions</h1>
             )}

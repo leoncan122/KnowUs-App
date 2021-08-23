@@ -67,7 +67,7 @@ li {
     transition: 0.5s ease;
 }
 .options {
-    background-color: #7c80f0;
+    background-color: transparent;
     border-style: none;
 }
 .options:hover {

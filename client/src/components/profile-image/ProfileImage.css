@@ -1,23 +1,28 @@
-.second-div {
+/* .second-div {
     background-color: black;
     display: grid;
     justify-content: center;
     align-items: center;
     border-radius: 180%;
-}
+} */
 .photo {
     height: 80px;
+    border-radius: 25px;
 }
 
 /* Media Queries */
 
 @media (min-width: 540px) {
     .photo {
-        height: 50px;
+        height: 120px;
+        width: 120px;
+        border-radius: 25px;
     }
 }
 @media (min-width: 900px) {
     .photo {
-        height: 80px;
+        width: 135px;
+        height: 135px;
+        border-radius: 25px;
     }
 }

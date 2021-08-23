@@ -2,6 +2,7 @@
     display: grid;
     grid-template: 1fr 8fr / 1fr;
     place-items: center;
+    color: #333652;
 }
 .question-panel {
     overflow: scroll;
@@ -30,12 +31,13 @@
 }
 
 /* button */
+
 .link-question {
-    margin: 2px;
-    box-shadow: inset 0px 0px 9px 1px #7a64af7c;
+    box-shadow: inset 0px 0px 8px -2px #333652;
     border-radius: 1px;
     display: grid;
 }
+
 .question-btn {
     border: none;
     background: transparent;
@@ -44,8 +46,8 @@
 
 /* styling */
 h4 > span {
-    color: white;
-    background-color: rgb(123, 41, 182);
+    color: #333652;
+    background-color: #fad02c;
     border-radius: 5px 20px 5px;
 }
 @media (min-width: 900px) {

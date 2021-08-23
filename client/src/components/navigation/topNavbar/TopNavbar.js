@@ -20,7 +20,6 @@ export default function TopNavbar() {
     function handleMenu() {
         setMenuActive(!menuActive);
     }
-
     return (
         <nav className="main-nav">
             <div className="logo">
