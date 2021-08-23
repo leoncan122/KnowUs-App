@@ -10,7 +10,7 @@ app.use(helmet());
 
 // cors
 const corsConfig = {
-    origin: ["http://localhost:3000", "https://client-knowus.herokuapp.com/"],
+    origin: ["http://localhost:3000", process.env.FRONT_ORIGIN],
     credentials: true,
 };
 app.use(cors(corsConfig));
@@ -19,10 +19,7 @@ app.use(cors(corsConfig));
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
-        origin: [
-            "http://localhost:3000",
-            "https://client-knowus.herokuapp.com/",
-        ],
+        origin: ["http://localhost:3000", process.env.FRONT_ORIGIN],
         methods: ["GET", "POST"],
     },
 });
@@ -39,8 +36,6 @@ const {
     sendMessages,
 } = require("./app/middlewares/directMessages/sendMessage");
 const { getMessages } = require("./app/middlewares/directMessages/getMessages");
-
-console.log(process.env.FRONT_ORIGIN, "impriendo el front origin");
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", process.env.FRONT_ORIGIN);
