@@ -43,6 +43,9 @@ export default function TopNavbar() {
                             >
                                 Options
                             </button>
+                            <div className="burger-desktop">
+                                <Hamburger />
+                            </div>
                         </li>
                     ) : (
                         <li className="log-register-btn">
@@ -51,8 +54,8 @@ export default function TopNavbar() {
                         </li>
                     )}
                 </ul>
+                <li>{isLoged && menuActive && <Hamburger />}</li>
             </div>
-            {isLoged && menuActive && <Hamburger />}
         </nav>
     );
 }

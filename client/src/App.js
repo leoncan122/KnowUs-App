@@ -14,6 +14,7 @@ import Request from "./pages/request/Request";
 import MessageDisplayer from "./pages/request/components/textboard/MessageDisplayer";
 import MessagesInbox from "./pages/directMessages/MessageInbox";
 import TextEditor from "./utils/TextEditor";
+import Chat from "./pages/directMessages/Chat";
 
 // import { userContext } from "./context/userContext";
 
@@ -44,11 +45,9 @@ function App() {
                         component={MessageDisplayer}
                     />
 
-                    <Route
-                        exact
-                        path="/messages/:id?"
-                        component={MessagesInbox}
-                    />
+                    <Route exact path="/messages/" component={MessagesInbox} />
+                    <Route path="/messages/:id" component={Chat} />
+
                     <Route path="/profile/edit" component={EditProfile} />
                 </Switch>
             </SearchProvider>

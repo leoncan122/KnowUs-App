@@ -11,3 +11,8 @@
     color: rgba(0, 0, 3, 1);
     transition: 0.5s ease;
 }
+@media (min-width: 900px) {
+    .logout-btn {
+        margin-left: 25%;
+    }
+}

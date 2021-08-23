@@ -13,3 +13,12 @@
     grid-column: 2/3;
     text-align: center;
 }
+/* .chat-desktop {
+    display: none;
+} */
+
+@media (min-width: 900px) {
+    .chat-desktop {
+        display: block;
+    }
+}

@@ -4,6 +4,8 @@
     place-items: center;
 }
 .question-panel {
+    overflow: scroll;
+    height: 80vh;
     width: 100%;
     align-self: stretch;
     grid-row: 2/3;
@@ -29,7 +31,7 @@
 
 /* button */
 .link-question {
-    margin: 1%;
+    margin: 2px;
     border: 1px solid;
     box-shadow: inset 0px 0px 9px 1px #7a64af7c;
     border-radius: 5px;
@@ -46,4 +48,12 @@ h4 > span {
     color: white;
     background-color: rgb(123, 41, 182);
     border-radius: 5px 20px 5px;
+}
+@media (min-width: 900px) {
+    .question-panel {
+        /* grid-template-rows: repeat(5, 1fr); */
+    }
+    .link-question {
+        height: 60px;
+    }
 }
