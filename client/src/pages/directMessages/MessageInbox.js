@@ -19,7 +19,7 @@ function MessagesInbox() {
 
     useEffect(() => {
         async function fetching() {
-            const url = "http://localhost:4000/message/inbox";
+            const url = `${process.env.REACT_APP_API_URL}message/inbox`;
             const rawData = await fetchData(null, url, "GET");
 
             if (rawData.messages) {

@@ -8,7 +8,7 @@ function Request() {
 
     useEffect(() => {
         async function fetching() {
-            const url = "http://localhost:4000/user/question";
+            const url = `${process.env.REACT_APP_API_URL}user/question`;
             const rawData = await fetchData(null, url, "GET");
             if (rawData.isSuccesful) {
                 setData(rawData.questions);

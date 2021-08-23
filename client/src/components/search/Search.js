@@ -9,7 +9,7 @@ const Search = () => {
     const [word, setWord] = useState("");
 
     useEffect(() => {
-        const url = `http://localhost:4000/home/search?word=${word}`;
+        const url = `${process.env.REACT_APP_API_URL}home/search?word=${word}`;
         async function fetching() {
             const data = await fetchData(null, url, "GET");
             console.log(data);

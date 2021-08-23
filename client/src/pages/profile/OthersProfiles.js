@@ -17,7 +17,7 @@ export default function OthersProfiles({ history }) {
     }
 
     useEffect(() => {
-        const url = `http://localhost:4000/home/user/${id}`;
+        const url = `${process.env.REACT_APP_API_URL}home/user/${id}`;
         async function fetching() {
             const rawData = await fetchData(null, url, "GET");
 

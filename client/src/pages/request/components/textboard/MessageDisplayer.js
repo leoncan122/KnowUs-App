@@ -43,7 +43,7 @@ function MessageDisplayer() {
             [e.target.name]: draft(),
         });
         async function fetching() {
-            const url = "http://localhost:4000/user/answer";
+            const url = `${process.env.REACT_APP_API_URL}user/answer`;
             const rawData = await fetchData(answer, url, "POST");
 
             if (rawData.error) {

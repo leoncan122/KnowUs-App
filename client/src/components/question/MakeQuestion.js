@@ -31,7 +31,7 @@ const MakeQuestion = ({ match, history }) => {
             setQuestion({ ...question, draft: true });
         }
 
-        const url = `http://localhost:4000/user/question`;
+        const url = `${process.env.REACT_APP_API_URL}user/question`;
         const data = await fetchData(question, url, "POST");
         console.log(data);
 

@@ -8,7 +8,7 @@ export default function ButtonOnOf({ userId, state }) {
     async function whenSwitch() {
         setIsProfessional(!isProfesional);
         const value = !isProfesional;
-        const url = "http://localhost:4000/home/putProfile";
+        const url = `${process.env.REACT_APP_API_URL}home/putProfile`;
         const handleData = { userId, on: value };
         fetchData(handleData, url, "PUT");
     }

@@ -5,7 +5,6 @@ import fetchData from "../utils/fetchData";
 export const userContext = createContext();
 
 export function UserProvider({ children }) {
-
     const id = 0;
 
     const [userLoged, setUserLoged] = useState(id);
@@ -17,7 +16,7 @@ export function UserProvider({ children }) {
 
     if (userLoged === 0 && document.cookie) {
         const data1 = cookieMonster("userId");
-        const url = `http://localhost:4000/home/user/${data1}`;
+        const url = `${process.env.REACT_APP_API_URL}home/user/${data1}`;
 
         const fetching = async () => {
             const data = await fetchData(false, url, "GET");

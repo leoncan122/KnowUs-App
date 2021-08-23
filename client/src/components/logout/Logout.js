@@ -10,10 +10,13 @@ const Logout = () => {
     const history = useHistory();
 
     const logOut = async () => {
-        const deleteCookie = await fetch("http://localhost:4000/logout", {
-            method: "get",
-            credentials: "include",
-        });
+        const deleteCookie = await fetch(
+            `${process.env.REACT_APP_API_URL}logout`,
+            {
+                method: "get",
+                credentials: "include",
+            }
+        );
         if (deleteCookie.ok) {
             setUserLoged(null);
             const tokenBoolean = cookieMonster("token");
