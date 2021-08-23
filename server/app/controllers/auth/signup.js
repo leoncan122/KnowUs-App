@@ -26,6 +26,7 @@ const signup = async (req, res) => {
         if (error) {
             return res.status(404).send({ error: error.message });
         }
+        // eslint-disable-next-line no-useless-catch
         try {
             client.query(query, values, (err, result) => {
                 release();
@@ -42,8 +43,16 @@ const signup = async (req, res) => {
                             expiresIn: 28800, // 8 hours
                         }
                     );
-                    res.cookie("token", token, { httpOnly: true });
-                    res.cookie("id", user.id);
+                    res.cookie("token", token, {
+                        httpOnly: true,
+                        sameSite: "none",
+                        secure: true,
+                    });
+                    res.cookie("id", user.id, {
+                        httpOnly: true,
+                        sameSite: "none",
+                        secure: true,
+                    });
 
                     res.status(201).json({
                         userId: user.id,
