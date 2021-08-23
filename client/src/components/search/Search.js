@@ -12,10 +12,11 @@ const Search = () => {
         const url = `http://localhost:4000/home/search?word=${word}`;
         async function fetching() {
             const data = await fetchData(null, url, "GET");
-            console.log(data);
             setResult(data);
         }
-        fetching();
+        if (word) {
+            fetching();
+        }
     }, [word]);
 
     const handleSearch = (e) => {
