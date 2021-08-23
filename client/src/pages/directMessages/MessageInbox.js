@@ -21,7 +21,7 @@ function MessagesInbox() {
     return (
         <div className="question-content">
             <h4>
-                Messages <span>{data && data.length}</span>
+                Messages <span>{data ? data.length : 0}</span>
             </h4>
 
             <div className="question-panel">

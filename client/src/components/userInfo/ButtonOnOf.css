@@ -67,7 +67,7 @@ input:checked + .slider:before {
 .paragraphs-profesional-container {
     display: flex;
     align-items: center;
-    width: 30vw;
+    width: 26vw;
 }
 
 @media (min-width: 900px) {

@@ -11,3 +11,8 @@
 .github-link > a > img {
     box-shadow: 2px 2px 4px #4c4c4c;
 }
+@media (min-width: 900px) {
+    .containter-social-icon {
+        width: 30%;
+    }
+}

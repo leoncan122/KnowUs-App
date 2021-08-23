@@ -46,7 +46,8 @@ function App() {
                     />
 
                     <Route exact path="/messages/" component={MessagesInbox} />
-                    <Route path="/messages/:id" component={Chat} />
+
+                    <Route path="/messages/:userId" component={Chat} />
 
                     <Route path="/profile/edit" component={EditProfile} />
                 </Switch>

@@ -1,11 +1,10 @@
 .chat-content {
     height: 91.5vh;
     display: grid;
-    grid-template: 0.3fr 4fr 0.6fr/1fr;
+    grid-template: 0.3fr 3fr 0.6fr/1fr;
     background-color: #90adc68f;
     grid-row: 2;
-    padding: 0 2%;
-    gap: 1%;
+    padding: 2% 2%;
 }
 .chat-content > a {
     grid-row: 1/2;
@@ -59,6 +58,12 @@
     cursor: pointer;
 }
 @media (min-width: 900px) {
+    .chat-content {
+        height: 84.5vh;
+    }
+    .messages-area {
+        height: 95%;
+    }
     .chat-dashboard {
         grid-template: 1fr / 10fr 1fr;
     }
