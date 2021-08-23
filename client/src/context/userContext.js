@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
-import cookieMonster from "../utils/cookieMonster";
-import fetchData from "../utils/fetchData";
+// import cookieMonster from "../utils/cookieMonster";
+// import fetchData from "../utils/fetchData";
 
 export const userContext = createContext();
 
@@ -12,19 +12,19 @@ export function UserProvider({ children }) {
     cookie monster o sea si hay cooki id, esto se ejecuta, en caso contrario se vuelve 0, pero
      te tiene que redireccionar a home */
 
-    if (!userLoged && document.cookie) {
-        const data1 = cookieMonster("userId");
-        const url = `${process.env.REACT_APP_API_URL}home/user/${data1}`;
-        
-        const fetching = async () => {
-            const data = await fetchData(false, url, "GET");
+    // if (!userLoged && document.cookie) {
+    //     const data1 = cookieMonster("userId");
+    //     const url = `${process.env.REACT_APP_API_URL}home/user/${data1}`;
 
-            setUserLoged(data);
+    //     const fetching = async () => {
+    //         const data = await fetchData(false, url, "GET");
 
-            return data;
-        };
-        fetching();
-    }
+    //         setUserLoged(data);
+
+    //         return data;
+    //     };
+    //     fetching();
+    // }
     const [isLoged, setIsLoged] = useState(null); // esto creo que sobra
     return (
         <userContext.Provider

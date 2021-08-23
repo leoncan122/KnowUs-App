@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
+import { userContext } from "../../../context/userContext";
 import Hamburger from "../hamburguer/Hamburger";
+// import cookieMonster from "../../../utils/cookieMonster";
 
 export default function TopNavbar() {
-    const { cookie } = document;
+    const { userLoged } = useContext(userContext);
     const [menuActive, setMenuActive] = useState(false);
+
+    // useEffect(() => {
+    //     const tokenBoolean = cookieMonster("token");
+    //     setIsLoged(tokenBoolean);
+    //     if (tokenBoolean === false) {
+    //         setMenuActive(false);
+    //     }
+    // });
 
     function handleMenu() {
         setMenuActive(!menuActive);
@@ -24,7 +34,7 @@ export default function TopNavbar() {
 
             <div className="menu-link">
                 <ul>
-                    {cookie ? (
+                    {userLoged ? (
                         <li>
                             <button
                                 className="options"
@@ -42,7 +52,7 @@ export default function TopNavbar() {
                     )}
                 </ul>
             </div>
-            {cookie && menuActive && <Hamburger />}
+            {userLoged && menuActive && <Hamburger />}
         </nav>
     );
 }
