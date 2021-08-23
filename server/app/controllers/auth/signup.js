@@ -49,7 +49,6 @@ const signup = async (req, res) => {
                         secure: true,
                     });
                     res.cookie("id", user.id, {
-                        httpOnly: true,
                         sameSite: "none",
                         secure: true,
                     });

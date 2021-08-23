@@ -50,7 +50,6 @@ const login = (req, res) => {
                 secure: true,
             });
             res.cookie("userId", user.id, {
-                httpOnly: true,
                 sameSite: "none",
                 secure: true,
             });

@@ -5,19 +5,17 @@ import fetchData from "../utils/fetchData";
 export const userContext = createContext();
 
 export function UserProvider({ children }) {
-    const id = 0;
-
-    const [userLoged, setUserLoged] = useState(id);
+    const [userLoged, setUserLoged] = useState(false);
 
     /* lo que viene a continuacion funciona cuando la pagina se refresca
     o sea cuando el user logged tiene un numero mayor a cero, este es el id que le va entregar la
     cookie monster o sea si hay cooki id, esto se ejecuta, en caso contrario se vuelve 0, pero
      te tiene que redireccionar a home */
 
-    if (userLoged === 0 && document.cookie) {
+    if (!userLoged && document.cookie) {
         const data1 = cookieMonster("userId");
         const url = `${process.env.REACT_APP_API_URL}home/user/${data1}`;
-
+        
         const fetching = async () => {
             const data = await fetchData(false, url, "GET");
 
