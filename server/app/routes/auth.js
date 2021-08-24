@@ -1,18 +1,19 @@
 const express = require("express");
+
 const router = express.Router();
 
-//middlewares
+// middlewares
 const {
     verifyUserOrMailExists,
 } = require("../middlewares/verifyUsernameExists");
 
-//controllers
+// controllers
 const { signup } = require("../controllers/auth/signup");
 const { login } = require("../controllers/auth/login");
 
-//endpoints
+// endpoints
 router.post("/signup", [verifyUserOrMailExists], signup);
 router.post("/login", login);
-//router.post('/login',login);
+// router.post('/login',login);
 
 module.exports = router;
