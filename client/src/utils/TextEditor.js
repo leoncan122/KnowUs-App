@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import "./text.css";
 
-const TextEditor = ({ fn }) => {
+const TextEditor = ({ fn, answer }) => {
     const bold = useRef();
     const italic = useRef();
     const code = useRef();
-    const input = useRef();
+    const input = useRef(answer);
 
     function handleCommand(e) {
         // attribut value data-... from the buttons
