@@ -56,7 +56,10 @@ const Chat = () => {
             <div className="messages-area">
                 {data &&
                     data.map((message) => {
-                        if (message.from_userid === userId) {
+                        if (
+                            message.from_userid === userId ||
+                            message.from_userid === msg.sender_id
+                        ) {
                             return (
                                 <p key={message.id} className="msg-question">
                                     {message.text}
