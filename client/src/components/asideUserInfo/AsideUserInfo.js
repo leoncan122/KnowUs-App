@@ -28,7 +28,7 @@ export default function AsideUserInfo({ info }) {
             <div className="github-link">
                 {info.userGithub && (
                     <a
-                        href={`https:${info.userGithub}`}
+                        href={`https://github.com/${info.userGithub}`}
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -39,7 +39,7 @@ export default function AsideUserInfo({ info }) {
             <div className="linkedin-link">
                 {info.userLinkedin && (
                     <a
-                        href={`https:${info.userLinkedin}`}
+                        href={`https://linkedin.com/in/${info.userLinkedin}`}
                         target="_blank"
                         rel="noreferrer"
                     >
