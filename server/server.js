@@ -8,11 +8,18 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 
+// cors
+const corsConfig = {
+    origin: ["http://localhost:3000", process.env.FRONT_ORIGIN],
+    credentials: true,
+};
+app.use(cors(corsConfig));
+
 // the socket that wraps the server needs http protocol
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: ["http://localhost:3000", process.env.FRONT_ORIGIN],
         methods: ["GET", "POST"],
     },
 });
@@ -30,12 +37,14 @@ const {
 } = require("./app/middlewares/directMessages/sendMessage");
 const { getMessages } = require("./app/middlewares/directMessages/getMessages");
 
-// cors
-const corsConfig = {
-    origin: "http://localhost:3000",
-    credentials: true,
-};
-app.use(cors(corsConfig));
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", process.env.FRONT_ORIGIN);
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
 
 app.get("/", (req, res) => {
     res.status(200).send(
@@ -75,7 +84,6 @@ app.use("/message", messages);
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
     res.clearCookie("userId");
-    res.clearCookie("photo");
     return res.status(200).send({ message: "Bye bye :)" });
 });
 

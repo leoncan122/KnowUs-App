@@ -20,17 +20,18 @@ export default function Login(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const loginData = { email, password };
-        const url = "http://localhost:4000/auth/login";
+        const url = `${process.env.REACT_APP_API_URL}auth/login`;
         const data = await fetchData(loginData, url, "POST");
+
 
         if (data.error) {
             setError(data.error);
         }
         if (data.isAuthenticated) {
             setUserLoged(data);
-
+            window.sessionStorage.setItem("id",data.userId);
             setTimeout(() => {
-                props.history.push("/");
+            props.history.push("/");
             }, 1000);
         }
     };

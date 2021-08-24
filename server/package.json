@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "nodemon server.js"
+    "debug": "nodemon server.js",
+    "heroku-server": "git subtree push --prefix server heroku-server master"
   },
   "author": "",
   "license": "ISC",

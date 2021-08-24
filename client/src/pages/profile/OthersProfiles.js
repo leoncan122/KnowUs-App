@@ -17,10 +17,9 @@ export default function OthersProfiles({ history }) {
     }
 
     useEffect(() => {
-        const url = `http://localhost:4000/home/user/${id}`;
+        const url = `${process.env.REACT_APP_API_URL}home/user/${id}`;
         async function fetching() {
             const rawData = await fetchData(null, url, "GET");
-
             setData(rawData);
         }
         fetching();
@@ -30,13 +29,24 @@ export default function OthersProfiles({ history }) {
             <div className="info-profile">
                 {data && <AsideUserInfo info={data} />}
                 {data && <ProfileImage photo={data.userPhoto} />}
+                <div className="right-aside-info">
+                    {data && data.userProfessional && (
+                        <Link to={`/user/${id}/question`}>
+                            make public question
+                        </Link>
+                    )}
+
+                    <Link to={`/messages/${id}`}>message</Link>
+                </div>
             </div>
 
-            <Link to={`/user/${id}/question`}>make a question</Link>
-            <Link to={`/messages/${id}`}>Messages</Link>
-            <div />
-            <div className="publications" />
-            <MyProfileCards userId={id} />
+            {data && data.userProfessional ? (
+                <MyProfileCards userId={id} />
+            ) : (
+                <center>
+                    <strong>This User is not a professional already</strong>
+                </center>
+            )}
         </div>
     );
 }

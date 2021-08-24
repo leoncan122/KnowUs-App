@@ -15,12 +15,12 @@ function Aside() {
         !result.users || result.users.length < 1 ? data : result.users;
 
     useEffect(() => {
-        const url = "http://localhost:4000/home/randomuser";
+        const url = `${process.env.REACT_APP_API_URL}home/randomuser`;
         async function fetching() {
             try {
                 setLoading(false);
                 const rawData = await fetchData(null, url, "GET");
-                console.log(rawData);
+
                 if (rawData.error) {
                     setError(rawData.error);
                 }
@@ -37,12 +37,12 @@ function Aside() {
                 <center>{error}</center>
             ) : (
                 users &&
-                users.map((profile) => (
+                users.map((profile, index) => (
                     <div key={profile.id}>
                         {loading ? (
                             <center>{loading}</center>
                         ) : (
-                            <ProfileCard data={profile} />
+                            <ProfileCard clase={index} data={profile} />
                         )}
                     </div>
                 ))

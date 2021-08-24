@@ -18,58 +18,29 @@
 .post-content {
     display: grid;
     justify-items: center;
+    width: 90%;
 }
 .post {
     color: white;
     font-weight: 1.1rem;
     margin-top: 2em;
-    background-color: #6f31f6;
     text-align: center;
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
     border-radius: 5%;
 }
-.sender-info {
-    height: 100px;
-    background-color: rgba(151, 218, 245, 0.411);
-    border-radius: 5%;
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    overflow: scroll;
-}
-.receiver-info {
-    height: 100px;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    place-self: center/ center;
-    overflow: hidden;
-}
-.receiver-info > h4 {
-    place-self: center;
-    justify-self: center;
-}
-.sender-info > h4 {
-    place-self: center;
-    justify-self: center;
-}
-.sender-info > p,
-.receiver-info > p {
-    place-self: start;
-}
+
 .search-box {
     display: none;
 }
 
-@media (min-width: 900px) {
-    * {
-        font-size: 1rem;
-    }
+@media (min-width: 540px) {
     .home-content {
         grid-template-rows: 15vh 10vh 5vh 80vh;
-        grid-template-columns: 3.5fr 1fr;
+        grid-template-columns: 2.5fr 1fr;
     }
     .search-box {
         width: 100%;
@@ -77,6 +48,11 @@
         display: block;
         place-content: center;
     }
+}
+@media (min-width: 900px) {
+    /* * {
+        font-size: 1rem;
+    } */
 
     .posts-heading {
         grid-column: 1/2;
