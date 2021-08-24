@@ -12,6 +12,7 @@ function MessagesInbox() {
             const rawData = await fetchData(null, url, "GET");
             if (rawData.messages) {
                 setData(rawData.messages);
+                console.log(rawData);
             }
         }
 
