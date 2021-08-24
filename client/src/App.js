@@ -15,6 +15,7 @@ import MessageDisplayer from "./pages/request/components/textboard/MessageDispla
 import MessagesInbox from "./pages/directMessages/MessageInbox";
 import TextEditor from "./utils/TextEditor";
 import Chat from "./pages/directMessages/Chat";
+import SeeMoreRequest from "./pages/request/SeeMoreRequest";
 
 // import { userContext } from "./context/userContext";
 
@@ -39,6 +40,11 @@ function App() {
                     <Route path="/user/:id/question" component={MakeQuestion} />
 
                     <Route exact path="/question" component={Request} />
+
+                    <Route
+                        path="/question/see-more"
+                        component={SeeMoreRequest}
+                    />
 
                     <Route
                         path="/question/:questionId"
