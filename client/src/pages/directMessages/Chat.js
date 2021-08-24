@@ -17,12 +17,7 @@ const Chat = () => {
         to_id: userId || msg.sender_id,
     });
     const [data, setData] = useState(null);
-<<<<<<< HEAD
     const socket = io(process.env.REACT_APP_API_URL);
-=======
-
-    const socket = io("http://localhost:4000");
->>>>>>> dev-leon
 
     // receiving messages from server
     useEffect(() => {
