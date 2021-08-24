@@ -1,19 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./CollapseCards.css";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import CollapsableBelow from "./CollapsableBelow";
 
 const CollapseCards = ({ posts }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const answerText = useRef();
-    useEffect(() => {
-        answerText.current.innerHTML = posts.answer_text;
-    }, []);
+
     return (
         <div>
+            <div className="tab-style">#{posts.category}</div>
             <div className="sender-info">
-                <h4>{posts.sender_username}</h4>
-                <p>Ask: {posts.title}</p>
-                <p>#{posts.category}</p>
+                <Link to={`/user/${posts.sender_id}`} className="img-user-link">
+                    <img
+                        src={posts.sender_photo}
+                        alt=""
+                        className="sender-img-card"
+                    />
+                </Link>
+
+                <p className="card-title-question">Ask: {posts.title}</p>
+
                 <div className="arrow-btn">
                     <ExpandMore
                         type="button"
@@ -24,12 +31,11 @@ const CollapseCards = ({ posts }) => {
                     </ExpandMore>
                 </div>
             </div>
-            <div>
-                <div className="receiver-info">
-                    <h4>{posts.prof_username}</h4>
-                    <p ref={answerText} />
-                </div>
-            </div>
+
+            {
+                // if open is true show the this card below
+                isOpen && <CollapsableBelow posts={posts} />
+            }
         </div>
     );
 };

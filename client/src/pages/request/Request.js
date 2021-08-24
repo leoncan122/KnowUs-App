@@ -42,9 +42,7 @@ function Request() {
                         </Link>
                     ))
                 ) : (
-                    <center>
-                        You dont have any messages/questions already
-                    </center>
+                    <center>You dont have any questions already</center>
                 )}
             </div>
         </div>

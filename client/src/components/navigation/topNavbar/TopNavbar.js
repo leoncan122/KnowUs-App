@@ -20,7 +20,6 @@ export default function TopNavbar() {
     function handleMenu() {
         setMenuActive(!menuActive);
     }
-
     return (
         <nav className="main-nav">
             <div className="logo">
@@ -43,6 +42,9 @@ export default function TopNavbar() {
                             >
                                 Options
                             </button>
+                            <div className="burger-desktop">
+                                <Hamburger />
+                            </div>
                         </li>
                     ) : (
                         <li className="log-register-btn">
@@ -51,8 +53,14 @@ export default function TopNavbar() {
                         </li>
                     )}
                 </ul>
+                <li className="burger-mobile">
+                    {isLoged && menuActive && <Hamburger />}
+                </li>
             </div>
+<<<<<<< HEAD
             {userLoged && menuActive && <Hamburger />}
+=======
+>>>>>>> dev-leon
         </nav>
     );
 }

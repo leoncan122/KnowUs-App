@@ -16,7 +16,7 @@ const searchPublications = (req, res) => {
     const queryUsers = `SELECT id, user_name, photo, is_profesional
     FROM users
     WHERE user_name ILIKE '%'||$1||'%' AND is_profesional = true
-    LIMIT 5`;
+    LIMIT 4`;
 
     if (!word) {
         return res

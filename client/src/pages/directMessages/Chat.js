@@ -1,21 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useLocation, Link, useParams } from "react-router-dom";
 import io from "socket.io-client";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import { userContext } from "../../context/userContext";
+
 import "./chat.css";
 
-const Chat = ({ to, from }) => {
+const Chat = () => {
+    const { userId } = useParams();
+    const msg = useLocation().state;
+    const { userLoged } = useContext(userContext);
+
     const [sent, setSent] = useState({
         text: "",
-        from_id: from,
-        to_id: to,
+        from_id: userLoged.userId,
+        to_id: userId || msg.sender_id,
     });
-
     const [data, setData] = useState(null);
+<<<<<<< HEAD
     const socket = io(process.env.REACT_APP_API_URL);
+=======
+
+    const socket = io("http://localhost:4000");
+>>>>>>> dev-leon
 
     // receiving messages from server
     useEffect(() => {
         // this line serves to get all the messages of the converstation just send id's
-        socket.emit("users", { from_id: from, to_id: to });
+        socket.emit("users", {
+            from_id: userLoged.userId,
+            to_id: userId || msg.sender_id,
+        });
 
         // receiveing messages from socket
         socket.on("priv-msg", (messages) => {
@@ -39,22 +54,25 @@ const Chat = ({ to, from }) => {
         setSent({ ...sent, text: "" });
     };
     return (
-        <>
+        <div className="chat-content">
+            <Link to="/messages">
+                <ArrowBackIosIcon />{" "}
+            </Link>
             <div className="messages-area">
                 {data &&
-                    data.map((msg) => {
-                        if (msg.from_userid === to) {
+                    data.map((message) => {
+                        if (message.from_userid === userId) {
                             return (
-                                <div key={msg.id} className="msg-question">
-                                    {msg.text}
-                                </div>
+                                <p key={message.id} className="msg-question">
+                                    {message.text}
+                                </p>
                             );
                         }
 
                         return (
-                            <div key={msg.id} className="msg-answer">
-                                {msg.text}
-                            </div>
+                            <p key={message.id} className="msg-answer">
+                                {message.text}
+                            </p>
                         );
                     })}
             </div>
@@ -69,7 +87,7 @@ const Chat = ({ to, from }) => {
                 />
                 <input type="submit" value="send" />
             </form>
-        </>
+        </div>
     );
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import fetchData from "../../../../utils/fetchData";
 import TextEditor from "../../../../utils/TextEditor";
@@ -7,8 +7,6 @@ import "./messageDisplay.css";
 import QuestionMessage from "./QuestionMessage";
 
 function MessageDisplayer() {
-    const textAnswer = useRef();
-
     // receiving question data from Link
     const data = useLocation().state;
 
@@ -50,9 +48,6 @@ function MessageDisplayer() {
                 setError(rawData.error);
             }
             setResponse(rawData.response);
-
-            // catch response from POST and put on ref=TextAnswer as HTML to render properly
-            textAnswer.current.innerHTML = rawData.response.text;
         }
         fetching();
     };
@@ -64,9 +59,7 @@ function MessageDisplayer() {
                 <QuestionMessage data={data} />
 
                 {error && <center>{error}</center>}
-                {response && (
-                    <AnswerMessage refAnswer={textAnswer} response={response} />
-                )}
+                {response && <AnswerMessage response={response} />}
             </div>
 
             <form className="text-area">
