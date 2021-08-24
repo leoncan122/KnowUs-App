@@ -23,14 +23,15 @@ export default function Login(props) {
         const url = `${process.env.REACT_APP_API_URL}auth/login`;
         const data = await fetchData(loginData, url, "POST");
 
+
         if (data.error) {
             setError(data.error);
         }
         if (data.isAuthenticated) {
             setUserLoged(data);
-
+            window.sessionStorage.setItem("id",data.userId);
             setTimeout(() => {
-                props.history.push("/");
+            props.history.push("/");
             }, 1000);
         }
     };
