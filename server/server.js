@@ -84,7 +84,6 @@ app.use("/message", messages);
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
     res.clearCookie("userId");
-    res.clearCookie("photo");
     return res.status(200).send({ message: "Bye bye :)" });
 });
 

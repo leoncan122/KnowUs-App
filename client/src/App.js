@@ -12,7 +12,7 @@ import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
 import Request from "./pages/request/Request";
 import MessageDisplayer from "./pages/request/components/textboard/MessageDisplayer";
-import MessagesInbox from "./pages/directMessages/MessageInbox";
+import MessagesInbox from "./pages/directMessages/MessagesInbox";
 import TextEditor from "./utils/TextEditor";
 import Chat from "./pages/directMessages/Chat";
 import SeeMoreRequest from "./pages/request/SeeMoreRequest";
