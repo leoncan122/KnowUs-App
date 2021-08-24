@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import io from "socket.io-client";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-
-import cookieMonster from "../../utils/cookieMonster";
+import { userContext } from "../../context/userContext";
 
 import "./chat.css";
 
 const Chat = () => {
     const { userId } = useParams();
     const msg = useLocation().state;
-    const myUserId = cookieMonster("userId");
+    const { userLoged } = useContext(userContext);
 
     const [sent, setSent] = useState({
         text: "",
-        from_id: myUserId,
+        from_id: userLoged.userId,
         to_id: userId || msg.sender_id,
     });
     const [data, setData] = useState(null);
@@ -25,7 +24,7 @@ const Chat = () => {
     useEffect(() => {
         // this line serves to get all the messages of the converstation just send id's
         socket.emit("users", {
-            from_id: myUserId,
+            from_id: userLoged.userId,
             to_id: userId || msg.sender_id,
         });
 
@@ -58,7 +57,7 @@ const Chat = () => {
             <div className="messages-area">
                 {data &&
                     data.map((message) => {
-                        if (message.from_userid === msg.sender_id) {
+                        if (message.from_userid === userId) {
                             return (
                                 <p key={message.id} className="msg-question">
                                     {message.text}

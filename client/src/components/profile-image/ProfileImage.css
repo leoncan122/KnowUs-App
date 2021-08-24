@@ -8,6 +8,8 @@
 .photo {
     height: 80px;
     border-radius: 25px;
+    grid-row: 1/2;
+    justify-self: center;
 }
 
 /* Media Queries */

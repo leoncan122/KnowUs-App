@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./CollapseCards.css";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import CollapsableBelow from "./CollapsableBelow";
@@ -10,11 +11,13 @@ const CollapseCards = ({ posts }) => {
         <div>
             <div className="tab-style">#{posts.category}</div>
             <div className="sender-info">
-                <img
-                    src={posts.sender_photo}
-                    alt=""
-                    className="sender-img-card"
-                />
+                <Link to={`/user/${posts.sender_id}`} className="img-user-link">
+                    <img
+                        src={posts.sender_photo}
+                        alt=""
+                        className="sender-img-card"
+                    />
+                </Link>
 
                 <p className="card-title-question">Ask: {posts.title}</p>
 

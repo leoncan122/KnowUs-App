@@ -13,12 +13,12 @@ export default function MyProfileCards({ userId }) {
     }, []);
     return (
         <div>
+            <p>
+                Her/Him has <span>{answers.length}</span> answers
+            </p>
             {answers.length > 0 ? (
                 answers.map((card) => (
                     <>
-                        <p>
-                            Her/Him has <span>{answers.length}</span> answers
-                        </p>
                         <CollapseCards posts={card} />
                     </>
                 ))

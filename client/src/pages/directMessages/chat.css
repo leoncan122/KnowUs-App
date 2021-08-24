@@ -1,10 +1,11 @@
 .chat-content {
-    height: 91.5vh;
+    height: 93.5vh;
     display: grid;
     grid-template: 0.3fr 3fr 0.6fr/1fr;
     background-color: #90adc68f;
     grid-row: 2;
     padding: 2% 2%;
+    overflow: hidden;
 }
 .chat-content > a {
     grid-row: 1/2;

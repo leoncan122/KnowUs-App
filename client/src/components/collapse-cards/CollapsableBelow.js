@@ -8,12 +8,15 @@ const CollapsableBelow = ({ posts }) => {
     }, []);
     return (
         <div className="receiver-info">
-            <img
-                src={posts.prof_photo}
-                alt=""
-                width="20px"
-                className="prof-img-card"
-            />
+            <Link to={`/user/${posts.prof_id}`} className="img-user-link">
+                <img
+                    src={posts.prof_photo}
+                    alt=""
+                    width="20px"
+                    className="prof-img-card"
+                />
+            </Link>
+
             <p className="card-title-question" ref={answerText} />
             <Link
                 className="see-more"

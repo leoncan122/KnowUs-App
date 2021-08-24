@@ -18,6 +18,7 @@
 .post-content {
     display: grid;
     justify-items: center;
+    width: 90%;
 }
 .post {
     color: white;
@@ -36,13 +37,10 @@
     display: none;
 }
 
-@media (min-width: 900px) {
-    * {
-        font-size: 1rem;
-    }
+@media (min-width: 540px) {
     .home-content {
         grid-template-rows: 15vh 10vh 5vh 80vh;
-        grid-template-columns: 3.5fr 1fr;
+        grid-template-columns: 2.5fr 1fr;
     }
     .search-box {
         width: 100%;
@@ -50,6 +48,11 @@
         display: block;
         place-content: center;
     }
+}
+@media (min-width: 900px) {
+    /* * {
+        font-size: 1rem;
+    } */
 
     .posts-heading {
         grid-column: 1/2;

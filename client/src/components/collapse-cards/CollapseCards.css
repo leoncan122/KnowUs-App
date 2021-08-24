@@ -1,7 +1,7 @@
 .sender-info {
-    height: 100px;
+    height: 80px;
     background-color: #90adc6;
-    border-radius: 5%;
+    border-radius: 0 34px 5px 2px;
     display: grid;
     grid-template: 2fr 1fr / 2.5fr 0.5fr 0.5fr;
     overflow: hidden;
@@ -15,11 +15,14 @@
     grid-column: 1/2;
     grid-row: 2/3;
 }
+.img-user-link {
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
 .sender-img-card {
     width: 40px;
     height: 40px;
-    grid-column: 3/4;
-    grid-row: 1/2;
+
     place-self: center;
     border-radius: 25px;
     place-self: start center;
@@ -30,12 +33,13 @@
     color: white;
     font-weight: bold;
     height: 0px;
-    border-right: 40px solid transparent;
+    /* border-right: 40px solid transparent; */
     border-bottom: 21px solid #333652;
+    border-radius: 0 9px 0 0;
     width: 45%;
-    padding: 6px;
-    line-height: 35px;
-    font-size: 70%;
+    /* padding: 6px;
+    line-height: 35px; */
+    font-size: 85%;
     text-align: start;
 }
 .receiver-info {
@@ -46,6 +50,7 @@
     grid-template: 2fr 1fr / 2.5fr 0.5fr 0.5fr;
     overflow: hidden;
     padding: 2%;
+    border-radius: 0 0px 5px 35px;
 }
 .prof-img-card {
     width: 40px;
@@ -71,7 +76,8 @@
 }
 .see-more {
     grid-row: 2/3;
-    grid-column: 2/3;
+    grid-column: 2/4;
+    place-self: end;
 }
 
 .toggleDown {
@@ -79,4 +85,11 @@
     border-radius: 2px;
     float: right;
     margin-top: 1em;
+}
+
+@media (min-width: 540px) {
+    .tab-style {
+        width: 35%;
+        border-bottom: 26px solid #333652;
+    }
 }

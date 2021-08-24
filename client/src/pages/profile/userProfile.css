@@ -27,9 +27,6 @@
     display: grid;
     grid-column: 1/2;
 }
-.second-div {
-    grid-row: 1/2;
-}
 
 @media (min-width: 540px) {
     .info-profile {

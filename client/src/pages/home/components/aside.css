@@ -24,7 +24,21 @@
     justify-content: center;
     margin: 0 1%;
 }
-
+@media (min-width: 540px) {
+    .aside {
+        flex-direction: column;
+        align-content: center;
+        align-self: start;
+        grid-column: 2/3;
+        grid-row: 2/5;
+        /* background-color: white; */
+    }
+    .aside > div {
+        width: 100%;
+        height: 20%;
+        text-align: center;
+    }
+}
 @media (min-width: 900px) {
     .aside {
         flex-direction: column;
