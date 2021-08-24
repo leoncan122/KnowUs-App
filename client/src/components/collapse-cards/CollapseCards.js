@@ -12,16 +12,22 @@ const CollapseCards = ({ posts }) => {
     return (
         <div>
             <div className="sender-info">
-                <h4>{posts.sender_username}</h4>
-                <p>Ask: {posts.title}</p>
-                <p>#{posts.category}</p>
+                <img
+                    src={posts.sender_photo}
+                    alt=""
+                    className="sender-img-card"
+                />
+
+                <p className="card-title-question">Ask: {posts.title}</p>
+                <p className="category">#{posts.category}</p>
                 <Link
+                    className="arrow-btn"
                     to={{
                         pathname: "/question/see-more",
                         state: posts,
                     }}
                 >
-                    <div className="arrow-btn">
+                    <div>
                         <ExpandMore
                             type="button"
                             className="toggleUp"
@@ -34,8 +40,13 @@ const CollapseCards = ({ posts }) => {
             </div>
             <div>
                 <div className="receiver-info">
-                    <h4>{posts.prof_username}</h4>
-                    <p ref={answerText} />
+                    <img
+                        src={posts.prof_photo}
+                        alt=""
+                        width="20px"
+                        className="prof-img-card"
+                    />
+                    <p className="card-title-question" ref={answerText} />
                 </div>
             </div>
         </div>
