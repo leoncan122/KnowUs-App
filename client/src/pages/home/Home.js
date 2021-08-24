@@ -8,7 +8,7 @@ import MainHeading from "./components/MainHeading";
 import CollapseCards from "../../components/collapse-cards/CollapseCards";
 
 function Home() {
-    const { result } = useContext(SearchContext);
+    const { result, setResult } = useContext(SearchContext);
     const [contentData, setContentData] = useState(null);
     const [error, setError] = useState("");
 
@@ -20,7 +20,7 @@ function Home() {
     useEffect(() => {
         // const url = "http://localhost:4000/home/lastones";
         const url = `${process.env.REACT_APP_API_URL}home/lastones`;
-        console.log(process.env.REACT_APP_API_URL);
+        setResult("");
 
         async function fetching() {
             try {
