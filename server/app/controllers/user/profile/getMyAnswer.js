@@ -9,7 +9,6 @@ JOIN users u ON pq.from_userid = u.id
 JOIN users p ON pq.to_userid = p.id
 WHERE pq.to_userid = $1`;
 
-
 const getMyAnswer = async (req, res) => {
     const { userId } = req.params;
 
