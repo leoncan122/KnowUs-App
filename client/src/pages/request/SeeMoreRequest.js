@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import AnswerMessage from "./components/textboard/AnswerMessage";
 import QuestionMessage from "./components/textboard/QuestionMessage";
 
@@ -31,17 +31,12 @@ const SeeMoreRequest = () => {
     return (
         <div>
             <div className="displayer-content">
-                <Link to="/question">Back</Link>
+                {/* <Link to="/home">Back</Link> */}
                 <div className="question-area">
                     <QuestionMessage data={question} />
 
                     {/* {error && <center>{error}</center>} */}
-                    {answer && (
-                        <AnswerMessage
-                            // refAnswer={textAnswer}
-                            response={answer}
-                        />
-                    )}
+                    {answer && <AnswerMessage response={answer} />}
                 </div>
             </div>
         </div>

@@ -26,8 +26,21 @@
     border-radius: 25px;
     margin-top: 5px;
 }
+.tab-style {
+    color: white;
+    font-weight: bold;
+    height: 0px;
+    border-right: 40px solid transparent;
+    border-bottom: 21px solid #333652;
+    width: 45%;
+    padding: 6px;
+    line-height: 35px;
+    font-size: 70%;
+    text-align: start;
+}
 .receiver-info {
     color: #333652;
+    background-color: #e9eaec;
     height: 100px;
     display: grid;
     grid-template: 2fr 1fr / 2.5fr 0.5fr 0.5fr;
@@ -55,6 +68,10 @@
 .arrow-btn {
     grid-row: 2/3;
     grid-column: 3/4;
+}
+.see-more {
+    grid-row: 2/3;
+    grid-column: 2/3;
 }
 
 .toggleDown {
