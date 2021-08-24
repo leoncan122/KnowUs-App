@@ -54,13 +54,10 @@ export default function TopNavbar() {
                     )}
                 </ul>
                 <li className="burger-mobile">
-                    {isLoged && menuActive && <Hamburger />}
+                    {userLoged && menuActive && <Hamburger />}
                 </li>
             </div>
-<<<<<<< HEAD
             {userLoged && menuActive && <Hamburger />}
-=======
->>>>>>> dev-leon
         </nav>
     );
 }
