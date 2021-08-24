@@ -1,30 +1,10 @@
-<<<<<<< HEAD
-import "./inbox.css";
-import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-// import { Route } from "react-router-dom";
-import fetchData from "../../utils/fetchData";
-import Chat from "./Chat";
-import MessagePanel from "../request/components/panel/MessagePanel";
-import { userContext } from "../../context/userContext";
-=======
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import "./chat.css";
->>>>>>> dev-leon
 
 function MessagesInbox() {
     const [data, setData] = useState(null);
-<<<<<<< HEAD
-    const [textboardState, setTextboardState] = useState("unable");
-    const {userLoged} = useContext(userContext)
-
-    // ids to start a conversation
-    const { id } = useParams();
-    const {userId} = userLoged
-=======
->>>>>>> dev-leon
 
     useEffect(() => {
         async function fetching() {
