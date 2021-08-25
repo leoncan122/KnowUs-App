@@ -18,19 +18,12 @@ export default function MyProfileCards({ userId }) {
                 Her/Him has <span>{answers.length}</span> answers
             </p>
             {answers.length > 0 ? (
-<<<<<<< HEAD
                 // eslint-disable-next-line react/no-array-index-key
                 answers.map((card, index) => (
                     <CollapseCards
                         posts={card}
                         key={`collapse-card-${index}`}
                     />
-=======
-                answers.map((card) => (
-                    <>
-                        <CollapseCards posts={card} />
-                    </>
->>>>>>> 71b2ab0e6089c7cba13a51f252a1d866495a3159
                 ))
             ) : (
                 <h1>You havent answered any questions</h1>
