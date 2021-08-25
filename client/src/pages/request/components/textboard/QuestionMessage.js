@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./questionMessage.css";
 
 const QuestionMessage = ({ data }) => (
     <div className="text-question">
