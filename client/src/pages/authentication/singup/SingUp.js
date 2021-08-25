@@ -39,21 +39,23 @@ export default function SingUp(props) {
     };
 
     return (
-        <div className="singup">
-            <h1>Welcome!</h1>
-            <form className="singup-form" onSubmit={handleSubmit}>
-                <InputEmail email={email} onChange={setEmail} />
-                <InputUsername Username={username} onChange={setUsername} />
-                <InputPassword password={password} onChange={setPassword} />
-                <button type="submit" className="btn">
-                    Signup
-                </button>
-                {error && <p>{error}</p>}
-            </form>
-            <h3>Already registered?</h3>
-            <Link className="link" to="/login">
-                Login
-            </Link>
+        <div className="background-auth">
+            <div className="singup">
+                <h1>Welcome!</h1>
+                <form className="singup-form" onSubmit={handleSubmit}>
+                    <InputEmail email={email} onChange={setEmail} />
+                    <InputUsername Username={username} onChange={setUsername} />
+                    <InputPassword password={password} onChange={setPassword} />
+                    <button type="submit" className="btn">
+                        Signup
+                    </button>
+                    {error && <p>{error}</p>}
+                </form>
+                <h3>Already registered?</h3>
+                <Link className="link" to="/login">
+                    Login
+                </Link>
+            </div>
         </div>
     );
 }
