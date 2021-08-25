@@ -32,6 +32,7 @@ export default function SingUp(props) {
         }
         if (data.isAuthenticated) {
             setUserLoged(data);
+            window.sessionStorage.setItem("id", data.userId);
             setTimeout(() => {
                 props.history.push("/");
             }, 1000);

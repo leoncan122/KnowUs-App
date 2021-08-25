@@ -47,7 +47,7 @@ const Card = () => {
             onMouseLeave={() => setMouseLeave(!mouseLeave)}
         >
             <div
-                className="card"
+                className="card-logo"
                 style={
                     setStyle() && {
                         transform: `rotateY(${x}deg) rotateX(${y}deg)`,

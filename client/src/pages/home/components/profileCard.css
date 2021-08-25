@@ -40,7 +40,13 @@
 }
 
 @media (min-width: 900px) {
+    .link-aside {
+        width: 100%;
+        display: grid;
+    }
     .card {
+        justify-self: center;
+        width: 80%;
         align-items: center;
         grid-template-rows: 1fr;
         grid-template-columns: 1fr 2.5fr;

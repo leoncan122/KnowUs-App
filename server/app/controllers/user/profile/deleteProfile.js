@@ -39,26 +39,8 @@ const deleteProfile = (req, res) => {
         });
         return res.send("User Deleted");
     } catch (error) {
-        console.log(error);
+        return res.stats(404).send({ error: error.message });
     }
-    /* const deleteData = async () => {
-        try {
-            const client = pool.connect();
-            let result = client.query(query1, [userId]);
-            result = client.query(query2, [userId]);
-            result = client.query(query3, [userId]);
-            result = client.query(query4, [userId]);
-            result = client.query(query5, [userId]);
-            result = client.query(query6, [userId]);
-            result = client.query(query7, [userId]);
-            client.realese();
-            return res.send("User Deleted");
-        } catch (error) {
-            console.log(error);
-            client.realese();
-        }
-    };
-    deleteData(); */
 };
 
 module.exports = deleteProfile;

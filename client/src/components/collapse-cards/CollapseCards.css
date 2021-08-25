@@ -89,7 +89,10 @@
 
 @media (min-width: 540px) {
     .sender-info {
-        padding: 0;
+        padding: 1%;
+    }
+    .receiver-info {
+        padding: 1%;
     }
     .tab-style {
         width: 35%;
