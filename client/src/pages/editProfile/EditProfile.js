@@ -6,6 +6,7 @@ import fetchData from "../../utils/fetchData";
 import "./EditProfile.css";
 import EditGithubLink from "../../components/editProfile/EditGithubLink";
 import EditLinkedinLink from "../../components/editProfile/EditLinkedinLink";
+import DeleteProfile from "./DeleteProfile";
 
 export default function EditProfile() {
     const [profession, setProfession] = useState("");
@@ -41,6 +42,7 @@ export default function EditProfile() {
                 </button>
             </form>
             <h2>{profileMessage}</h2>
+            <DeleteProfile />
         </div>
     );
 }
