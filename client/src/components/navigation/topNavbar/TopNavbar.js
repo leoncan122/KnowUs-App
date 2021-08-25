@@ -1,26 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
 import { userContext } from "../../../context/userContext";
 import Hamburger from "../hamburguer/Hamburger";
-import cookieMonster from "../../../utils/cookieMonster";
+// import cookieMonster from "../../../utils/cookieMonster";
 
 export default function TopNavbar() {
-    const { isLoged, setIsLoged } = useContext(userContext);
+    const { userLoged } = useContext(userContext);
     const [menuActive, setMenuActive] = useState(false);
 
-    useEffect(() => {
-        const tokenBoolean = cookieMonster("token");
-        setIsLoged(tokenBoolean);
-        if (tokenBoolean === false) {
-            setMenuActive(false);
-        }
-    });
+    // useEffect(() => {
+    //     const tokenBoolean = cookieMonster("token");
+    //     setIsLoged(tokenBoolean);
+    //     if (tokenBoolean === false) {
+    //         setMenuActive(false);
+    //     }
+    // });
 
     function handleMenu() {
         setMenuActive(!menuActive);
     }
-
     return (
         <nav className="main-nav">
             <div className="logo">
@@ -34,7 +33,7 @@ export default function TopNavbar() {
 
             <div className="menu-link">
                 <ul>
-                    {isLoged ? (
+                    {userLoged ? (
                         <li>
                             <button
                                 className="options"
@@ -43,6 +42,9 @@ export default function TopNavbar() {
                             >
                                 Options
                             </button>
+                            <div className="burger-desktop">
+                                <Hamburger />
+                            </div>
                         </li>
                     ) : (
                         <li className="log-register-btn">
@@ -51,8 +53,11 @@ export default function TopNavbar() {
                         </li>
                     )}
                 </ul>
+                <li className="burger-mobile">
+                    {userLoged && menuActive && <Hamburger />}
+                </li>
             </div>
-            {isLoged && menuActive && <Hamburger />}
+            {userLoged && menuActive && <Hamburger />}
         </nav>
     );
 }

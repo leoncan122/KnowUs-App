@@ -9,30 +9,32 @@ const Search = () => {
     const [word, setWord] = useState("");
 
     useEffect(() => {
-        const url = `http://localhost:4000/home/search?word=${word}`;
+        const url = `${process.env.REACT_APP_API_URL}home/search?word=${word}`;
         async function fetching() {
             const data = await fetchData(null, url, "GET");
-            console.log(data);
             setResult(data);
         }
-        fetching();
+        if (word) {
+            fetching();
+        }
     }, [word]);
 
     const handleSearch = (e) => {
         setWord(e.target.value);
     };
+
     return (
         <div className="search-container">
             <input
                 type="search"
-                placeholder="..."
+                placeholder="search by answers/users"
                 className="search-bar"
                 value={word}
                 onChange={handleSearch}
             />
 
             <span className="searchIcon">
-                <SearchIcon />
+                <SearchIcon color="primary" style={{ fontSize: 40 }} />
             </span>
         </div>
     );

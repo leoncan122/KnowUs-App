@@ -1,52 +1,54 @@
-import "./request.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
+import "./chat.css";
 
-function Request() {
+function MessagesInbox() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
         async function fetching() {
-            const url = `${process.env.REACT_APP_API_URL}user/question`;
+            const url = `${process.env.REACT_APP_API_URL}message/inbox`;
             const rawData = await fetchData(null, url, "GET");
-            if (rawData.isSuccesful) {
-                setData(rawData.questions);
+            if (rawData.messages) {
+                setData(rawData.messages);
             }
         }
+
         fetching();
     }, []);
 
     return (
         <div className="question-content">
             <h4>
-                Questions <span>{data ? data.length : 0}</span>
+                Messages <span>{data ? data.length : 0}</span>
             </h4>
+
             <div className="question-panel">
                 {data ? (
-                    data.map((post) => (
+                    data.map((msg) => (
                         <Link
                             className="link-question"
                             to={{
-                                pathname: `/question/${post.questionid}`,
-                                state: post,
+                                pathname: `/messages/${msg.sender_id}`,
+                                state: msg,
                             }}
                         >
                             <button
-                                key={post.questionId}
+                                key={msg.id}
                                 className="question-btn"
                                 type="button"
                             >
-                                {post.title}
+                                {msg.sender}
                             </button>
                         </Link>
                     ))
                 ) : (
-                    <center>You dont have any questions already</center>
+                    <center>You dont have any messages already</center>
                 )}
             </div>
         </div>
     );
 }
 
-export default Request;
+export default MessagesInbox;

@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const { pool } = require("../../services/poolService");
 require("dotenv").config({ path: "../../../../.env" });
 
+
 const ONEDAY = 86400;
 
 const login = (req, res) => {
@@ -44,8 +45,15 @@ const login = (req, res) => {
                 expiresIn: ONEDAY,
             });
 
-            res.cookie("token", token);
-            res.cookie("userId", user.id);
+            res.cookie("token", token, {
+                httpOnly: true,
+                sameSite: "none",
+                secure: true,
+            });
+            res.cookie("userId", user.id, {
+                sameSite: "none",
+                secure: true,
+            });
 
             res.status(201).json({
                 userId: user.id,

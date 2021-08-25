@@ -12,8 +12,10 @@ import { SearchProvider } from "./context/SearchContext";
 import MakeQuestion from "./components/question/MakeQuestion";
 import Request from "./pages/request/Request";
 import MessageDisplayer from "./pages/request/components/textboard/MessageDisplayer";
-import MessagesInbox from "./pages/directMessages/MessageInbox";
+import MessagesInbox from "./pages/directMessages/MessagesInbox";
 import TextEditor from "./utils/TextEditor";
+import Chat from "./pages/directMessages/Chat";
+import SeeMoreRequest from "./pages/request/SeeMoreRequest";
 
 // import { userContext } from "./context/userContext";
 
@@ -40,15 +42,19 @@ function App() {
                     <Route exact path="/question" component={Request} />
 
                     <Route
+                        path="/question/see-more"
+                        component={SeeMoreRequest}
+                    />
+
+                    <Route
                         path="/question/:questionId"
                         component={MessageDisplayer}
                     />
 
-                    <Route
-                        exact
-                        path="/messages/:id?"
-                        component={MessagesInbox}
-                    />
+                    <Route exact path="/messages/" component={MessagesInbox} />
+
+                    <Route path="/messages/:userId" component={Chat} />
+
                     <Route path="/profile/edit" component={EditProfile} />
                 </Switch>
             </SearchProvider>

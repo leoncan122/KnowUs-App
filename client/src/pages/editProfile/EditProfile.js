@@ -19,7 +19,7 @@ export default function EditProfile() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const editData = { profession, country, city, github, linkedin };
-        const url = "http://localhost:4000/profile/edit";
+        const url = `${process.env.REACT_APP_API_URL}profile/edit`;
         const data = await fetchData(editData, url, "PUT");
         setProfileMessage(data.message);
     };

@@ -24,7 +24,7 @@ export default function SingUp(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const signupData = { email, username, password };
-        const url = "http://localhost:4000/auth/signup";
+        const url = `${process.env.REACT_APP_API_URL}auth/signup`;
         const data = await fetchData(signupData, url, "POST");
 
         if (data.error) {
