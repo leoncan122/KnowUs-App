@@ -1,0 +1,86 @@
+.background-auth {
+    display: grid;
+    background-color: #eae9ec;
+    height: 92vh;
+}
+.singup,
+.login {
+    width: 90%;
+    height: 85%;
+    color: #90adc6;
+
+    background-color: #333652;
+    justify-self: center;
+    align-self: center;
+    grid-row: 1/3;
+    border-radius: 10px;
+    border: 3px solid #fad02c;
+    display: grid;
+    grid-template-rows: 15% 70% 10% 5%;
+    place-items: center;
+    padding-bottom: 1rem;
+}
+
+.singup-form,
+.login-form {
+    align-self: start;
+    height: 90%;
+    background-color: #fff5001c;
+    /* -webkit-box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.91);
+    box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.91); */
+    display: grid;
+    border-radius: 3%;
+    padding: 1rem;
+}
+.singup-form {
+    height: 100%;
+}
+.singup-form:hover,
+.login-form:hover {
+    border: solid 1px #fad02c;
+}
+
+.singup-form > a,
+.singup > h1,
+.singup > a,
+.login-form > a,
+.login > h1,
+.login > a {
+    text-align: center;
+}
+.singup-form p,
+.login-form p {
+    text-align: center;
+}
+.link {
+    font-size: 1.6rem;
+    color: #fad02c;
+}
+.login-logo {
+    grid-row: 1/2;
+    place-self: center;
+    width: 50%;
+}
+.btn {
+    min-width: 60%;
+    justify-self: center;
+    min-height: 55%;
+    max-height: 60%;
+    background-color: rgba(151, 144, 153, 0.205);
+    border-style: none;
+    text-transform: capitalize;
+    color: rgba(245, 245, 248, 0.8);
+    transition: 0.5s;
+    text-decoration: none;
+}
+@media (min-width: 900px) {
+    .background-auth {
+        grid-template: 3fr 1fr / 1.7fr 1fr;
+        height: 83vh;
+    }
+    .singup,
+    .login {
+        grid-column: 2/3;
+        margin-right: 10%;
+    }
+}

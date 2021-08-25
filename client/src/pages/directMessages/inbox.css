@@ -1,0 +1,24 @@
+.inbox-page {
+    height: 91vh;
+    display: grid;
+    grid-template: 1fr 8fr / 1fr;
+}
+.header {
+    grid-row: 1/2;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 0.2fr 5fr;
+}
+.header > p {
+    grid-column: 2/3;
+    text-align: center;
+}
+/* .chat-desktop {
+    display: none;
+} */
+
+@media (min-width: 900px) {
+    .chat-desktop {
+        display: block;
+    }
+}

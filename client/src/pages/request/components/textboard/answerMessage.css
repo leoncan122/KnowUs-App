@@ -1,0 +1,30 @@
+.text-answer {
+    margin-top: 7%;
+    display: grid;
+    background-color: white;
+    padding: 3%;
+    grid-template: 1fr / 1fr;
+}
+.answer-info {
+    grid-row: 1/2;
+    display: grid;
+    grid-template: 1fr 0.5fr / 5fr 1fr;
+    border-bottom: 1px solid black;
+}
+.answer-desc {
+    grid-row: 2/3;
+    background-color: rgba(180, 179, 179, 0.4);
+    padding: 2%;
+}
+.answer-info > h4 {
+    justify-self: right;
+}
+.answer-info > p {
+    grid-column: 1/3;
+    font-size: 15px;
+    justify-self: right;
+}
+.answer-info > img {
+    grid-column: 2/3;
+    justify-self: right;
+}

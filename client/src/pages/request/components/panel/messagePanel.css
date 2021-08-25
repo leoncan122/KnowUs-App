@@ -1,0 +1,5 @@
+.panel {
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    place-items: center / start;
+}

@@ -1,0 +1,11 @@
+.edit-profile {
+    display: flex;
+    flex-direction: column;
+    width: 30vh;
+    margin: auto;
+}
+
+.edit-profile button {
+    margin-top: 10px;
+    color: black;
+}

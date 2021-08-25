@@ -1,0 +1,14 @@
+.main-heading {
+    display: none;
+    color: #e9eaec;
+    background-color: #333652;
+    text-align: center;
+    width: 90%;
+}
+@media (min-width: 900px) {
+    .main-heading {
+        display: block;
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+}

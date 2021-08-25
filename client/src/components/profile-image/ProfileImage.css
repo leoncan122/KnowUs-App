@@ -1,0 +1,30 @@
+/* .second-div {
+    background-color: black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 180%;
+} */
+.photo {
+    height: 80px;
+    border-radius: 25px;
+    grid-row: 1/2;
+    justify-self: center;
+}
+
+/* Media Queries */
+
+@media (min-width: 540px) {
+    .photo {
+        height: 120px;
+        width: 120px;
+        border-radius: 25px;
+    }
+}
+@media (min-width: 900px) {
+    .photo {
+        width: 135px;
+        height: 135px;
+        border-radius: 25px;
+    }
+}

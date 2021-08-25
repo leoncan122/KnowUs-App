@@ -1,0 +1,21 @@
+.text-question {
+    display: grid;
+    background-color: white;
+    padding: 3%;
+    grid-template: 0.7fr 0.3fr / 1fr;
+}
+.question-info {
+    grid-row: 2/3;
+    display: grid;
+    grid-template: 1fr 0.5fr / 1fr 5fr;
+    border-bottom: 1px solid black;
+}
+.question-info > p {
+    grid-column: 1/3;
+    font-size: 15px;
+}
+.question-desc {
+    grid-row: 3/4;
+    background-color: rgba(180, 179, 179, 0.4);
+    padding: 2%;
+}
