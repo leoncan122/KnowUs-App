@@ -1,6 +1,9 @@
 * {
     font-size: 1.1rem;
 }
+.App {
+    overflow-y: hidden;
+}
 @media (min-width: 540px) {
     * {
         font-size: 1.2rem;

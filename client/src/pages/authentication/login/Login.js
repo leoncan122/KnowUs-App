@@ -51,7 +51,7 @@ export default function Login(props) {
                 </form>
                 <h3>Already registered?</h3>
                 <Link className="link" to="/register">
-                    SingUp
+                    SignUp
                 </Link>
             </div>
         </div>

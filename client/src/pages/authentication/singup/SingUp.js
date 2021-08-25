@@ -7,6 +7,7 @@ import fetchData from "../../../utils/fetchData";
 import { userContext } from "../../../context/userContext";
 
 import "../SingupAndLogin.css";
+import Card from "../login/Card";
 
 export default function SingUp(props) {
     const { setUserLoged } = useContext(userContext);
@@ -41,6 +42,7 @@ export default function SingUp(props) {
 
     return (
         <div className="background-auth">
+            <Card />
             <div className="singup">
                 <h1>Welcome!</h1>
                 <form className="singup-form" onSubmit={handleSubmit}>

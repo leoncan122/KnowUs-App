@@ -48,7 +48,10 @@
 .login > a {
     text-align: center;
 }
-
+.singup-form p,
+.login-form p {
+    text-align: center;
+}
 .link {
     font-size: 1.6rem;
     color: #fad02c;

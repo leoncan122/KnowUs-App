@@ -30,13 +30,21 @@ export default function OthersProfiles({ history }) {
                 {data && <AsideUserInfo info={data} />}
                 {data && <ProfileImage photo={data.userPhoto} />}
                 <div className="right-aside-info">
-                    {data && data.userProfessional && (
-                        <Link to={`/user/${id}/question`}>
-                            make public question
-                        </Link>
+                    {userLoged ? (
+                        data &&
+                        data.userProfessional && (
+                            <Link to={`/user/${id}/question`}>
+                                Make public question
+                            </Link>
+                        )
+                    ) : (
+                        <Link to="/login">Make public question</Link>
                     )}
-
-                    <Link to={`/messages/${id}`}>message</Link>
+                    {userLoged ? (
+                        <Link to={`/messages/${id}`}>Direct message</Link>
+                    ) : (
+                        <Link to="/login">Direct message</Link>
+                    )}
                 </div>
             </div>
 

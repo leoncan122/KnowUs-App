@@ -10,11 +10,12 @@ const Chat = () => {
     const { userId } = useParams();
     const msg = useLocation().state;
     const { userLoged } = useContext(userContext);
+    const to = msg ? msg.sender_id : userId;
 
     const [sent, setSent] = useState({
         text: "",
         from_id: userLoged.userId,
-        to_id: userId || msg.sender_id,
+        to_id: to,
     });
     const [data, setData] = useState(null);
     const socket = io(process.env.REACT_APP_API_URL);
@@ -56,10 +57,7 @@ const Chat = () => {
             <div className="messages-area">
                 {data &&
                     data.map((message) => {
-                        if (
-                            message.from_userid === userId ||
-                            message.from_userid === msg.sender_id
-                        ) {
+                        if (message.from_userid === to) {
                             return (
                                 <p key={message.id} className="msg-question">
                                     {message.text}

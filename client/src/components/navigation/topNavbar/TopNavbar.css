@@ -17,10 +17,17 @@ li {
 }
 
 .logo {
-    grid-column: 1/3;
+    grid-column: 1/2;
     display: grid;
     justify-content: center;
     align-items: center;
+}
+.main-nav > img {
+    grid-column: 2/3;
+    width: 57px;
+    align-self: center;
+    justify-self: center;
+    height: 75%;
 }
 
 .menu-link {
@@ -57,7 +64,7 @@ li {
 .menu-link ul li a {
     text-transform: capitalize;
     color: rgba(255, 254, 254, 0.8);
-    padding-left: 2em;
+    padding-left: 15%;
     transition: 0.5s ease;
 }
 
@@ -85,10 +92,7 @@ li {
     .logo h2 {
         font-size: 2.5rem;
         font-weight: 900;
-    }
-
-    .main-nav {
-        grid-template-columns: 2rem 1fr 1fr 2rem;
+        padding-left: 5px;
     }
 
     .menu-link {
@@ -122,7 +126,9 @@ li {
     .menu-link {
         grid-column: 2/4;
     }
-    .menu-link ul {
+    .main-nav > img {
+        width: 74px;
+        height: 90%;
     }
     /* .menu-link > ul > li {
         width: 100%;

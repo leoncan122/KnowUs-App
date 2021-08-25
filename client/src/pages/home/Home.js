@@ -20,6 +20,7 @@ function Home() {
     useEffect(() => {
         // const url = "http://localhost:4000/home/lastones";
         const url = `${process.env.REACT_APP_API_URL}home/lastones`;
+        console.log(url);
         setResult("");
 
         async function fetching() {

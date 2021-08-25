@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
+import MenuIcon from "@material-ui/icons/Menu";
 import { userContext } from "../../../context/userContext";
 import Hamburger from "../hamburguer/Hamburger";
-// import cookieMonster from "../../../utils/cookieMonster";
+import idea from "../../logo/idea__1_.png";
 
 export default function TopNavbar() {
     const { userLoged } = useContext(userContext);
@@ -30,18 +31,15 @@ export default function TopNavbar() {
                     </Link>
                 </h2>
             </div>
-
+            <img src={idea} alt="" />
             <div className="menu-link">
                 <ul>
                     {userLoged ? (
                         <li>
-                            <button
-                                className="options"
-                                type="button"
-                                onClick={handleMenu}
-                            >
-                                Options
-                            </button>
+                            <div className="options">
+                                <MenuIcon type="button" onClick={handleMenu} />
+                            </div>
+
                             <div className="burger-desktop">
                                 <Hamburger />
                             </div>
