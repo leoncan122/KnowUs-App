@@ -81,13 +81,13 @@ const MakeQuestion = ({ match, history }) => {
                 >
                     send
                 </button>
-                <button
+                {/* <button
                     name="save"
                     type="submit"
                     onClick={() => handleStatusQuestion(true)}
                 >
                     save
-                </button>
+                </button> */}
             </form>
             {error && (
                 <center>

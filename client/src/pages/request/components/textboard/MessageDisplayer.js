@@ -48,6 +48,7 @@ function MessageDisplayer() {
                 setError(rawData.error);
             }
             setResponse(rawData.response);
+            setAnswer("");
         }
         fetching();
     };
@@ -63,7 +64,7 @@ function MessageDisplayer() {
             </div>
 
             <form className="text-area">
-                <TextEditor fn={handleAnswer} />
+                <TextEditor answer={answer} fn={handleAnswer} />
                 <input
                     className="send-btn"
                     name="draft"
@@ -71,13 +72,13 @@ function MessageDisplayer() {
                     value="send"
                     onClick={handleSubmit}
                 />
-                <input
+                {/* <input
                     className="draft-btn"
                     name="draft"
                     type="submit"
                     value="save"
                     onClick={handleSubmit}
-                />
+                /> */}
             </form>
         </div>
     );

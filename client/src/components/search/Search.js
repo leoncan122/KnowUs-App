@@ -16,7 +16,7 @@ const Search = () => {
         }
         if (word) {
             fetching();
-        }
+        } else setResult("");
     }, [word]);
 
     const handleSearch = (e) => {
@@ -26,7 +26,7 @@ const Search = () => {
     return (
         <div className="search-container">
             <input
-                type="search"
+                type="Search"
                 placeholder="search by answers/users"
                 className="search-bar"
                 value={word}
