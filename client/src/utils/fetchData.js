@@ -17,6 +17,16 @@ const fetchData = async (handleData, url, methodType) => {
         data = await res.json();
     }
 
+    if (methodType === "DELETE" && !handleData) {
+        fetch(url, {
+            method: "DELETE",
+            credentials: "include",
+        })
+            .then((response) => response.text())
+            .then((result) => console.log(result))
+            .catch((error) => console.log("error", error));
+    }
+
     return data;
 };
 
