@@ -1,6 +1,7 @@
 const { pool } = require("../../../services/poolService");
 
-const MessagesReceived = (req, res) => {
+// eslint-disable-next-line consistent-return
+const MessagesReceived = async (req, res) => {
     const userId = req.id;
     const query = `SELECT dm.from_userid sender_id, u.user_name sender, u.photo sender_photo
     FROM direct_messages dm JOIN users u ON u.id = dm.from_userid
@@ -14,6 +15,7 @@ const MessagesReceived = (req, res) => {
     // ORDER by date DESC`;
     try {
         pool.connect((error, client, release) => {
+            // eslint-disable-next-line consistent-return
             client.query(query, [userId], (err, result) => {
                 release();
                 if (result.rowCount > 0) {
